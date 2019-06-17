@@ -8,6 +8,15 @@ $(document).ready(function(){
 
 		$(this).addClass('current');
 		$("#"+tab_id).addClass('current');
-	})
-
+	});
+	$('.element-a-flow').click(function(){
+		var $this = $(this);
+		if($this.text()==="flowing"){
+			$this.removeClass("flowing");
+			$this.text("flow");
+		}else{
+			$this.addClass("flowing");
+			$this.text("flowing");
+		}
+	});
 })
