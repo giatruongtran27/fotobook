@@ -8,10 +8,11 @@
   
   <!-- layout css -->
   <link rel="stylesheet" href="layout.css">
+  <!-- main-content css -->
+  <link rel="stylesheet" href="mai_content_layout.css">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
 </head>
 <body>
@@ -30,8 +31,8 @@
           <li class="nav-item">
             <a class="nav-link" href="javascript:;">
               <span class="nav-user-wrapper">
-                  <img src="avt.jpeg" alt="avatar" class="rounded-circle">
-                  <span class="nav-user-name">TruongTG</span>
+                <img src="avt.jpeg" alt="avatar" class="rounded-circle">
+                <span class="nav-user-name">TruongTG</span>
               </span>
             </a>
           </li>
@@ -52,41 +53,58 @@
           <a href="javascript:;" class="left-item active">Discover</a>
         </div>
       </div>
-      <!-- /.col-lg-3 -->
-
+      <!-- /.col-lg-2 -->
+      <!-- main-content -->
       <div class="col-lg-8 main-content">
-
-        <div class="card mt-4">
-          <img class="card-img-top img-fluid" src="http://placehold.it/900x400" alt="">
-          <div class="card-body">
-            <h3 class="card-title">Image Name</h3>
-            <h4>$24.99</h4>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente dicta fugit fugiat hic aliquam itaque facere, soluta. Totam id dolores, sint aperiam sequi pariatur praesentium animi perspiciatis molestias iure, ducimus!</p>
-            <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
-            4.0 stars
+        <!--  -->
+        <ul class="tabs">
+          <li class="tab-link current" data-tab="tab-photo">photo</li>
+          <li class="tab-link" data-tab="tab-album">album</li>
+        </ul>
+        <div id="tab-photo" class="tab-content current">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="row">
+                <div class="col-md-6">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio reiciendis voluptate, vel unde eligendi laboriosam dicta officiis amet fuga ipsa ratione ex atque officia cupiditate recusandae vitae, dolorem tenetur minus!
+                </div>
+                <div class="col-md-6">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio reiciendis voluptate, vel unde eligendi laboriosam dicta officiis amet fuga ipsa ratione ex atque officia cupiditate recusandae vitae, dolorem tenetur minus!
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              222Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis unde, natus iusto, laborum dignissimos praesentium nam animi, ipsa inventore eius nihil! Sit nam voluptate eveniet sunt a tempore iure quibusdam!
+            </div>
           </div>
+          <!-- PHOTO_ELEMENT -->
+          
+          <!-- end PHOTO_ELEMENT  -->
         </div>
-        <!-- /.card -->
-
-      </div>
-      <!-- /.col-lg-9 -->
-
+        <div id="tab-album" class="tab-content">
+         Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+         Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+       </div>
+      <!--  -->
     </div>
+    <!-- /.col-lg-8 -->
 
   </div>
+
+</div>
+<!-- /.container -->
+
+<!-- Footer -->
+<footer class="py-2 bg-blue">
+  <div class="container">
+    <p class="m-0 text-center text-white">Copyright &copy; Fotobook Website 2019 - by TruongTG</p>
+  </div>
   <!-- /.container -->
+</footer>
 
-  <!-- Footer -->
-  <footer class="py-2 bg-blue">
-    <div class="container">
-      <p class="m-0 text-center text-white">Copyright &copy; Fotobook Website 2019 - by TruongTG</p>
-    </div>
-    <!-- /.container -->
-  </footer>
-
-  <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
+<!-- Bootstrap core JavaScript -->
+<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script> -->
+<!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script> -->
+<script src="main_content_layout.js" type="text/javascript"></script>
 </body>
 </html>
