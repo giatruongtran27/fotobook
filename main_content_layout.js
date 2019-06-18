@@ -20,3 +20,15 @@ $(document).ready(function(){
 		}
 	});
 })
+
+$('.a-img-element').click(function(){
+	var img = $(this).find('img').attr('src');
+	$('.img-modal').attr('src',img);
+	var _right = $(this).siblings('.element-col-right');
+	var _title = _right.find('.element-content-title');
+	var _description = _right.find('.element-content-mid');
+	var title = _title.text();
+	var description = _description.text();
+	$('h4.modal-title').text(title);
+	$('p.modal-description').text(description);
+});
