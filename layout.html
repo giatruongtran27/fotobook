@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Layout Fotobook</title>
+  <title>Login Fotobook</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <!-- layout css -->
   <link rel="stylesheet" href="layout.css">
+  <!-- login css -->
+  <link rel="stylesheet" href="login.css">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
@@ -45,29 +47,30 @@
 
   <!-- Page Content -->
   <div class="container-fluid mt-3 mb-3">
-    <div class="row">
-      <div class="col-lg-2">
+    <div class="row justify-content-center">
+      <!-- <div class="col-lg-2">
         <div class="d-flex flex-column left">
           <a href="javascript:;" class="left-item">Feeds</a>
           <a href="javascript:;" class="left-item active">Discover</a>
         </div>
-      </div>
+      </div> -->
       <!-- /.col-lg-3 -->
 
       <div class="col-lg-8 main-content">
-
-        <div class="card mt-4">
-          <img class="card-img-top img-fluid" src="http://placehold.it/900x400" alt="">
-          <div class="card-body">
-            <h3 class="card-title">Image Name</h3>
-            <h4>$24.99</h4>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente dicta fugit fugiat hic aliquam itaque facere, soluta. Totam id dolores, sint aperiam sequi pariatur praesentium animi perspiciatis molestias iure, ducimus!</p>
-            <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
-            4.0 stars
+        <h1 class="text-center title-login">Fotobook Login</h1>
+        <div class="row justify-content-center">
+          <div class="col-md-6 login-wrap">
+              <form id="form_login" action="/">
+                <div class="form-group">
+                  <input type="email" class="form-control" name="email" id="email" placeholder="Email" required="">
+                  <input type="password" class="form-control" id="pwd" name="password" placeholder="Password" required="">
+                </div>
+                <button type="submit" class="btn btn-primary">Login</button>
+                <a id="forgot_password" href="javascript:;">Forgot password?</a>
+              </form>
           </div>
         </div>
-        <!-- /.card -->
-
+        <a id="create_account" href="javascript:;">Create an account</a>
       </div>
       <!-- /.col-lg-9 -->
 
@@ -77,16 +80,17 @@
   <!-- /.container -->
 
   <!-- Footer -->
-  <footer class="py-2 bg-blue">
+  <!-- <footer class="py-2 bg-blue">
     <div class="container">
       <p class="m-0 text-center text-white">Copyright &copy; Fotobook Website 2019 - by TruongTG</p>
     </div>
-    <!-- /.container -->
-  </footer>
+  </footer> -->
 
   <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- <script src="vendor/jquery/jquery.min.js"></script> -->
+  <!-- <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script> -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+  <script type="text/javascript" src="login.js"></script>
 
 </body>
 </html>
