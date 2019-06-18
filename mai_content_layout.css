@@ -29,22 +29,31 @@ ul.tabs li.current{
 .tab-content.current{
 	display: inherit;
 }
-.element-image{
-	position: relative;
-	margin-top: 15px;	
-	display: block;
+.element-album {
+    position: relative;
+    margin-top: 35px;
+    display: block;
+    max-width: 45%;
+    margin-left: 15px;
+    margin-right: 5px;
 }
 
-.element-image .img-element{
+.element-album .img-element{
 	position: absolute;
 	top: 0;
 	left: 0;
 }
-.element-image .img-element:first-child{
-	transform: rotateZ(7deg);
+.element-album img{
+	max-width: 90%;
 }
-.element-image .img-element:nth-child(2){
-	transform: rotateZ(15deg);
+.element-album>img:last-child{
+	position: inherit;
+}
+.element-album .img-element:first-child{
+	transform: rotateZ(10deg);
+}
+.element-album .img-element:nth-child(2){
+	transform: rotateZ(24deg);
 }
 .element-wrapper{
 	background-color: #e9ebee;
@@ -133,6 +142,12 @@ a.element-a-flow.flowing{
 .img-custom{
 	min-height: 188.5px;
 	border-radius: 10px 0px 0px 10px;
+	padding: .25rem;
+	background-color: #fff;
+	border-left: 1px solid #dee2e6;
+	border-radius: 10px 0 0 10px;
+	border-top: 1px solid #dee2e6;
+	border-bottom: 1px solid #dee2e6;
 }
 .a-img-element{
 	max-width: 50%;
@@ -160,7 +175,7 @@ a.element-a-flow.flowing{
 	max-width: 638px;
 }
 .modal-header-custom{
-	padding: 15px 30px 0px 30px;
+	padding: 15px 15px 0px 15px;
 }
 .modal-body p.modal-description{
 	margin-top: 10px;
@@ -174,4 +189,33 @@ a.element-a-flow.flowing{
 }
 .modal-body .img-container img{
 	max-height: 438px;
+}
+#myModal2 button.close{
+	position: absolute;
+	top: 0;
+	right: 0;
+	color: black;
+	z-index: 999;
+	opacity: 1;
+	padding: 0px 5px 5px;
+	border-radius: 5px;
+
+}
+#myModal2 button.close:hover{
+	border: 1px;
+	background-color: black;
+	color:white;
+}
+.pagination{
+	margin:auto;
+	width: max-content;
+	color: #3C5999;
+}
+.pagination a{
+	color: #3C5999;
+}
+.pagination .page-item.active a{
+	background-color: #3C5999; 
+	border-color: #3C5999;
+	color: white;
 }
