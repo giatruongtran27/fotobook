@@ -8,7 +8,8 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <!-- layout css -->
   <link rel="stylesheet" href="layout.css">
-
+  <!-- public profile css -->
+  <link rel="stylesheet" href="public_profile.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
@@ -30,8 +31,8 @@
           <li class="nav-item">
             <a class="nav-link" href="javascript:;">
               <span class="nav-user-wrapper">
-                  <img src="avt.jpeg" alt="avatar" class="rounded-circle">
-                  <span class="nav-user-name">TruongTG</span>
+                <img src="avt.jpeg" alt="avatar" class="rounded-circle">
+                <span class="nav-user-name">TruongTG</span>
               </span>
             </a>
           </li>
@@ -55,21 +56,327 @@
       <!-- /.col-lg-3 -->
 
       <div class="col-lg-8 pb-3 main-content">
-
-        <div class="card mt-4">
-          <img class="card-img-top img-fluid" src="http://placehold.it/900x400" alt="">
-          <div class="card-body">
-            <h3 class="card-title">Image Name</h3>
-            <h4>$24.99</h4>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente dicta fugit fugiat hic aliquam itaque facere, soluta. Totam id dolores, sint aperiam sequi pariatur praesentium animi perspiciatis molestias iure, ducimus!</p>
-            <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
-            4.0 stars
+        <div class="card border-0 mt-3">
+          <div class="row no-gutters p-3">
+            <div class="col-auto">
+              <img src="avt.jpeg" class="img-fluid rounded-circle profile-card-image" alt="avt">
+            </div>
+            <div class="col p-3">
+              <div class="card-block px-2">
+                <a href="javascript:;" class="profile-card-flow">following</a>
+                <h2 class="card-title">Gia Truong</h2>
+                <ul class="tabs">
+                  <li class="tab-link" data-tab="tab-photos"><span class="counts">26</span> photos</li>
+                  <li class="tab-link" data-tab="tab-albums"><span class="counts">09</span> albums</li>
+                  <li class="tab-link current" data-tab="tab-followings"><span class="counts">19</span> followings</li>
+                  <li class="tab-link" data-tab="tab-followers"><span class="counts">97</span> followers</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <hr>
+          <!-- <div class="card-footer w-100 text-muted"></div> -->
+        </div>
+        <!-- end card     -->
+        <!------->
+        <!-- TAB PHOTOS -->
+        <div id="tab-photos" class="tab-content">
+          <div class="d-flex flex-wrap justify-content-center profiles-content-wrapper">
+            <div class="wrap-a-photos">
+              <div class="div-a-photos">
+                <a href="javascript:;"><img src="avt.jpeg" class="img-thumbnail a-photos-img"></a>
+                <a href="javascript:;" class="a-edit">edit</a>
+                <a href="javascript:;" class="a-lock"><i class="fa fa-lock"></i></a>
+              </div>
+              <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>  
+            </div>
+            <div class="wrap-a-photos">
+              <div class="div-a-photos">
+                <a href="javascript:;"><img src="img1.jpeg" class="img-thumbnail a-photos-img"></a>
+                <a href="javascript:;" class="a-edit">edit</a>
+                <a href="javascript:;" class="a-lock"><i class="fa fa-lock"></i></a>
+              </div>
+              <p class="text-center">Lorem ipsum dolor.</p>  
+            </div>
+            <div class="wrap-a-photos">
+              <div class="div-a-photos">
+                <a href="javascript:;"><img src="img2.jpeg" class="img-thumbnail a-photos-img"></a>
+                <a href="javascript:;" class="a-edit">edit</a>
+                <a href="javascript:;" class="a-lock"><i class="fa fa-lock"></i></a>
+              </div>
+              <p class="text-center">Sit amet, consectetur adipisicing elit.</p>  
+            </div>
+            <div class="wrap-a-photos">
+              <div class="div-a-photos">
+                <a href="javascript:;"><img src="img3.jpeg" class="img-thumbnail a-photos-img"></a>
+                <a href="javascript:;" class="a-edit">edit</a>
+                <a href="javascript:;" class="a-lock"><i class="fa fa-lock"></i></a>
+              </div>
+              <p class="text-center">Amet, consectetur adipisicing elit.</p>  
+            </div>
+            <div class="wrap-a-photos">
+              <div class="div-a-photos">
+                <a href="javascript:;"><img src="img4.jpeg" class="img-thumbnail a-photos-img"></a>
+                <a href="javascript:;" class="a-edit">edit</a>
+                <a href="javascript:;" class="a-lock"><i class="fa fa-lock"></i></a>
+              </div>
+              <p class="text-center">Consectetur adipisicing elit.</p>  
+            </div>
+            <div class="wrap-a-photos">
+              <div class="div-a-photos">
+                <a href="javascript:;"><img src="img5.jpeg" class="img-thumbnail a-photos-img"></a>
+                <a href="javascript:;" class="a-edit">edit</a>
+                <a href="javascript:;" class="a-lock"><i class="fa fa-lock"></i></a>
+              </div>
+              <p class="text-center">Ssectetur adipisicing elit.</p>  
+            </div>
+            <div class="wrap-a-photos">
+              <div class="div-a-photos">
+                <a href="javascript:;"><img src="img6.jpeg" class="img-thumbnail a-photos-img"></a>
+                <a href="javascript:;" class="a-edit">edit</a>
+                <a href="javascript:;" class="a-lock"><i class="fa fa-lock"></i></a>
+              </div>
+              <p class="text-center">Ectetur adipisicing elit.</p>  
+            </div>
+            <div class="wrap-a-photos">
+              <div class="div-a-photos">
+                <a href="javascript:;"><img src="img7.jpeg" class="img-thumbnail a-photos-img"></a>
+                <a href="javascript:;" class="a-edit">edit</a>
+                <a href="javascript:;" class="a-lock"><i class="fa fa-lock"></i></a>
+              </div>
+              <p class="text-center">Gt, consectetur adipisicing elit.</p>  
+            </div>
           </div>
         </div>
-        <!-- /.card -->
+        <!-- end TAB PHOTOS -->
+        <!-- TAB ALBUMS -->
+        <div id="tab-albums" class="tab-content">
+          <div class="d-flex flex-wrap justify-content-center profiles-content-wrapper-albums">
+            <!-- element albums -->
+            <div class="wrap-a-albums">
+              <div class="div-a-albums">
+                <img src="img1.jpeg" class="img-thumbnail a-albums-img">
+                <img src="img2.jpeg" class="img-thumbnail a-albums-img">
+                <a href="#" class="a-albums-main-photo">
+                  <span>27</span>
+                  <img src="avt.jpeg" class="img-thumbnail a-albums-img">
+                </a>
+                <a href="javascript:;" class="a-edit">edit</a>
+                <a href="javascript:;" class="a-lock"><i class="fa fa-lock"></i></a>
+              </div>
+              <p class="text-center albums-title">Albums title goes here</p>
+            </div>
+            <!-- end element albums -->
+            <!-- element albums -->
+            <div class="wrap-a-albums">
+              <div class="div-a-albums">
+                <img src="img3.jpeg" class="img-thumbnail a-albums-img">
+                <img src="img4.jpeg" class="img-thumbnail a-albums-img">
+                <a href="#" class="a-albums-main-photo">
+                  <span>1</span>
+                  <img src="img5.jpeg" class="img-thumbnail a-albums-img">
+                </a>
+                <a href="javascript:;" class="a-edit">edit</a>
+                <a href="javascript:;" class="a-lock"><i class="fa fa-lock"></i></a>
+              </div>
+              <p class="text-center albums-title">Albums title goes here</p>
+            </div>
+            <!-- end element albums -->
+            <!-- element albums -->
+            <div class="wrap-a-albums">
+              <div class="div-a-albums">
+                <img src="img2.jpeg" class="img-thumbnail a-albums-img">
+                <img src="img3.jpeg" class="img-thumbnail a-albums-img">
+                <a href="#" class="a-albums-main-photo">
+                  <span>25</span>
+                  <img src="img4.jpeg" class="img-thumbnail a-albums-img">
+                </a>
+                <a href="javascript:;" class="a-edit">edit</a>
+                <a href="javascript:;" class="a-lock"><i class="fa fa-lock"></i></a>
+              </div>
+              <p class="text-center albums-title">Albums title goes here</p>
+            </div>
+            <!-- end element albums -->
+            <!-- element albums -->
+            <div class="wrap-a-albums">
+              <div class="div-a-albums">
+                <img src="img8.jpeg" class="img-thumbnail a-albums-img">
+                <img src="img9.jpeg" class="img-thumbnail a-albums-img">
+                <a href="#" class="a-albums-main-photo">
+                  <span>87</span>
+                  <img src="img6.jpeg" class="img-thumbnail a-albums-img">
+                </a>
+                <a href="javascript:;" class="a-edit">edit</a>
+                <a href="javascript:;" class="a-lock"><i class="fa fa-lock"></i></a>
+              </div>
+              <p class="text-center albums-title">Albums title goes here</p>
+            </div>
+            <!-- end element albums -->
+            <!-- element albums -->
+            <div class="wrap-a-albums">
+              <div class="div-a-albums">
+                <img src="img1.jpeg" class="img-thumbnail a-albums-img">
+                <img src="img4.jpeg" class="img-thumbnail a-albums-img">
+                <a href="#" class="a-albums-main-photo">
+                  <span>33</span>
+                  <img src="img7.jpeg" class="img-thumbnail a-albums-img">
+                </a>
+                <a href="javascript:;" class="a-edit">edit</a>
+                <a href="javascript:;" class="a-lock"><i class="fa fa-lock"></i></a>
+              </div>
+              <p class="text-center albums-title">Albums title goes here</p>
+            </div>
+            <!-- end element albums -->
+            <!-- element albums -->
+            <div class="wrap-a-albums">
+              <div class="div-a-albums">
+                <img src="img4.jpeg" class="img-thumbnail a-albums-img">
+                <img src="img2.jpeg" class="img-thumbnail a-albums-img">
+                <a href="#" class="a-albums-main-photo">
+                  <span>6</span>
+                  <img src="img8.jpeg" class="img-thumbnail a-albums-img">
+                </a>
+                <a href="javascript:;" class="a-edit">edit</a>
+                <a href="javascript:;" class="a-lock"><i class="fa fa-lock"></i></a>
+              </div>
+              <p class="text-center albums-title">Albums title goes here</p>
+            </div>
+            <!-- end element albums -->
+            <!-- element albums -->
+            <div class="wrap-a-albums">
+              <div class="div-a-albums">
+                <img src="img1.jpeg" class="img-thumbnail a-albums-img">
+                <img src="img2.jpeg" class="img-thumbnail a-albums-img">
+                <a href="#" class="a-albums-main-photo">
+                  <span>4</span>
+                  <img src="img9.jpeg" class="img-thumbnail a-albums-img">
+                </a>
+                <a href="javascript:;" class="a-edit">edit</a>
+                <a href="javascript:;" class="a-lock"><i class="fa fa-lock"></i></a>
+              </div>
+              <p class="text-center albums-title">Albums title goes here</p>
+            </div>
+            <!-- end element albums -->
+            <!-- element albums -->
+            <div class="wrap-a-albums">
+              <div class="div-a-albums">
+                <img src="img1.jpeg" class="img-thumbnail a-albums-img">
+                <img src="img3.jpeg" class="img-thumbnail a-albums-img">
+                <a href="#" class="a-albums-main-photo">
+                  <span>11</span>
+                  <img src="img10.png" class="img-thumbnail a-albums-img">
+                </a>
+                <a href="javascript:;" class="a-edit">edit</a>
+                <a href="javascript:;" class="a-lock"><i class="fa fa-lock"></i></a>
+              </div>
+              <p class="text-center albums-title">Albums title goes here</p>
+            </div>
+            <!-- end element albums -->
+
+          </div>
+        </div>
+        <div id="tab-followings" class="tab-content current">
+          <div class="d-flex flex-wrap justify-content-center profiles-content-wrapper-flowwings">
+            <!-- element -->
+            <div class="d-flex flex-column flowwings-card">
+              <div class="p-2 text-center">
+                <a class="a-person" href="#">
+                  <img src="avt.jpeg" alt="avt" class="rounded-circle" width="100" height="100">
+                </a>
+              </div>
+              <h5 class="text-center a-person-name">Hieu Nguyen</h5>
+              <div class="d-flex justify-content-around mb-1">
+                <div class="d-flex flex-fill flex-column a-person-card-photos">
+                  <p>27</p>
+                  <small>PHOTOS</small>
+                </div>
+                <div class="d-flex flex-fill flex-column a-person-card-albums">
+                  <p>7</p>
+                  <small>ALBUMS</small>
+                </div>
+              </div>
+              <div class="text-center">
+                <a href="javascript:;" class="a-person-card-follow">follow</a>                
+              </div>
+            </div>
+            <!-- end element -->
+            <!-- element -->
+            <div class="d-flex flex-column flowwings-card">
+              <div class="p-2 text-center">
+                <a class="a-person" href="#">
+                  <img src="avt.jpeg" alt="avt" class="rounded-circle" width="100" height="100">
+                </a>
+              </div>
+              <h5 class="text-center a-person-name">Hieu Nguyen</h5>
+              <div class="d-flex justify-content-around mb-1">
+                <div class="d-flex flex-fill flex-column a-person-card-photos">
+                  <p>27</p>
+                  <small>PHOTOS</small>
+                </div>
+                <div class="d-flex flex-fill flex-column a-person-card-albums">
+                  <p>7</p>
+                  <small>ALBUMS</small>
+                </div>
+              </div>
+              <div class="text-center">
+                <a href="javascript:;" class="a-person-card-follow">follow</a>                
+              </div>
+            </div>
+            <!-- end element -->
+            <!-- element -->
+            <div class="d-flex flex-column flowwings-card">
+              <div class="p-2 text-center">
+                <a class="a-person" href="#">
+                  <img src="avt.jpeg" alt="avt" class="rounded-circle" width="100" height="100">
+                </a>
+              </div>
+              <h5 class="text-center a-person-name">Hieu Nguyen</h5>
+              <div class="d-flex justify-content-around mb-1">
+                <div class="d-flex flex-fill flex-column a-person-card-photos">
+                  <p>27</p>
+                  <small>PHOTOS</small>
+                </div>
+                <div class="d-flex flex-fill flex-column a-person-card-albums">
+                  <p>7</p>
+                  <small>ALBUMS</small>
+                </div>
+              </div>
+              <div class="text-center">
+                <a href="javascript:;" class="a-person-card-follow">follow</a>                
+              </div>
+            </div>
+            <!-- end element -->
+            <!-- element -->
+            <div class="d-flex flex-column flowwings-card">
+              <div class="p-2 text-center">
+                <a class="a-person" href="#">
+                  <img src="avt.jpeg" alt="avt" class="rounded-circle" width="100" height="100">
+                </a>
+              </div>
+              <h5 class="text-center a-person-name">Hieu Nguyen</h5>
+              <div class="d-flex justify-content-around mb-1">
+                <div class="d-flex flex-fill flex-column a-person-card-photos">
+                  <p>27</p>
+                  <small>PHOTOS</small>
+                </div>
+                <div class="d-flex flex-fill flex-column a-person-card-albums">
+                  <p>7</p>
+                  <small>ALBUMS</small>
+                </div>
+              </div>
+              <div class="text-center">
+                <a href="javascript:;" class="a-person-card-follow">follow</a>                
+              </div>
+            </div>
+            <!-- end element -->
+
+          </div>
+        </div>
+
+        <!-- end TAB ALBUMS -->
 
       </div>
-      <!-- /.col-lg-9 -->
+      <!-- /.col-lg-8 -->
 
     </div>
 
@@ -77,15 +384,14 @@
   <!-- /.container -->
 
   <!-- Footer -->
-  <footer class="py-2 bg-blue">
+  <!-- <footer class="py-2 bg-blue">
     <div class="container">
       <p class="m-0 text-center text-white">Copyright &copy; Fotobook Website 2019 - by TruongTG</p>
     </div>
-    <!-- /.container -->
   </footer>
-
-  <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
-  <!-- Bootstrap core JavaScript -->
-
+-->
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script src="public_profile.js" type="text/javascript"></script>
 </body>
 </html>

@@ -1,0 +1,230 @@
+/*Tab*/
+ul.tabs{
+	width: max-content;
+	margin-top:10px;
+	padding: 0px;
+	list-style: none;
+}
+ul.tabs li{
+	background: none;
+	color: gray;
+	display: inline-block;
+	padding: 0px 10px;
+	cursor: pointer;
+	text-transform: uppercase;
+	font-weight: 700;
+	font-size: 12px;
+}
+ul.tabs li:not(:first-child){
+	border-left: 1px solid lightgray;
+}
+ul.tabs li span.counts{
+	font-size: 20px;
+}
+
+ul.tabs li.current{
+	color: #3C5999;
+}
+
+.tab-content{
+	display: none;
+}
+
+.tab-content.current{
+	display: inherit;
+}
+/*end Tab*/
+
+img.profile-card-image{
+	width: 150px;
+	height: 150px;
+}
+a.profile-card-flow{
+	color:white;
+	background-color: #FF004B;
+	border-radius: 24px;
+	padding: 0.125rem 0.5rem;
+	text-decoration: none;
+	font-weight: 700; 
+	font-size: 12px;
+}
+.card-title{
+	font-weight: 700;
+}
+/*TAB PHOTOS*/
+#tab-photos div.wrap-a-photos{
+	max-width: 195px;
+	margin: 0px 10px;
+}
+#tab-photos div.div-a-photos{
+	max-width: 195px;
+	transition: all 1s;
+	color:black;
+	position: relative;
+}
+#tab-photos img.a-photos-img{
+	max-width: 195px;
+	min-height: 195px;
+}
+#tab-photos img.a-photos-img:hover{
+	max-width: 195px;
+	min-height: 195px;
+}
+#tab-photos div.div-a-photos .a-edit{
+	text-transform: uppercase;
+	position: absolute;
+	font-size: 10px;
+	bottom: 10px;
+	right: 10px;
+	border-radius: 0.25rem;
+	padding: 1px 2px;
+	color:white;
+	background-color: #808080a3;
+	text-decoration: none;
+}
+#tab-photos div.div-a-photos .a-edit:hover,#tab-photos div.div-a-photos .a-lock:hover{
+	color:#FF004B;
+	background-color: white;
+}
+#tab-photos div.div-a-photos .a-lock {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	color: black;
+	background-color: white;
+	border-radius: 50%;
+	padding: 0px 5px;
+	font-size: 12px;
+}
+/*TAB ALBUMS*/
+#tab-albums div.wrap-a-albums{
+	max-width: 174px;
+	margin: 10px 25px 50px 25px;
+}
+#tab-albums div.div-a-albums{
+	transition: all 1s;
+	text-decoration: none;
+	color:black;
+	position: relative;
+	display: inline-block;
+	text-align: center;
+	margin-bottom: 25px;
+}
+#tab-albums img.a-albums-img{
+	max-width: 165px;
+	min-height: 165px;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+#tab-albums div.div-a-albums > img:first-of-type{
+	transform: rotateZ(11.25deg);
+}
+#tab-albums div.div-a-albums > img:nth-of-type(2){
+	transform: rotateZ(22.5deg);
+}
+#tab-albums div.div-a-albums > img:last-of-type{
+	position: inherit;
+}
+#tab-albums .profiles-content-wrapper-albums{
+	margin-top: 20px;
+}
+#tab-albums .a-albums-main-photo{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: inline-block;
+}
+#tab-albums .a-albums-main-photo span {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	z-index: 1;
+	font-size: 22px;
+	padding: 12px 15px;
+	border-radius: 50%;
+	background: #A8A8A8BF;
+	color: white;
+	font-weight: 600;
+	display: flex;
+	flex-direction: column;
+	transition: all 0.2s;
+}
+#tab-albums .a-albums-main-photo span:after{
+	content: "photos";
+	font-size: 10px;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+#tab-albums div.div-a-albums .a-edit{
+	text-transform: uppercase;
+	position: absolute;
+	font-size: 10px;
+	bottom: 10px;
+	right: 10px;
+	border-radius: 0.25rem;
+	padding: 1px 2px;
+	color:white;
+	background-color: #808080a3;
+	text-decoration: none;
+}
+#tab-albums div.div-a-albums .a-lock{
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	color: black;
+	background-color: white;
+	border-radius: 50%;
+	padding: 0px 5px;
+	font-size: 12px;
+}
+#tab-albums div.div-a-albums .a-edit:hover, #tab-albums div.div-a-albums .a-lock:hover,#tab-albums .a-albums-main-photo span:hover{
+	color:#FF004B;
+	background-color: white;
+}
+#tab-albums div.wrap-a-albums p.albums-title{
+	font-size: 12px;
+}
+
+/*Tab Flowwings*/
+#tab-followings .flowwings-card {
+    background-color: #e9ebee;
+    border-radius: 5px;
+    margin: 15px;
+    padding: 5px 25px 15px;
+}
+#tab-followings .flowwings-card .a-person-name{
+	font-size: 15px;
+	font-weight: 600;
+}
+#tab-followings .flowwings-card div.a-person-card-photos,#tab-followings .flowwings-card div.a-person-card-albums{
+	color:#3C5999;
+	text-align: center;
+	margin:5px 15px;
+}
+#tab-followings .flowwings-card div.a-person-card-photos p, #tab-followings .flowwings-card div.a-person-card-albums p{
+	font-size: 18px;
+	font-weight: bold;
+	margin-bottom: 0;
+}
+#tab-followings .flowwings-card div.a-person-card-photos small,#tab-followings .flowwings-card div.a-person-card-albums small{
+	text-transform: uppercase;
+	font-size: 10px;
+}
+.a-person-card-follow{
+	background-color: #FF004B;
+	color: white;
+	font-size: 12px;
+	text-decoration: none !important;
+	padding: 0.125rem 1.5rem;
+	border-radius: 24px;
+	font-weight: 700;
+}
+.a-person-card-follow:hover{
+	color: #FF004B;
+	border: 0.0125rem solid #FF004B; 
+	background-color: white;
+}
