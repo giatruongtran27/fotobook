@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Layout Fotobook</title>
+  <title>SignUp Fotobook</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <!-- layout css -->
   <link rel="stylesheet" href="layout.css">
+  <!-- sign up css -->
+  <link rel="stylesheet" href="sign_up.css">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
@@ -30,8 +32,8 @@
           <li class="nav-item">
             <a class="nav-link" href="javascript:;">
               <span class="nav-user-wrapper">
-                  <img src="avt.jpeg" alt="avatar" class="rounded-circle">
-                  <span class="nav-user-name">TruongTG</span>
+                <img src="avt.jpeg" alt="avatar" class="rounded-circle">
+                <span class="nav-user-name">TruongTG</span>
               </span>
             </a>
           </li>
@@ -55,22 +57,38 @@
       <!-- /.col-lg-3 -->
 
       <div class="col-lg-8 main-content">
-
-        <div class="card mt-4">
-          <img class="card-img-top img-fluid" src="http://placehold.it/900x400" alt="">
-          <div class="card-body">
-            <h3 class="card-title">Image Name</h3>
-            <h4>$24.99</h4>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente dicta fugit fugiat hic aliquam itaque facere, soluta. Totam id dolores, sint aperiam sequi pariatur praesentium animi perspiciatis molestias iure, ducimus!</p>
-            <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
-            4.0 stars
+        <div class="container">
+          <h1 class="text-center title-sign-up">Fotobook Signup</h1>
+          <div class="row justify-content-center">
+            <div class="col-md-6 sign-up-wrap">
+              <form id="form_sign_up" action="/">
+                <div class="form-group">
+                  <label for="email">Email Address</label>
+                  <input type="email" class="form-control" name="email" id="email" placeholder="Email" required>
+                </div>
+                <div class="form-group">
+                  <label for="first_name">First Name</label>
+                  <input type="text" class="form-control" id="first_name" name="first_name" placeholder="First Name" required>
+                </div>
+                <div class="form-group">
+                  <label for="last_name">Last Name</label>
+                  <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Last Name" required>
+                </div>
+                <div class="form-group">
+                  <label for="pwd">Password</label>
+                  <input type="password" class="form-control" id="pwd" name="password" placeholder="Password" required>
+                </div>
+                <div class="form-group">
+                  <label for="pwd_confirmation">Password Confirmation</label>
+                  <input type="password" class="form-control" id="pwd_confirmation" name="password_confirmation" placeholder="Password Confirmation" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </form>
+            </div>
           </div>
         </div>
-        <!-- /.card -->
-
       </div>
-      <!-- /.col-lg-9 -->
-
+      <!-- /.col-lg-8 -->
     </div>
 
   </div>
@@ -85,8 +103,9 @@
   </footer>
 
   <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
+  <!-- <script src="vendor/jquery/jquery.min.js"></script> -->
+  <!-- <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script> -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+  <script type="text/javascript" src="sign_up.js"></script>
 </body>
 </html>
