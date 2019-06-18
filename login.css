@@ -40,3 +40,8 @@ label.error {
     font-size:small;
 
 } 
+h1.icon-user{
+	font-size: 4.5rem;
+	margin-bottom: 20px;
+	color: lightgray;
+}
