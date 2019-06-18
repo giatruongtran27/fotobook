@@ -1,3 +1,6 @@
+$(function() {
+  $("#email").focus();
+});
 $('#form_sign_up').validate({
 	rules:{
 		"email":{
