@@ -1,0 +1,7 @@
+.title-new-photo{
+	font-weight: 700;
+	margin-bottom: 0px;
+}
+.custom-file-label:after{
+	display: none;
+}
