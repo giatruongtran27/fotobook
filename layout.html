@@ -63,12 +63,12 @@
             </div>
             <div class="col p-3">
               <div class="card-block px-2">
-                <a href="javascript:;" class="profile-card-flow">following</a>
+                <a href="javascript:;" class="profile-card-follow">following</a>
                 <h2 class="card-title">Gia Truong</h2>
                 <ul class="tabs">
                   <li class="tab-link" data-tab="tab-photos"><span class="counts">26</span> photos</li>
-                  <li class="tab-link" data-tab="tab-albums"><span class="counts">09</span> albums</li>
-                  <li class="tab-link current" data-tab="tab-followings"><span class="counts">19</span> followings</li>
+                  <li class="tab-link current" data-tab="tab-albums"><span class="counts">09</span> albums</li>
+                  <li class="tab-link" data-tab="tab-followings"><span class="counts">19</span> followings</li>
                   <li class="tab-link" data-tab="tab-followers"><span class="counts">97</span> followers</li>
                 </ul>
               </div>
@@ -81,6 +81,9 @@
         <!------->
         <!-- TAB PHOTOS -->
         <div id="tab-photos" class="tab-content">
+          <div class="d-flex flex-wrap justify-content-end mt-0 mb-3 mr-3">
+            <button class="btn btn-sm btn-success" id="btn-add-photo">Add Photo</button>
+          </div>
           <div class="d-flex flex-wrap justify-content-center profiles-content-wrapper">
             <div class="wrap-a-photos">
               <div class="div-a-photos">
@@ -150,7 +153,10 @@
         </div>
         <!-- end TAB PHOTOS -->
         <!-- TAB ALBUMS -->
-        <div id="tab-albums" class="tab-content">
+        <div id="tab-albums" class="tab-content current">
+          <div class="d-flex flex-wrap justify-content-end mt-0 mb-3 mr-3">
+            <button class="btn btn-sm btn-success" id="btn-add-album">Add Album</button>
+          </div>
           <div class="d-flex flex-wrap justify-content-center profiles-content-wrapper-albums">
             <!-- element albums -->
             <div class="wrap-a-albums">
@@ -272,13 +278,13 @@
               <p class="text-center albums-title">Albums title goes here</p>
             </div>
             <!-- end element albums -->
-
           </div>
         </div>
-        <div id="tab-followings" class="tab-content current">
-          <div class="d-flex flex-wrap justify-content-center profiles-content-wrapper-flowwings">
+        <!-- TAB FOLLOWINGS -->
+        <div id="tab-followings" class="tab-content">
+          <div class="d-flex flex-wrap justify-content-center profiles-content-wrapper-followings">
             <!-- element -->
-            <div class="d-flex flex-column flowwings-card">
+            <div class="d-flex flex-column followings-card">
               <div class="p-2 text-center">
                 <a class="a-person" href="#">
                   <img src="avt.jpeg" alt="avt" class="rounded-circle" width="100" height="100">
@@ -301,10 +307,10 @@
             </div>
             <!-- end element -->
             <!-- element -->
-            <div class="d-flex flex-column flowwings-card">
+            <div class="d-flex flex-column followings-card">
               <div class="p-2 text-center">
                 <a class="a-person" href="#">
-                  <img src="avt.jpeg" alt="avt" class="rounded-circle" width="100" height="100">
+                  <img src="img3.jpeg" alt="avt" class="rounded-circle" width="100" height="100">
                 </a>
               </div>
               <h5 class="text-center a-person-name">Hieu Nguyen</h5>
@@ -324,10 +330,33 @@
             </div>
             <!-- end element -->
             <!-- element -->
-            <div class="d-flex flex-column flowwings-card">
+            <div class="d-flex flex-column followings-card">
               <div class="p-2 text-center">
                 <a class="a-person" href="#">
-                  <img src="avt.jpeg" alt="avt" class="rounded-circle" width="100" height="100">
+                  <img src="img2.jpeg" alt="avt" class="rounded-circle" width="100" height="100">
+                </a>
+              </div>
+              <h5 class="text-center a-person-name">Hieu Nguyen</h5>
+              <div class="d-flex justify-content-around mb-1">
+                <div class="d-flex flex-fill flex-column a-person-card-photos">
+                  <p>27</p>
+                  <small>PHOTOS</small>
+                </div>
+                <div class="d-flex flex-fill flex-column a-person-card-albums">
+                  <p>7</p>
+                  <small>ALBUMS</small>
+                </div>
+              </div>
+              <div class="text-center">
+                <a href="javascript:;" class="a-person-card-follow following">follow</a>                
+              </div>
+            </div>
+            <!-- end element -->
+            <!-- element -->
+            <div class="d-flex flex-column followings-card">
+              <div class="p-2 text-center">
+                <a class="a-person" href="#">
+                  <img src="img1.jpeg" alt="avt" class="rounded-circle" width="100" height="100">
                 </a>
               </div>
               <h5 class="text-center a-person-name">Hieu Nguyen</h5>
@@ -347,10 +376,33 @@
             </div>
             <!-- end element -->
             <!-- element -->
-            <div class="d-flex flex-column flowwings-card">
+            <div class="d-flex flex-column followings-card">
               <div class="p-2 text-center">
                 <a class="a-person" href="#">
-                  <img src="avt.jpeg" alt="avt" class="rounded-circle" width="100" height="100">
+                  <img src="img4.jpeg" alt="avt" class="rounded-circle" width="100" height="100">
+                </a>
+              </div>
+              <h5 class="text-center a-person-name">Hieu Nguyen</h5>
+              <div class="d-flex justify-content-around mb-1">
+                <div class="d-flex flex-fill flex-column a-person-card-photos">
+                  <p>27</p>
+                  <small>PHOTOS</small>
+                </div>
+                <div class="d-flex flex-fill flex-column a-person-card-albums">
+                  <p>7</p>
+                  <small>ALBUMS</small>
+                </div>
+              </div>
+              <div class="text-center">
+                <a href="javascript:;" class="a-person-card-follow following">follow</a>                
+              </div>
+            </div>
+            <!-- end element -->
+            <!-- element -->
+            <div class="d-flex flex-column followings-card">
+              <div class="p-2 text-center">
+                <a class="a-person" href="#">
+                  <img src="img5.jpeg" alt="avt" class="rounded-circle" width="100" height="100">
                 </a>
               </div>
               <h5 class="text-center a-person-name">Hieu Nguyen</h5>
@@ -369,11 +421,290 @@
               </div>
             </div>
             <!-- end element -->
-
+            <!-- element -->
+            <div class="d-flex flex-column followings-card">
+              <div class="p-2 text-center">
+                <a class="a-person" href="#">
+                  <img src="img6.jpeg" alt="avt" class="rounded-circle" width="100" height="100">
+                </a>
+              </div>
+              <h5 class="text-center a-person-name">Hieu Nguyen</h5>
+              <div class="d-flex justify-content-around mb-1">
+                <div class="d-flex flex-fill flex-column a-person-card-photos">
+                  <p>27</p>
+                  <small>PHOTOS</small>
+                </div>
+                <div class="d-flex flex-fill flex-column a-person-card-albums">
+                  <p>7</p>
+                  <small>ALBUMS</small>
+                </div>
+              </div>
+              <div class="text-center">
+                <a href="javascript:;" class="a-person-card-follow">follow</a>                
+              </div>
+            </div>
+            <!-- end element -->
+            <!-- element -->
+            <div class="d-flex flex-column followings-card">
+              <div class="p-2 text-center">
+                <a class="a-person" href="#">
+                  <img src="img7.jpeg" alt="avt" class="rounded-circle" width="100" height="100">
+                </a>
+              </div>
+              <h5 class="text-center a-person-name">Hieu Nguyen</h5>
+              <div class="d-flex justify-content-around mb-1">
+                <div class="d-flex flex-fill flex-column a-person-card-photos">
+                  <p>27</p>
+                  <small>PHOTOS</small>
+                </div>
+                <div class="d-flex flex-fill flex-column a-person-card-albums">
+                  <p>7</p>
+                  <small>ALBUMS</small>
+                </div>
+              </div>
+              <div class="text-center">
+                <a href="javascript:;" class="a-person-card-follow following">follow</a>                
+              </div>
+            </div>
+            <!-- end element -->
           </div>
         </div>
-
-        <!-- end TAB ALBUMS -->
+        <!-- TAB FOLLOWERS -->
+        <div id="tab-followers" class="tab-content">
+          <div class="d-flex flex-wrap justify-content-center profiles-content-wrapper-followers">
+            <!-- element -->
+            <div class="d-flex flex-column followers-card">
+              <div class="p-2 text-center">
+                <a class="a-person" href="#">
+                  <img src="avt.jpeg" alt="avt" class="rounded-circle" width="100" height="100">
+                </a>
+              </div>
+              <h5 class="text-center a-person-name">Hieu Nguyen</h5>
+              <div class="d-flex justify-content-around mb-1">
+                <div class="d-flex flex-fill flex-column a-person-card-photos">
+                  <p>27</p>
+                  <small>PHOTOS</small>
+                </div>
+                <div class="d-flex flex-fill flex-column a-person-card-albums">
+                  <p>7</p>
+                  <small>ALBUMS</small>
+                </div>
+              </div>
+              <div class="text-center">
+                <a href="javascript:;" class="a-person-card-follow following">follow</a>                
+              </div>
+            </div>
+            <!-- end element -->
+            <!-- element -->
+            <div class="d-flex flex-column followers-card">
+              <div class="p-2 text-center">
+                <a class="a-person" href="#">
+                  <img src="img1.jpeg" alt="avt" class="rounded-circle" width="100" height="100">
+                </a>
+              </div>
+              <h5 class="text-center a-person-name">Hieu Nguyen</h5>
+              <div class="d-flex justify-content-around mb-1">
+                <div class="d-flex flex-fill flex-column a-person-card-photos">
+                  <p>27</p>
+                  <small>PHOTOS</small>
+                </div>
+                <div class="d-flex flex-fill flex-column a-person-card-albums">
+                  <p>7</p>
+                  <small>ALBUMS</small>
+                </div>
+              </div>
+              <div class="text-center">
+                <a href="javascript:;" class="a-person-card-follow following">follow</a>                
+              </div>
+            </div>
+            <!-- end element -->
+            <!-- element -->
+            <div class="d-flex flex-column followers-card">
+              <div class="p-2 text-center">
+                <a class="a-person" href="#">
+                  <img src="img2.jpeg" alt="avt" class="rounded-circle" width="100" height="100">
+                </a>
+              </div>
+              <h5 class="text-center a-person-name">Hieu Nguyen</h5>
+              <div class="d-flex justify-content-around mb-1">
+                <div class="d-flex flex-fill flex-column a-person-card-photos">
+                  <p>27</p>
+                  <small>PHOTOS</small>
+                </div>
+                <div class="d-flex flex-fill flex-column a-person-card-albums">
+                  <p>7</p>
+                  <small>ALBUMS</small>
+                </div>
+              </div>
+              <div class="text-center">
+                <a href="javascript:;" class="a-person-card-follow">follow</a>                
+              </div>
+            </div>
+            <!-- end element -->
+            <!-- element -->
+            <div class="d-flex flex-column followers-card">
+              <div class="p-2 text-center">
+                <a class="a-person" href="#">
+                  <img src="img3.jpeg" alt="avt" class="rounded-circle" width="100" height="100">
+                </a>
+              </div>
+              <h5 class="text-center a-person-name">Hieu Nguyen</h5>
+              <div class="d-flex justify-content-around mb-1">
+                <div class="d-flex flex-fill flex-column a-person-card-photos">
+                  <p>27</p>
+                  <small>PHOTOS</small>
+                </div>
+                <div class="d-flex flex-fill flex-column a-person-card-albums">
+                  <p>7</p>
+                  <small>ALBUMS</small>
+                </div>
+              </div>
+              <div class="text-center">
+                <a href="javascript:;" class="a-person-card-follow">follow</a>                
+              </div>
+            </div>
+            <!-- end element -->
+            <!-- element -->
+            <div class="d-flex flex-column followers-card">
+              <div class="p-2 text-center">
+                <a class="a-person" href="#">
+                  <img src="img4.jpeg" alt="avt" class="rounded-circle" width="100" height="100">
+                </a>
+              </div>
+              <h5 class="text-center a-person-name">Hieu Nguyen</h5>
+              <div class="d-flex justify-content-around mb-1">
+                <div class="d-flex flex-fill flex-column a-person-card-photos">
+                  <p>27</p>
+                  <small>PHOTOS</small>
+                </div>
+                <div class="d-flex flex-fill flex-column a-person-card-albums">
+                  <p>7</p>
+                  <small>ALBUMS</small>
+                </div>
+              </div>
+              <div class="text-center">
+                <a href="javascript:;" class="a-person-card-follow">follow</a>                
+              </div>
+            </div>
+            <!-- end element -->
+            <!-- element -->
+            <div class="d-flex flex-column followers-card">
+              <div class="p-2 text-center">
+                <a class="a-person" href="#">
+                  <img src="img5.jpeg" alt="avt" class="rounded-circle" width="100" height="100">
+                </a>
+              </div>
+              <h5 class="text-center a-person-name">Hieu Nguyen</h5>
+              <div class="d-flex justify-content-around mb-1">
+                <div class="d-flex flex-fill flex-column a-person-card-photos">
+                  <p>27</p>
+                  <small>PHOTOS</small>
+                </div>
+                <div class="d-flex flex-fill flex-column a-person-card-albums">
+                  <p>7</p>
+                  <small>ALBUMS</small>
+                </div>
+              </div>
+              <div class="text-center">
+                <a href="javascript:;" class="a-person-card-follow">follow</a>                
+              </div>
+            </div>
+            <!-- end element -->
+            <!-- element -->
+            <div class="d-flex flex-column followers-card">
+              <div class="p-2 text-center">
+                <a class="a-person" href="#">
+                  <img src="img6.jpeg" alt="avt" class="rounded-circle" width="100" height="100">
+                </a>
+              </div>
+              <h5 class="text-center a-person-name">Hieu Nguyen</h5>
+              <div class="d-flex justify-content-around mb-1">
+                <div class="d-flex flex-fill flex-column a-person-card-photos">
+                  <p>27</p>
+                  <small>PHOTOS</small>
+                </div>
+                <div class="d-flex flex-fill flex-column a-person-card-albums">
+                  <p>7</p>
+                  <small>ALBUMS</small>
+                </div>
+              </div>
+              <div class="text-center">
+                <a href="javascript:;" class="a-person-card-follow following">follow</a>                
+              </div>
+            </div>
+            <!-- end element -->
+            <!-- element -->
+            <div class="d-flex flex-column followers-card">
+              <div class="p-2 text-center">
+                <a class="a-person" href="#">
+                  <img src="img7.jpeg" alt="avt" class="rounded-circle" width="100" height="100">
+                </a>
+              </div>
+              <h5 class="text-center a-person-name">Hieu Nguyen</h5>
+              <div class="d-flex justify-content-around mb-1">
+                <div class="d-flex flex-fill flex-column a-person-card-photos">
+                  <p>27</p>
+                  <small>PHOTOS</small>
+                </div>
+                <div class="d-flex flex-fill flex-column a-person-card-albums">
+                  <p>7</p>
+                  <small>ALBUMS</small>
+                </div>
+              </div>
+              <div class="text-center">
+                <a href="javascript:;" class="a-person-card-follow">follow</a>                
+              </div>
+            </div>
+            <!-- end element -->
+            <!-- element -->
+            <div class="d-flex flex-column followers-card">
+              <div class="p-2 text-center">
+                <a class="a-person" href="#">
+                  <img src="img8.jpeg" alt="avt" class="rounded-circle" width="100" height="100">
+                </a>
+              </div>
+              <h5 class="text-center a-person-name">Hieu Nguyen</h5>
+              <div class="d-flex justify-content-around mb-1">
+                <div class="d-flex flex-fill flex-column a-person-card-photos">
+                  <p>27</p>
+                  <small>PHOTOS</small>
+                </div>
+                <div class="d-flex flex-fill flex-column a-person-card-albums">
+                  <p>7</p>
+                  <small>ALBUMS</small>
+                </div>
+              </div>
+              <div class="text-center">
+                <a href="javascript:;" class="a-person-card-follow following">follow</a>                
+              </div>
+            </div>
+            <!-- end element -->
+            <!-- element -->
+            <div class="d-flex flex-column followers-card">
+              <div class="p-2 text-center">
+                <a class="a-person" href="#">
+                  <img src="img9.jpeg" alt="avt" class="rounded-circle" width="100" height="100">
+                </a>
+              </div>
+              <h5 class="text-center a-person-name">Hieu Nguyen</h5>
+              <div class="d-flex justify-content-around mb-1">
+                <div class="d-flex flex-fill flex-column a-person-card-photos">
+                  <p>27</p>
+                  <small>PHOTOS</small>
+                </div>
+                <div class="d-flex flex-fill flex-column a-person-card-albums">
+                  <p>7</p>
+                  <small>ALBUMS</small>
+                </div>
+              </div>
+              <div class="text-center">
+                <a href="javascript:;" class="a-person-card-follow">follow</a>                
+              </div>
+            </div>
+            <!-- end element -->
+           
+          </div>
+        </div>
 
       </div>
       <!-- /.col-lg-8 -->
