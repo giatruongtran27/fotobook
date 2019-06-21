@@ -15,6 +15,15 @@
 .custom-file-label > i{
   font-size: 40px;
   color: gray;
+  transition: 0.1s;
+}
+.custom-file:hover i{
+  color: #28a745;
+  font-size: 72px;
+}
+.custom-file:hover .custom-file-label{
+  border: 2px dashed #28a745;
+  background: #28a74521;
 }
 .my-custom-file{
   width: calc(9.5em + .75rem + 2px);
