@@ -6,10 +6,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px dashed black;
+  border: 2px dashed gray;
+  background-color: #e9ebee;
 }
 .custom-file-label:after{
 	display: none;
+}
+.custom-file-label > i{
+  font-size: 40px;
+  color: gray;
 }
 .my-custom-file{
   width: calc(9.5em + .75rem + 2px);
