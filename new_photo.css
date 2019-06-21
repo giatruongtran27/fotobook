@@ -2,6 +2,17 @@
 	font-weight: 700;
 	margin-bottom: 0px;
 }
+.custom-file-label{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px dashed black;
+}
 .custom-file-label:after{
 	display: none;
+}
+.my-custom-file{
+  width: calc(9.5em + .75rem + 2px);
+  height: calc(9.5em + .75rem + 2px);
+  cursor: pointer;
 }
