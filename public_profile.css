@@ -46,7 +46,7 @@ a.profile-card-follow{
 	border-radius: 24px;
 	padding: 0.125rem 0.5rem;
 	text-decoration: none;
-	font-weight: 700; 
+	font-weight: 700;
 	font-size: 12px;
 }
 .card-title{
@@ -207,7 +207,7 @@ a.profile-card-follow{
 #tab-followings .followings-card {
     background-color: #e9ebee;
     border-radius: 5px;
-    margin: 15px;
+    margin: 10px;
     padding: 5px 25px 15px;
 }
 #tab-followings .followings-card .a-person-name{
@@ -235,7 +235,7 @@ a.profile-card-follow{
 	border-radius: 24px;
 	font-weight: 700;
 	color: #FF004B;
-	border: 0.0125rem solid #FF004B; 
+	border: 0.0125rem solid #FF004B;
 	background-color: white;
 }
 #tab-followings .a-person-card-follow:hover, #tab-followings .a-person-card-follow.following{
@@ -247,7 +247,7 @@ a.profile-card-follow{
 #tab-followers .followers-card {
     background-color: #e9ebee;
     border-radius: 5px;
-    margin: 15px;
+    margin: 10px;
     padding: 5px 25px 15px;
 }
 #tab-followers .followers-card .a-person-name{
@@ -275,7 +275,7 @@ a.profile-card-follow{
 	border-radius: 24px;
 	font-weight: 700;
 	color: #FF004B;
-	border: 0.0125rem solid #FF004B; 
+	border: 0.0125rem solid #FF004B;
 	background-color: white;
 }
 #tab-followers .a-person-card-follow:hover, #tab-followers .a-person-card-follow.following{
