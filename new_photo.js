@@ -3,7 +3,7 @@ $(function() {
 });
 jQuery.validator.addMethod("uploadFile", function (val, element) {
   var file = element.files[0];
-  console.log(file);
+  // console.log(file);
   var size = element.files[0].size;
   var type = element.files[0].type;
   if(type == "image/jpeg" || type== "image/png"|| type == "image/gif"){
@@ -26,7 +26,7 @@ $(document).on("click", ".img-preview-element a" , function() {
 });
 
 $('#customFile').change(function () {
-  console.log($x.element("#customFile")==true);
+  // console.log($x.element("#customFile")==true);
   if($x.element("#customFile")){
     let file = $(this)[0].files[0];
     let url = URL.createObjectURL(file);
@@ -88,8 +88,6 @@ $x = $('#form_new_photo').validate({
   // submitHandler: function(form) {
   //   form.submit();
   // }
-},function () {
-  alert("cc");
 });
 
 
