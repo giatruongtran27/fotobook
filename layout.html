@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <!-- layout css -->
   <link rel="stylesheet" href="layout.css">
-
+  <link rel="stylesheet" type="text/css" href="manage_photos.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
@@ -30,8 +30,8 @@
           <li class="nav-item">
             <a class="nav-link" href="javascript:;">
               <span class="nav-user-wrapper">
-                  <img src="avt.jpeg" alt="avatar" class="rounded-circle">
-                  <span class="nav-user-name">TruongTG</span>
+                <img src="avt.jpeg" alt="avatar" class="rounded-circle">
+                <span class="nav-user-name">TruongTG</span>
               </span>
             </a>
           </li>
@@ -48,44 +48,64 @@
     <div class="row">
       <div class="col-lg-2">
         <div class="d-flex flex-column left">
-          <a href="javascript:;" class="left-item">Feeds</a>
-          <a href="javascript:;" class="left-item active">Discover</a>
+          <a href="javascript:;" class="left-item active">Manage Photos</a>
+          <a href="javascript:;" class="left-item">Manage Albums</a>
+          <a href="javascript:;" class="left-item">Manage Users</a>
         </div>
       </div>
-      <!-- /.col-lg-3 -->
-
-      <div class="col-lg-8 pb-3 main-content">
-
-        <div class="card mt-4">
-          <img class="card-img-top img-fluid" src="http://placehold.it/900x400" alt="">
-          <div class="card-body">
-            <h3 class="card-title">Image Name</h3>
-            <h4>$24.99</h4>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente dicta fugit fugiat hic aliquam itaque facere, soluta. Totam id dolores, sint aperiam sequi pariatur praesentium animi perspiciatis molestias iure, ducimus!</p>
-            <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
-            4.0 stars
+      <div class="col-lg-8 pb-3 main-content pt-3">
+        <div class="d-flex flex-wrap justify-content-start profiles-content-wrapper">
+          <!-- element -->
+          <div class="wrap-a-photos">
+            <div class="div-a-photos">
+              <a href="javascript:;"><img src="avt.jpeg" class="a-photos-img"></a>
+              <p>Lorem ipsum dolor sit amet, ...</p>
+              <a href="javascript:;" class="a-edit"><i class="fa fa-sm fa-edit"></i></a>
+            </div>
           </div>
+          <!-- end element -->
+          <!-- element -->
+          <div class="wrap-a-photos">
+            <div class="div-a-photos">
+              <a href="javascript:;"><img src="img1.jpeg" class="a-photos-img"></a>
+              <p>Lorem ipsum dolor sit amet, ...</p>
+              <a href="javascript:;" class="a-edit"><i class="fa fa-sm fa-edit"></i></a>
+            </div>
+          </div>
+          <!-- end element -->
+          <!-- element -->
+          <div class="wrap-a-photos">
+            <div class="div-a-photos">
+              <a href="javascript:;"><img src="img2.jpeg" class="a-photos-img"></a>
+              <p>Lorem ipsum dolor sit amet, ...</p>
+              <a href="javascript:;" class="a-edit"><i class="fa fa-sm fa-edit"></i></a>
+            </div>
+          </div>
+          <!-- end element -->
+          <!-- element -->
+          <div class="wrap-a-photos">
+            <div class="div-a-photos">
+              <a href="javascript:;"><img src="img3.jpeg" class="a-photos-img"></a>
+              <p>Lorem ipsum dolor sit amet, ...</p>
+              <a href="javascript:;" class="a-edit"><i class="fa fa-sm fa-edit"></i></a>
+            </div>
+          </div>
+          <!-- end element -->
+          <!-- element -->
+          <div class="wrap-a-photos">
+            <div class="div-a-photos">
+              <a href="javascript:;"><img src="img4.jpeg" class="a-photos-img"></a>
+              <p>Lorem ipsum dolor sit amet, ...</p>
+              <a href="javascript:;" class="a-edit"><i class="fa fa-sm fa-edit"></i></a>
+            </div>
+          </div>
+          <!-- end element -->
         </div>
-        <!-- /.card -->
-
       </div>
-      <!-- /.col-lg-9 -->
-
     </div>
-
   </div>
-  <!-- /.container -->
-
-  <!-- Footer -->
-  <footer class="py-2 bg-blue">
-    <div class="container">
-      <p class="m-0 text-center text-white">Copyright &copy; Fotobook Website 2019 - by TruongTG</p>
-    </div>
-    <!-- /.container -->
-  </footer>
-
   <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
   <!-- Bootstrap core JavaScript -->
-
+  <script type="text/javascript" src="manage_photo.js"></script>
 </body>
 </html>

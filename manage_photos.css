@@ -1,0 +1,39 @@
+ div.wrap-a-photos{
+  max-width: 195px;
+  margin-right: 15px;
+  margin-bottom: 15px;
+}
+div.div-a-photos{
+  max-width: 195px;
+  transition: all 1s;
+  color:black;
+  position: relative;
+}
+img.a-photos-img{
+  max-width: 195px;
+  min-height: 195px;
+}
+img.a-photos-img:hover{
+  max-width: 195px;
+  min-height: 195px;
+}
+div.div-a-photos a.a-edit{
+  color:white;
+  position:absolute;
+  top:0;
+  right: 0;
+  padding: 2px;
+}
+div.div-a-photos p{
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  overflow: hidden;
+  margin: 0;
+  font-size: 12px;
+  padding: 5px 5px;
+  background: #2c2b2bab;
+  width: 100%;
+  color:white;
+}
