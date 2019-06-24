@@ -1,0 +1,73 @@
+div.wrap-a-albums{
+  max-width: 174px;
+  margin: 10px;
+  padding: 15px;
+  position: relative;
+  background-color: #d3d3d37d;
+}
+div.div-a-albums{
+  transition: all 1s;
+  text-decoration: none;
+  color:black;
+  position: relative;
+  display: inline-block;
+  text-align: center;
+}
+img.a-albums-img{
+  max-width: 145px;
+  min-height: 145px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0.075rem;
+background-color: #fff;
+border: 0.5px solid #dee2e6;
+border-radius: 0.075rem;
+}
+div.div-a-albums > img:first-of-type{
+  transform: rotateZ(11.25deg);
+}
+div.div-a-albums > img:nth-of-type(2){
+  transform: rotateZ(5.5deg);
+}
+div.div-a-albums > img:last-of-type{
+  position: inherit;
+}
+.profiles-content-wrapper-albums{
+  margin-top: 20px;
+}
+.a-albums-main-photo{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: inline-block;
+}
+
+div.wrap-a-albums .head{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #000000a1;
+}
+
+div.wrap-a-albums .head p.albums-title{
+  font-size: 11px;
+  max-height: 25px;
+  margin:0;
+  color:white;
+  overflow:hidden;
+  padding: 4px;
+}
+div.wrap-a-albums .head .a-edit{
+  text-transform: uppercase;
+  color:white;
+  margin-right: 2px;
+  text-decoration: none;
+}
+
+div.wrap-a-albums .head .a-edit:hover{
+  color:#FF004B;
+}
