@@ -1,0 +1,27 @@
+#img_avatar{
+  position: relative;
+  border-radius: 5px;
+}
+#a_change_avatar{
+  position: absolute;
+  bottom: 5px;
+  left: 28px;
+  font-size: 12px;
+  padding: 4px 12px;
+  background-color: #ffffff6e;
+  border-radius: 8px;
+  text-decoration: none;
+  color:black;
+}
+.title{
+  font-size: 14px;
+  font-weight: bold;
+}
+.form *{
+  font-size: 14px;
+}
+.name_form{
+  font-size: 14px;
+  color:#3C5999;
+  font-weight: bold;
+}
