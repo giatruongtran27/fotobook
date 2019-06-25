@@ -1,0 +1,77 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+@import "bootstrap";
+@import "font-awesome";
+
+body{
+  background-color: #e9ebee;
+}
+nav.custom{
+  padding: .25rem 1rem;
+  font-weight: bold;
+}
+.bg-blue{
+  background-color: #3C5999;
+}
+.text-blue{
+  color: #3C5999;
+}
+#navbarResponsive li>a{
+  margin-left: 20px;
+  color: white;
+}
+#navbarResponsive li>a:hover{
+  color: #3C5999;
+  background-color: white;
+  border-radius: 24px;
+  transition: 0.2s;
+}
+span.nav-user-wrapper{
+  display: flex;
+  position: relative;
+  align-items: center;
+}
+span.nav-user-wrapper img{
+  vertical-align: inherit;
+  margin: 2px 6px 0px -8px;
+  display: inline;
+  width: 35px;
+  height: 35px;
+  position: absolute;
+  left: -37px;
+  bottom: -5px;
+}
+#nav-search{
+  height: calc(1.5em + .35rem + 2px);
+}
+.d-flex.flex-column.left {
+    margin-top: 10%;
+    margin-left: 35%;
+}
+.left-item{
+  color:gray;
+  font-weight: 700;
+  text-decoration: none !important;
+}
+.left-item:hover{
+  color:#3C5999;
+}
+.left-item.active{
+  color:#3C5999;
+}
+.main-content{
+  background-color: #fff;
+}
