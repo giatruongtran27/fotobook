@@ -1,0 +1,224 @@
+// Place all the styles related to the feeds controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+ul.tabs{
+  width: max-content;
+  margin: auto;
+  margin-top:10px;
+  padding: 0px;
+  list-style: none;
+  border: 1px solid  #3C5999;
+  border-radius: 5px;
+}
+ul.tabs li{
+  background: none;
+  color: #3C5999;
+  display: inline-block;
+  padding: 10px 15px;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+ul.tabs li.current{
+  color: #fff;
+  background-color: #3C5999;
+}
+
+.tab-content{
+  display: none;
+}
+
+.tab-content.current{
+  display: inherit;
+}
+.element-album {
+    position: relative;
+    margin-top: 35px;
+    display: block;
+    max-width: 45%;
+    margin-left: 15px;
+    margin-right: 5px;
+}
+
+.element-album .img-element{
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.element-album img{
+  max-width: 90%;
+}
+.element-album>img:last-child{
+  position: inherit;
+}
+.element-album .img-element:first-child{
+  transform: rotateZ(14.75deg);
+}
+.element-album .img-element:nth-child(2){
+  transform: rotateZ(7.25deg);
+}
+.element-wrapper{
+  background-color: #e9ebee;
+  border-radius: 10px;
+  min-height: 188.5px;
+}
+.element-wrapper-row{
+  min-height: 188.5px;
+}
+.element-col-right{
+  position: relative;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+.element-content-head{
+  margin-left: 10px;
+  position: relative;
+}
+.element-user-wrapper{
+  display: flex;
+  position: relative;
+  align-items: center;
+}
+span.element-user-wrapper img{
+  vertical-align: inherit;
+    margin: 2px 6px 0px -8px;
+    display: inline;
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    left: -20px;
+    bottom: -3px;
+}
+.element-content-head a{
+  color:#3C5999;
+  font-weight: 700;
+  text-decoration: none;
+  font-size: 13px;
+}
+h5.element-content-title{
+  font-size: 13px;
+  font-weight: bold;
+}
+p.element-content-mid{
+  font-size: 13px;
+}
+.wrap-image-1{
+  position: relative;
+}
+.wrap-image-2{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  width: 87%;
+}
+a.element-a-flow {
+    width: 45px;
+    position: absolute;
+    padding: 0px;
+    top: 5px;
+    right: 0;
+    border: 1px solid #fd7e14;
+    border-radius: 10px;
+    color: #fd7e14;
+    font-size: 10px;
+    background-color: white;
+    text-align: center;
+}
+a.element-a-flow.flowing{
+  background-color: #fd7e14;
+  color:white;
+}
+.element-right-heart{
+  position: absolute;
+  left: 10px;
+  bottom: 5px;
+}
+.element-right-time{
+  color: gray;
+  position: absolute;
+  right: 10px;
+  bottom: 5px;
+  font-size: 14px;
+}
+.img-custom{
+  min-height: 188.5px;
+  border-radius: 10px 0px 0px 10px;
+  padding: .25rem;
+  background-color: #fff;
+  border-left: 1px solid #dee2e6;
+  border-radius: 10px 0 0 10px;
+  border-top: 1px solid #dee2e6;
+  border-bottom: 1px solid #dee2e6;
+}
+.a-img-element{
+  max-width: 50%;
+}
+.element-content {
+    padding: 5px;
+}
+
+/*black background*/
+.black-background{
+  background-color: #0009;
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+}
+.modal-content{
+  border-radius: 10px;
+}
+.modal-dialog{
+  max-width: 638px;
+}
+.modal-header-custom{
+  padding: 15px 15px 0px 15px;
+}
+.modal-body p.modal-description{
+  margin-top: 10px;
+  padding-left: 15px;
+  margin-bottom: 0;
+}
+.modal-header-custom .close{
+  border: 1px solid gray;
+  border-radius: 5px;
+  padding: 0px 5px 5px;
+}
+.modal-body .img-container img{
+  max-height: 438px;
+}
+#myModal2 button.close{
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: black;
+  z-index: 999;
+  opacity: 1;
+  padding: 0px 5px 5px;
+  border-radius: 5px;
+
+}
+#myModal2 button.close:hover{
+  border: 1px;
+  background-color: black;
+  color:white;
+}
+.pagination{
+  margin:auto;
+  width: max-content;
+  color: #3C5999;
+}
+.pagination a{
+  color: #3C5999;
+}
+.pagination .page-item.active a{
+  background-color: #3C5999;
+  border-color: #3C5999;
+  color: white;
+}
