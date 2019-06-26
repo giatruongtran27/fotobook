@@ -19,3 +19,5 @@
 //= require jquery3
 //= require popper
 //= require bootstrap-sprockets
+//= require jquery.validate
+//= require jquery.validate.additional-methods
