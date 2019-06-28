@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 m-auto">
+      <div class="card card-default bg-light">
+        <div class="card-body">
+          <div class="text-center">
+            <h3><i class="fa fa-lock fa-4x"></i></h3>
+            <h2 class="text-center">Forgot Password?</h2>
+            <p>You can reset your password here.</p>
+            <div class="card-body">
+              <!-- FORM -->
+              <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, id: "register-form" }) do |f| %>
+              <%= render "devise/shared/error_messages", resource: resource %>
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">
+                    <i class="fa fa-envelope color-blue"></i>
+                  </span>
+                </div>
+                <%= f.email_field :email, class: "form-control" , autofocus: true, autocomplete: "email", placeholder: "email@example.com", required: true %>
+              </div>
+              <div class="form-group">
+                <%= f.submit "Reset Password", class: "btn btn-lg btn-secondary btn-lock" %>
+              </div>
+              <% end %>
+              <!-- END FORM -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container text-center mt-3">
+
+    <%= render "devise/shared/links" %>
+  </div>
+</div>
+

@@ -1,0 +1,79 @@
+/*validation*/
+input.error {
+    border:2px solid red;
+}
+span.error-validattion-arrow {
+    height:17px;
+    top:4px;
+}
+label.error {
+    color:red;
+    padding:1px 5px 1px 5px;
+    font-size:small;
+
+}
+/*end validation*/
+.title-new-photo{
+  font-weight: 700;
+  margin-bottom: 0px;
+}
+.custom-file-label{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px dashed gray;
+  background-color: #e9ebee;
+}
+.custom-file-label:after{
+  display: none;
+}
+.custom-file-label > i{
+  font-size: 40px;
+  color: gray;
+  transition: 0.1s;
+}
+.custom-file:hover i{
+  color: #28a745;
+  font-size: 72px;
+}
+.custom-file:hover .custom-file-label{
+  border: 2px dashed #28a745;
+  background: #28a74521;
+}
+.my-custom-file{
+  width: calc(9.5em + 1.00rem + 10px);
+  height: calc(9.5em + 1.00rem + 10px);
+  cursor: pointer;
+}
+.img-preview-element{
+  margin-right: 10px;
+  position: relative;
+  /*display: none;*/
+}
+#img_preview a {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    border: 1px solid black;
+    color: black;
+    border-radius: 5px;
+    padding: 2px 4px;
+    font-size: 10px;
+    background: white;
+}
+#img_preview a:hover{
+  border-color: #FF004B;
+  color: #FF004B;
+}
+#img_preview img{
+  cursor: pointer;
+  max-width: 175px;
+}
+#img_preview img:hover{
+  border-color:#80bdff;
+  /*background-color: #80bdff;*/
+  box-shadow: 0 0 0 .2rem rgba(0,123,255,.25);
+}
+.col-up-load{
+  margin-right: 15px;
+}

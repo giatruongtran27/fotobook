@@ -1,0 +1,7 @@
+<!-- <p id="notice"><%= notice %></p> -->
+<h1><%= @photo.title %></h1>
+<%= image_tag(@photo.image.url) if @photo.image.exists? %>
+<p><%= @photo.description %></p>
+
+<%= link_to 'Edit', edit_photo_path(@photo) %> |
+<%= link_to 'Back', photos_path %>

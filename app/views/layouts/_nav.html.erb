@@ -8,18 +8,21 @@
       <div class="col-md-6 mr-auto">
         <input id="nav-search" type="text" class="form-control" placeholder="Search Photo/Album" aria-label="search" aria-describedby="basic-addon1">
       </div>
-      <ul class="navbar-nav ml-auto">
+      <ul class="nav navbar-nav pull-right">
+        <% if user_signed_in? %>
         <li class="nav-item">
-          <a class="nav-link" href="javascript:;">
-            <span class="nav-user-wrapper">
-              <img src="/assets/avt.jpeg" alt="avatar" class="rounded-circle">
-              <span class="nav-user-name">TruongTG</span>
-            </span>
-          </a>
+          <%= link_to edit_user_registration_path, :class=> "nav-link" do %>
+          <span class="nav-user-wrapper">
+            <img src="/assets/avt.jpeg" alt="avatar" class="rounded-circle">
+            <span class="nav-user-name"><%= current_user.nil? ? "no name" : current_user.last_name.capitalize %></span>
+          </span>
+          <% end %>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="javascript:;">Logout</a>
-        </li>
+        <li class="nav-item"><%= link_to 'Log out', destroy_user_session_path, class: "nav-link", method: :delete %></li>
+        <% else %>
+        <li class="nav-item"><%= link_to 'Log In', new_user_session_path, class: "nav-link" %></li>
+        <li class="nav-item"><%= link_to 'Sign Up', new_user_registration_path, class: "nav-link" %></li>
+        <% end %>
       </ul>
     </div>
   </div>

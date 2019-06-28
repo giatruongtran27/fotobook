@@ -1,0 +1,11 @@
+<%= form_for(:session, url: login_path, :html => {:class => "form-signin"} ) do |f|%>
+<% flash.each do |name, msg| -%>
+<%= content_tag :div, msg, class: "alert #{name}"%>
+<% end %>
+<%= f.text_field :email, class: "form-control", placeholder: "Email" %>
+<%= f.password_field :password, class: "form-control", placeholder: "Password"%>
+<%= f.submit "Login", class: "btn btn-primary btn-login" %>
+<div class="text-center">
+  <a href="/forgot-pass" class="forgot-password">Forgot Password</a>
+</div>
+<% end %>

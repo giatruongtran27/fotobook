@@ -1,0 +1,25 @@
+<div class="row">
+  <div class="col-sm-6 col-md-4 m-auto">
+    <h2 class="text-center login-title">Fotobook Login</h2>
+    <div class="account-wall">
+      <img class="profile-img" src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=120"
+      alt="">
+      <!-- FORM -->
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name), :html => {:class => 'form-signin', :id=> 'form_login'}) do |f| %>
+      <%= f.email_field :email, class: "form-control", autofocus: true, autocomplete: "email", placeholder: "Email" %>
+      <%= f.password_field :password, class: "form-control", autocomplete: "current-password", placeholder: "Password" %>
+      <%= f.submit "Log in", class: "btn btn-primary btn-login" %>
+      <div class="text-center">
+        <a href="/users/password/new" class="forgot-password" data-turbolinks="false">Forgot Password</a>
+      </div>
+      <% end %>
+      <!-- End FORM -->
+    </div>
+    <div class="text-center m-4">
+    <a href="/signup" class="new-account" data-turbolinks="false">Create an account </a>
+
+    </div>
+  </div>
+</div>
+
+<!-- render "devise/shared/links" -->

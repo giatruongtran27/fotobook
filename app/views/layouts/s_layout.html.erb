@@ -7,7 +7,6 @@
 
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application' %>
-  <%= yield :css %>
 
 </head>
 
@@ -16,11 +15,13 @@
   <!-- Page Content -->
   <div class="container-fluid mt-3 mb-3">
     <div class="row justify-content-center">
-      <div class="col-lg-8 pb-5 text-center main-content">
+      <div class="col-lg-8 pb-5 main-content">
         <%= yield %>
       </div>
     </div>
   </div>
-  <%= yield :js %>
+  <script>
+   <%= sanitize custom_bootstrap_flash %>
+ </script>
 </body>
 </html>

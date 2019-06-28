@@ -10,8 +10,10 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
  *= require_self
+ *= require toastr
+ *= require dropzone/dropzone
+ *= require_tree .
  */
 @import "bootstrap";
 @import "font-awesome";
@@ -36,7 +38,7 @@ nav.custom{
 #navbarResponsive li>a:hover{
   color: #3C5999;
   background-color: white;
-  border-radius: 24px;
+  border-radius: 2px;
   transition: 0.2s;
 }
 span.nav-user-wrapper{
@@ -75,3 +77,8 @@ span.nav-user-wrapper img{
 .main-content{
   background-color: #fff;
 }
+
+#error_explanation {
+    color: red;
+}
+

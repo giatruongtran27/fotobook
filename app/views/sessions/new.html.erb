@@ -1,23 +1,12 @@
-<% content_for :css do
-  stylesheet_link_tag 'sessions_new'
-  end %>
-
-  <h1 class="text-center title-login">Fotobook Login</h1>
-  <div class="row justify-content-center">
-    <div class="col-md-4 login-wrap">
-      <h1 class="text-center icon-user"><i class="fa fa-user"></i></h1>
-      <form id="form_login" action="/">
-        <div class="form-group">
-          <input type="email" class="form-control" name="email" id="email" placeholder="Email" required="">
-          <input type="password" class="form-control" id="pwd" name="password" placeholder="Password" required="">
-        </div>
-        <button type="submit" class="btn btn-primary">Login</button>
-        <a id="forgot_password" href="javascript:;">Forgot password?</a>
-      </form>
+   <div class="row">
+    <div class="col-sm-6 col-md-4 m-auto">
+      <h2 class="text-center login-title">Fotobook Login</h2>
+      <div class="account-wall">
+        <img class="profile-img" src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=120"
+        alt="">
+        <%= render 'form', user: @user %>
+      </div>
+      <a href="/signup" class="text-center new-account" data-turbolinks="false">Create an account </a>
     </div>
   </div>
-  <a id="create_account" href="javascript:;">Create an account</a>
 
-<script type="text/javascript">
-  <%= render "validate.js" %>
-</script>

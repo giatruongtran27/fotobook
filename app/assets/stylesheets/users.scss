@@ -1,0 +1,86 @@
+/*SIGN UP*/
+.title-sign-up{
+  color: #3C5999;
+  font-weight: 500;
+  margin-top: 15px;
+  margin-bottom: 20px;
+}
+.sign-up-wrap{
+  border-radius: 5px;
+  background-color: #e9ebee69;
+  padding: 35px;
+  margin-bottom: 35px;
+}
+#form_sign_up > button[type="submit"]{
+  background-color: #3C5999;
+  border: #3C5999;
+  display: block;
+  margin: auto;
+}
+#form_sign_up label{
+  font-weight: 600;
+}
+input {
+    padding:5px;
+}
+input.error {
+    border:2px solid red;
+}
+span.error-validattion-arrow {
+    height:17px;
+    top:4px;
+}
+label.error {
+    color:red;
+    padding:1px 5px 1px 5px;
+    font-size:small;
+
+}
+.btn-sign-up{
+  background-color: #3C5999;
+  border-color: #3C5999;
+}
+
+/*flash*/
+// .alert-error {
+//     background-color: #f2dede;
+//     border-color: #eed3d7;
+//     color: #b94a48;
+//     text-align: left;
+//  }
+
+// .alert-alert {
+//     background-color: #f2dede;
+//     border-color: #eed3d7;
+//     color: #b94a48;
+//     text-align: left;
+//  }
+
+// .alert-success {
+//     background-color: #dff0d8;
+//     border-color: #d6e9c6;
+//     color: #468847;
+//     text-align: left;
+//  }
+
+// .alert-notice {
+//     background-color: #dff0d8;
+//     border-color: #d6e9c6;
+//     color: #468847;
+//     text-align: left;
+//  }
+
+// FORM RESET PASSWORD
+.form-gap {
+    padding-top: 70px;
+}
+
+
+
+
+
+
+
+
+
+

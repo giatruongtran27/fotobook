@@ -64,10 +64,20 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # Bootstrap
 gem "bootstrap", "~> 4.0.0"
 gem 'jquery-rails'
+gem 'rails-ujs', '~> 0.1.0'
 
 gem 'sprockets'
 
 gem "font-awesome-rails"
 
 gem "jquery-validation-rails"
+
+gem "paperclip", "~> 6.0.0"
+
+gem 'devise'
+
+gem 'toastr-rails'
+
+gem 'dropzonejs-rails'
+
 
