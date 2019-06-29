@@ -18,9 +18,16 @@ Rails.application.routes.draw do
   # post '/login' => 'sessions#create'
   # delete '/logout' => 'sessions#destroy'
 
-  resources :albums
-  post 'albums/:album_id(.:format)/album-image' => 'photos#add_image'
-  delete 'albums/:album_id(.:format)/album-image/:id(.:format)' => 'photos#delete_image'
+  resources :albums do
+    resources :pics do
+      collection do
+      get :list #list_uploads_url
+    end
+  end
+end
+
+  # post 'albums/:album_id(.:format)/album-image' => 'photos#add_image'
+  # delete 'albums/:album_id(.:format)/album-image/:id(.:format)' => 'photos#delete_image'
 
   resources :photos
   resources :users do

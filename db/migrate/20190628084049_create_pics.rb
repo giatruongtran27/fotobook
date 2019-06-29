@@ -1,6 +1,6 @@
-class CreateAlbumImages < ActiveRecord::Migration[5.2]
+class CreatePics < ActiveRecord::Migration[5.2]
   def change
-    create_table :album_images do |t|
+    create_table :pics do |t|
       t.string :title
       t.text :description
       t.attachment :image

@@ -1,9 +1,10 @@
-<h2 class="mt-3 mb-3">Editing Album</h2>
+<h2 class="mt-3 mb-3">Edit Album</h2>
+
 <hr>
 <%= render 'form', album: @album %>
 <hr>
 <div id="content">
-  <%= form_for :photo, :url => {:controller => "photos", :action => "add_image", :album_id => @album.id}, html: { multipart: true, class: "dropzone", id: "my-dropzone-album" } do |f| %>
+  <%= form_for :pic, :url => {:controller => "pics", :action => "create", :album_id => @album.id}, html: { multipart: true, class: "dropzone", id: "my-dropzone-album" } do |f| %>
     <div class="dz-message needsclick">
       <h3>Add or Remove Images of Album here</h3>
       <!-- or -->

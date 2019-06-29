@@ -11,6 +11,7 @@ class AlbumsController < ApplicationController
   # GET /albums/1
   # GET /albums/1.json
   def show
+    @pics ||= @album.pics
   end
 
   # GET /albums/new
@@ -74,4 +75,4 @@ class AlbumsController < ApplicationController
       params.require(:album).permit(:title, :description, :image)
       # params.fetch(:album, {})
     end
-end
+  end

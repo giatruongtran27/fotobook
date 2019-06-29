@@ -9,8 +9,6 @@ class Album < ApplicationRecord
 
   belongs_to :user
 
-  has_and_belongs_to_many :photos
-
-  has_many :album_images, dependent: :destroy
+  has_many :pics, dependent: :destroy
   # validates :album_images, :length => { :minimum => 1 }
 end

@@ -12,19 +12,6 @@
 
 ActiveRecord::Schema.define(version: 2019_06_28_084414) do
 
-  create_table "album_images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "title"
-    t.text "description"
-    t.string "image_file_name"
-    t.string "image_content_type"
-    t.integer "image_file_size"
-    t.datetime "image_updated_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "album_id"
-    t.index ["album_id"], name: "index_album_images_on_album_id"
-  end
-
   create_table "albums", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title"
     t.text "description"
@@ -49,6 +36,19 @@ ActiveRecord::Schema.define(version: 2019_06_28_084414) do
     t.index ["user_id"], name: "index_photos_on_user_id"
   end
 
+  create_table "pics", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.string "image_file_name"
+    t.string "image_content_type"
+    t.integer "image_file_size"
+    t.datetime "image_updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "album_id"
+    t.index ["album_id"], name: "index_pics_on_album_id"
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "first_name"
@@ -65,7 +65,7 @@ ActiveRecord::Schema.define(version: 2019_06_28_084414) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "album_images", "albums"
   add_foreign_key "albums", "users"
   add_foreign_key "photos", "users"
+  add_foreign_key "pics", "albums"
 end

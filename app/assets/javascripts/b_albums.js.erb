@@ -1,0 +1,65 @@
+Dropzone.autoDiscover = false;
+$(function () {
+  // console.log(my_object);
+  var url_dropzone_album = $('#my-dropzone-album').attr('action');
+  var arr_dropzone_album = url_dropzone_album.split("/");
+  arr_dropzone_album.length = 3;
+  var get_url_album_dropzone_pics = arr_dropzone_album.join('/');
+  
+  $("#my-dropzone-album").dropzone({
+    //autoProcessQueue: false,
+    maxFilesize: 5,
+    //parallelUploads: 5,
+    maxFiles: 5,
+    addRemoveLinks: true,
+    acceptedFiles: ".png,.jpg,.gif,.jpeg",
+    paramName: 'pic[image]',
+    success: function (file, response) {
+      $(file.previewElement).find('.dz-remove').attr('id', response.uploadId);
+      $(file.previewElement).addClass('dz-success');
+    },
+    removedfile: function (file) {
+      var id = $(file.previewTemplate).find('.dz-remove').attr('id');
+      var u = $("#my-dropzone-album").attr('action');
+      $.ajax({
+        type: 'DELETE',
+        data: { authenticity_token: $('[name="csrf-token"]')[0].content },
+        url: "pics/" + id,
+        success: function (data) {
+          // console.log(data.message);
+        }
+      });
+      var previewElement;
+      return (previewElement = file.previewElement) != null ? (previewElement.parentNode.removeChild(file.previewElement)) : (void 0);
+    },
+    init: function() {
+			var me = this;
+			$.get( get_url_album_dropzone_pics +'/pics/list', function(data) {
+        // console.log(data);
+        $.each(data.images, function(key, value) {
+					if (data.images != undefined && data.images.length > 0) {
+						me.emit("addedfile", value);
+						me.emit("thumbnail", value, value.src);
+						me.emit("complete", value);
+            $(value._removeLink).attr("id", value.id);
+            //   // this.on("removedfile", function (file) {
+    //   //   Only files that have been programmatically added should
+    //   //   have a url property.
+    //   //     if(file.url && file.url.trim().length > 0) {
+    //   //     $("<input type='hidden'>").attr({
+    //   //       id: 'DeletedImageUrls',
+    //   //       name: 'DeletedImageUrls'
+    //   //     }).val(file.url).appendTo('#image-form');
+    //   //   }
+    //   // });
+					}
+				});
+			});
+    },
+    uploadprogress: function(file) {
+      console.log(file);
+      //file.previewElement = Dropzone.createElement(this.options.previewTemplate);
+      // Now attach this new element some where in your page
+    }
+  });
+});
