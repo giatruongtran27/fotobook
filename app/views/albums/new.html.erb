@@ -1,10 +1,33 @@
 <div class="d-flex justify-content-start">
   <p class="mt-3 title-new-photo">New Album</p>
 </div>
-<hr>
-<%= render 'form', album: @album %>
-<hr>
-
-<%= link_to 'Back', albums_path, class: "btn btn-sm btn-primary" %>
+<hr/>
+<div id="content">
+  <%#  %>
+  <%= form_with(model: [@album.user, @album], url: user_albums_path , local: true, html: { :multipart => true, id: "form-add-album" }) do |f| %>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <%= f.label :title%>
+        <%= f.text_field :title, placeholder: "Title",:class => 'form-control'%>
+      </div>
+    <!-- sharing mode -->
+    </div>
+    <div class="col-md-6 form-group">
+      <%= f.label :description%>
+      <%= f.text_area(:description, size: '50x3', class: 'form-control', placeholder: "Description") %>
+    </div>
+  </div>
+  <%= f.fields_for :pics, @album.pics.build do |ff| %>
+    <%= ff.file_field :image, multiple: true, name: "pics[image][]", class: "form-control" %>   
+  <% end %>
+  <div id="album_image_preview" class="d-flex flex-wrap justify-content-start mt-3"></div>
+<div class="actions mt-3">
+  <%= f.submit "Save", :class => "btn btn-sm btn-success", id: "btn-add-album-submit" %>
 </div>
+<% end %>
+</div>
+<hr>
 
+<%= link_to 'Back', user_albums_path, class: "btn btn-sm btn-primary" %>
+</div>

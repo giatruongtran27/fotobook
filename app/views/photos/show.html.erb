@@ -1,7 +1,13 @@
 <!-- <p id="notice"><%= notice %></p> -->
+<div class="container mt-3 mb-3">
 <h1><%= @photo.title %></h1>
-<%= image_tag(@photo.image.url) if @photo.image.exists? %>
-<p><%= @photo.description %></p>
-
-<%= link_to 'Edit', edit_photo_path(@photo) %> |
-<%= link_to 'Back', photos_path %>
+<div class="mt-3 mb-3">
+<%= image_tag(@photo.image.url, width: 250, class: "img-fluid img-thumbnail") if @photo.image.exists? %>
+</div>
+<code><%= @photo.description %></code>
+<hr/>
+<div>
+  <%= link_to 'Edit', edit_user_photo_path(@photo.user, @photo), :"data-turbolinks" => false, class: "btn btn-sm btn-warning" %> |
+  <%= link_to 'Back', user_photos_path, class: "btn btn-sm btn-primary" %>
+</div>
+</div>

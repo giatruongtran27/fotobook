@@ -1,4 +1,17 @@
-<p id="notice"><%= notice %></p>
+<div class="container mt-3 mb-3">
+  <h5 class=""><small>Album Title: </small> <code> <%= @album.title %> </code></h5>
+    <p class="mt-3">Description: <code><%= @album.description%></code> </p>
+    <h5>Images of Album</h5>
+    <div class="d-flex flex-wrap justify-content-start">
+        <% @pics.each do |pic|%>
+        <%# <div class="m-1"> %>
+          <%= image_tag(pic.image.url, class: "mr-2 mt-2 img-fluid img-thumbnail", width: 200) %>
+        <%# </div> %>
+        <% end %>
+    </div>    
+</div>  
+<div class="m-3">
+    <%= link_to 'Edit',edit_user_album_path(@album.user, @album),  :"data-turbolinks" => false, class: "btn btn-sm btn-warning" %> |
+    <%= link_to 'Back', user_albums_path, class: "btn btn-sm btn-primary" %>
+</div>
 
-<%= link_to 'Edit', edit_album_path(@album),  :"data-turbolinks" => false %> |
-<%= link_to 'Back', albums_path %>

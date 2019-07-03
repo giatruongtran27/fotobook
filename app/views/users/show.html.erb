@@ -1,4 +1,180 @@
-<p id="notice"><%= notice %></p>
+<div class="card border-0 mt-3">
+  <div class="row no-gutters">
+    <div class="col-auto">
+      <img src="/assets/avt.jpeg" class="img-fluid rounded-circle profile-card-image" alt="avt">
+    </div>
+    <div class="col p-3">
+      <div class="card-block px-2">
+        <a href="javascript:;" class="profile-card-follow">following</a>
+        <h2 class="card-title"><%= @user.first_name %></h2>
+        <ul class="public-profile-tabs">
+          <li class="tab-link current" data-tab="tab-photos"><span class="counts"><%= @user.photos.length %></span> photos</li>
+          <li class="tab-link" data-tab="tab-albums"><span class="counts"><%= @user.albums.length %></span> albums</li>
+          <li class="tab-link" data-tab="tab-followings"><span class="counts">19</span> followings</li>
+          <li class="tab-link" data-tab="tab-followers"><span class="counts">97</span> followers</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <!-- <div class="card-footer w-100 text-muted"></div> -->
+</div>
+<!-- end card     -->
+<!------->
+<!-- TAB PHOTOS -->
+<div id="tab-photos" class="public-profile-tab-content current">
+  <div class="d-flex flex-wrap justify-content-end mt-0 mb-3 mr-3">
+    <% if current_user.id.equal? @user.id%>
+    <%= link_to 'Add Photo', new_user_photo_path(current_user), class: "btn btn-sm btn-success", id: "btn-add-photo" %>
+    <% end %>
+  </div>
+  <div class="d-flex flex-wrap justify-content-center profiles-content-wrapper">
+    <% @user.photos.each do |photo| %>
+      <div class="wrap-a-photos">
+        <div class="div-a-photos">
+          <%= link_to image_tag(photo.image.url, :alt => photo.image_file_name, :class => "img-thumbnail a-photos-img"), 'javascript:;' %>
+          <!--<a href="javascript:;" class="a-edit">edit</a>-->
+          <%= link_to "edit", edit_user_photo_path(photo.user, photo), class: "a-edit"%>
+          <a href="javascript:;" class="a-lock"><i class="fa fa-lock"></i></a>
+        </div>
+        <p class="text-center"><small><%= photo.title%></small></p>  
+      </div>
+    <% end %>
+  </div>
+</div>
+<!-- end TAB PHOTOS -->
+<!-- TAB ALBUMS -->
+<div id="tab-albums" class="public-profile-tab-content">
+  <div class="d-flex flex-wrap justify-content-end mt-0 mb-3 mr-3">
+    <% if current_user.id.equal? @user.id%>
+      <%= link_to 'Add Album', new_user_album_path(current_user), class: "btn btn-sm btn-success", id: "btn-add-album" %>
+    <% end %>
+  </div>
+  <div class="d-flex flex-wrap justify-content-center profiles-content-wrapper-albums">
+    <!-- element albums -->
+    <% @user.albums.each do |album| %>
+      <div class="wrap-a-albums">
+        <div class="div-a-albums">
+          <% if album.pics.length > 0 then
+            img_link = album.pics.first.image.url
+            else 
+            img_link = root_path + './assets/default-no-image.jpg'
+          end %>
+          <img src="<%= img_link %>" class="img-thumbnail a-albums-img">
+          <img src="<%= img_link %>" class="img-thumbnail a-albums-img">
+          <a href="javascript:;" class="a-albums-main-photo">
+            <span><%= album.pics.length %></span>
+            <img src="<%= img_link %>" class="img-thumbnail a-albums-img">
+          </a>
+          <%= link_to "edit", edit_user_album_path(album.user, album), class: "a-edit"%>
+          <a href="javascript:;" class="a-lock"><i class="fa fa-lock"></i></a>
+        </div>
+        <p class="text-center albums-title"><%= album.title%></p>
+      </div>
+    <% end %>
+    <!-- end element albums -->
+  </div>
+</div>
+<!-- TAB FOLLOWINGS -->
+<div id="tab-followings" class="public-profile-tab-content">
+  <div class="d-flex flex-wrap justify-content-center profiles-content-wrapper-followings">
+    <!-- element -->
+    <div class="d-flex flex-column followings-card">
+      <div class="p-2 text-center">
+        <a class="a-person" href="#">
+          <img src="avt.jpeg" alt="avt" class="rounded-circle" width="100" height="100">
+        </a>
+      </div>
+      <h5 class="text-center a-person-name">Hieu Nguyen</h5>
+      <div class="d-flex justify-content-around mb-1">
+        <div class="d-flex flex-fill flex-column a-person-card-photos">
+          <p>27</p>
+          <small>PHOTOS</small>
+        </div>
+        <div class="d-flex flex-fill flex-column a-person-card-albums">
+          <p>7</p>
+          <small>ALBUMS</small>
+        </div>
+      </div>
+      <div class="text-center">
+        <a href="javascript:;" class="a-person-card-follow">follow</a>                
+      </div>
+    </div>
+    <!-- end element -->
+    <!-- element -->
+    <div class="d-flex flex-column followings-card">
+      <div class="p-2 text-center">
+        <a class="a-person" href="#">
+          <img src="img3.jpeg" alt="avt" class="rounded-circle" width="100" height="100">
+        </a>
+      </div>
+      <h5 class="text-center a-person-name">Hieu Nguyen</h5>
+      <div class="d-flex justify-content-around mb-1">
+        <div class="d-flex flex-fill flex-column a-person-card-photos">
+          <p>27</p>
+          <small>PHOTOS</small>
+        </div>
+        <div class="d-flex flex-fill flex-column a-person-card-albums">
+          <p>7</p>
+          <small>ALBUMS</small>
+        </div>
+      </div>
+      <div class="text-center">
+        <a href="javascript:;" class="a-person-card-follow">follow</a>                
+      </div>
+    </div>
+    <!-- end element -->
+  </div>
+</div>
+<!-- TAB FOLLOWERS -->
+<div id="tab-followers" class="public-profile-tab-content">
+  <div class="d-flex flex-wrap justify-content-center profiles-content-wrapper-followers">
+    <!-- element -->
+    <div class="d-flex flex-column followers-card">
+      <div class="p-2 text-center">
+        <a class="a-person" href="#">
+          <img src="avt.jpeg" alt="avt" class="rounded-circle" width="100" height="100">
+        </a>
+      </div>
+      <h5 class="text-center a-person-name">Hieu Nguyen</h5>
+      <div class="d-flex justify-content-around mb-1">
+        <div class="d-flex flex-fill flex-column a-person-card-photos">
+          <p>27</p>
+          <small>PHOTOS</small>
+        </div>
+        <div class="d-flex flex-fill flex-column a-person-card-albums">
+          <p>7</p>
+          <small>ALBUMS</small>
+        </div>
+      </div>
+      <div class="text-center">
+        <a href="javascript:;" class="a-person-card-follow following">follow</a>                
+      </div>
+    </div>
+    <!-- end element -->
+    <!-- element -->
+    <div class="d-flex flex-column followers-card">
+      <div class="p-2 text-center">
+        <a class="a-person" href="#">
+          <img src="img1.jpeg" alt="avt" class="rounded-circle" width="100" height="100">
+        </a>
+      </div>
+      <h5 class="text-center a-person-name">Hieu Nguyen</h5>
+      <div class="d-flex justify-content-around mb-1">
+        <div class="d-flex flex-fill flex-column a-person-card-photos">
+          <p>27</p>
+          <small>PHOTOS</small>
+        </div>
+        <div class="d-flex flex-fill flex-column a-person-card-albums">
+          <p>7</p>
+          <small>ALBUMS</small>
+        </div>
+      </div>
+      <div class="text-center">
+        <a href="javascript:;" class="a-person-card-follow following">follow</a>                
+      </div>
+    </div>
+    <!-- end element -->
+  </div>
+</div>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>

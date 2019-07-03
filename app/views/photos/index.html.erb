@@ -2,19 +2,17 @@
 
 <h1>Photos</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
+<table class="table table-hover">
   <tbody>
     <% @photos.each do |photo| %>
       <tr>
-        <td><%= link_to 'Show', photo %></td>
-        <td><%= link_to 'Edit', edit_photo_path(photo) %></td>
-        <td><%= link_to 'Destroy', photo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td> <code><%= photo.title %> </code></td>
+        <td>
+        <%= image_tag(photo.image.url, width: 100, class: "img-fluid") if photo.image.exists? %>        
+        </td>
+        <td><%= link_to 'Show', user_photo_path(photo.user, photo), class: "btn btn-sm btn-info" %></td>
+        <td><%= link_to 'Edit', edit_user_photo_path(photo.user, photo), :"data-turbolinks" => false, class: "btn btn-sm btn-warning" %></td>
+        <td><%= link_to 'Destroy', [photo.user, photo], method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-danger" %></td>
       </tr>
     <% end %>
   </tbody>
@@ -22,4 +20,4 @@
 
 <br>
 
-<%= link_to 'New Photo', new_user_photo_url %>
+<%= link_to 'New Photo', new_user_photo_url,:"data-turbolinks" => false, class: "btn btn-sm btn-info" %>

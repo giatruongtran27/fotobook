@@ -10,6 +10,6 @@ class Photo < ApplicationRecord
   validates :sharing_mode, presence: true, inclusion: { in: [ 0, 1, true, false] }
 
   belongs_to :user
-  has_and_belongs_to_many :albums
+  # has_and_belongs_to_many :albums
 
 end
