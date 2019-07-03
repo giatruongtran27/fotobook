@@ -49,82 +49,53 @@ $(function () {
   /* ADD ALBUM*/
   $arr_imgs_valid_album = [];
   $arr_imgs_error_album = [];
-  $('#album_pics_attributes_0_image').change(function(){
-    var files = $('#album_pics_attributes_0_image')[0].files;
-    console.log($album_new_validation.element("#album_pics_attributes_0_image"));
-    // if ($album_new_validation.element("#album_pics_attributes_0_image")) {
-    //   let file = $(this)[0].files[0];
-    //   let url = URL.createObjectURL(file);
-    //   let i_html = '<div class="img-preview-element">';
-    //   i_html += '<img src="' + url + '" alt="avt" class="img-fluid img-thumbnail">';
-    //   i_html += '<a href="javascript:;"><i class="fa fa-close"></i></a>';
-    //   i_html += '</div>';
-    //   $('#img_preview').removeClass('hidden').empty().append(i_html);
-    // } else {
-    //   $('label#photo_image-error').text('Please upload a valid image.');
-    // }
-    console.log("random",Math.random());
-    console.log("valid",$arr_imgs_valid_album);
-    console.log("error",$arr_imgs_error_album);
-    for(var i=0; i<$arr_imgs_valid_album.length; i++){
-      var a = $arr_imgs_valid_album[i];
-      if(!a.added){
-        let idx = $arr_imgs_valid_album[i].name;
-        let file = $arr_imgs_valid_album[i].value;
-        let url = URL.createObjectURL(file);
-        let i_html = '<div class="img-preview-new-album" id='+idx+'>';
-        i_html += '<img src="' + url + '" alt='+ file.name + ' width="200" class="img-fluid img-thumbnail">';
-        i_html += '<div class="div-img-preview-album-gray"></div>';
-        i_html += '<div class="div-img-preview-album-content">';
-        i_html += '<p>'+ file.name +'</p>';
-        i_html += '<small>'+ (file.size/(1024*1024)).toFixed(2) +'MB </small>';
-        i_html += '</div>';
-        i_html += '<a href="javascript:" class="remove-img-album-preview valid"><i class="fa fa-close"></i></a>';
-        $('#album_image_preview').append(i_html);
-        a.added = true;
-      }
-    }
-    for(var i=0; i<$arr_imgs_error_album.length; i++){
-      var a = $arr_imgs_error_album[i];
+  show_preview_images_album = function(arr,type){
+    for(var i=0; i<arr.length; i++){
+      var a = arr[i];
       if(!a.added){
         let idx = a.name;
         let file = a.value;
         let url = URL.createObjectURL(file);
         let i_html = '<div class="img-preview-new-album" id='+idx+'>';
-        i_html += '<img src="' + url + '" alt='+ file.name +' width="200" class="img-fluid img-thumbnail bg-danger">';
-        i_html += '<div class="div-img-preview-album-gray red"></div>';
+        i_html += '<img src="' + url + '" alt='+ file.name + ' width="200" class="img-fluid img-thumbnail';
+        if(type=="error") i_html += " bg-danger";
+        i_html += '">';
+        i_html += '<div class="div-img-preview-album-gray'; 
+        if(type=="error") i_html += " red";
+        i_html += '"></div>';
         i_html += '<div class="div-img-preview-album-content">';
         i_html += '<p>'+ file.name +'</p>';
         i_html += '<small>'+ (file.size/(1024*1024)).toFixed(2) +'MB </small>';
         i_html += '</div>';
-        i_html += '<a href="javascript:" class="remove-img-album-preview error"><i class="fa fa-close"></i></a>';
+        i_html += '<a href="javascript:" class="remove-img-album-preview';
+        if(type=="valid") i_html +=' valid"><i class="fa fa-close"></i></a>';
+        else i_html +=' error"><i class="fa fa-close"></i></a>';
         $('#album_image_preview').append(i_html);
         a.added = true;
       }
     }
+  }
+  $('#album_pics_attributes_0_image').change(function(){
+    var files = $('#album_pics_attributes_0_image')[0].files;
+    $album_new_validation.element("#album_pics_attributes_0_image"); //call validation
+    show_preview_images_album($arr_imgs_valid_album,"valid");
+    show_preview_images_album($arr_imgs_error_album,"error");
     $('#album_pics_attributes_0_image').val("");
   });
-  $(document).on("click", ".remove-img-album-preview.valid", function (){
-    console.log("valid",$arr_imgs_valid_album);
-    console.log("error",$arr_imgs_error_album);
+  $(document).on("click", ".remove-img-album-preview", function (){
     var idx = $(this).parent().attr("id");
+    if($(this).hasClass("valid")){
+      $arr_imgs_valid_album = jQuery.grep($arr_imgs_valid_album, function(value) {
+        return value.name != idx;
+      });
+    }else if($(this).hasClass("error")){
+      $arr_imgs_error_album = jQuery.grep($arr_imgs_error_album, function(value) {
+        return value.name != idx;
+      });
+    }
     $(this).parent().remove();
-    $arr_imgs_valid_album = jQuery.grep($arr_imgs_valid_album, function(value) {
-      return value.name != idx;
-    });
-    console.log("valid",$arr_imgs_valid_album);
-    console.log("error",$arr_imgs_error_album);
-  });
-  $(document).on("click", ".remove-img-album-preview.error", function (){
-    console.log("valid",$arr_imgs_valid_album);
-    console.log("error",$arr_imgs_error_album);
-    var idx = $(this).parent().attr("id");
-    $(this).parent().remove();
-    $arr_imgs_error_album = jQuery.grep($arr_imgs_error_album, function(value) {
-      return value.name != idx;
-    });
-    console.log("valid",$arr_imgs_valid_album);
-    console.log("error",$arr_imgs_error_album);
+    // console.log("valid",$arr_imgs_valid_album);
+    // console.log("error",$arr_imgs_error_album);
   });
 
   jQuery.validator.addMethod("uploadFilesAlbum", function (val, element) {
@@ -145,7 +116,6 @@ $(function () {
           // $('#photo_image').val('');
           $arr_imgs_error_album.push(obj);
           errors.push(f);
-          console.log(size);
           // return false;
         }else{
           // return true;
@@ -210,7 +180,6 @@ $(function () {
 
   $('#form-add-album').submit(function(e){
     e.preventDefault();
-    // console.log($album_new_validation);
     var form = $('#form-add-album').serializeArray();
     // var files = $('#album_pics_attributes_0_image')[0].files;
     var formData = new FormData();
@@ -219,8 +188,6 @@ $(function () {
       formData.append(form[i].name, form[i].value);
     }
     for(var i = 0; i<$arr_imgs_valid_album.length;i++){
-      // console.log(files[i]);
-      console.log($arr_imgs_valid_album[i]);
       formData.append('pics[image][]',$arr_imgs_valid_album[i].value);
     }
     var u = $('#form-add-album').attr('action');
