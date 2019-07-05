@@ -1,23 +1,38 @@
 <div class="card border-0 mt-3">
   <div class="row no-gutters">
     <div class="col-auto">
-      <img src="/assets/avt.jpeg" class="img-fluid rounded-circle profile-card-image" alt="avt">
+      <img src="<%= @user.image.url %>" class="img-fluid rounded-circle profile-card-image" alt="<%= @user.last_name %>">
     </div>
     <div class="col p-3">
       <div class="card-block px-2">
-        <a href="javascript:;" class="profile-card-follow">following</a>
-        <h2 class="card-title"><%= @user.first_name %></h2>
+
+        <% if current_user.nil? %>
+          <a href="javascript:;" class="profile-card-follow">follow</a>       
+        <% else %>
+          <% if current_user == @user %>
+            <%= link_to "Edit Profile", edit_user_registration_path, class: "profile-card-follow edit-profile" %>
+          <% else %>
+            <% if current_user.followers.include? @user %>
+              <%= link_to 'following', {:controller => "users", :action => "edit_add_follow", :user_follow_id => @user.id}, method: :post, remote: true , onclick: "follow_click(this)",  class: "a-person-card-follow profile-card-follow following" %>
+              <%# <a href="javascript:;" class="profile-card-follow following">following</a> %>
+            <% else %>
+            <%# <a href="javascript:;" class="profile-card-follow">follow</a> %>
+              <%= link_to 'follow', {:controller => "users", :action => "edit_add_follow", :user_follow_id => @user.id}, method: :post, remote: true , onclick: "follow_click(this)",  class: "a-person-card-follow profile-card-follow" %>
+            <% end %>
+          <% end %>
+        <% end %>
+
+        <h2 class="card-title"><%= @user.last_name %></h2>
         <ul class="public-profile-tabs">
-          <li class="tab-link current" data-tab="tab-photos"><span class="counts"><%= @user.photos.length %></span> photos</li>
-          <li class="tab-link" data-tab="tab-albums"><span class="counts"><%= @user.albums.length %></span> albums</li>
-          <li class="tab-link" data-tab="tab-followings"><span class="counts">19</span> followings</li>
-          <li class="tab-link" data-tab="tab-followers"><span class="counts">97</span> followers</li>
+          <li class="tab-link current" data-tab="tab-photos"><span class="counts counts-photos-tab"><%= @user.photos.size %></span> photos</li>
+          <li class="tab-link" data-tab="tab-albums"><span class="counts counts-albums-tab"><%= @user.albums.size %></span> albums</li>
+          <li class="tab-link" data-tab="tab-followings" id="_tab_followings"><span class="counts" id = "counts-followings-tab"><%= @user.followers.size %></span> followings</li>
+          <li class="tab-link" data-tab="tab-followers" id="_tab_followers"><span class="counts" id = "counts-followers-tab"><%= @user.followees.size %></span> followers</li>
         </ul>
       </div>
     </div>
   </div>
   <hr>
-  <!-- <div class="card-footer w-100 text-muted"></div> -->
 </div>
 <!-- end card     -->
 <!------->
@@ -25,7 +40,7 @@
 <div id="tab-photos" class="public-profile-tab-content current">
   <div class="d-flex flex-wrap justify-content-end mt-0 mb-3 mr-3">
     <% if current_user.id.equal? @user.id%>
-    <%= link_to 'Add Photo', new_user_photo_path(current_user), class: "btn btn-sm btn-success", id: "btn-add-photo" %>
+    <%= link_to 'Add Photo', new_user_photo_path(current_user), class: "btn btn-sm btn-success", id: "btn-add-photo", :"data-turbolinks" => false %>
     <% end %>
   </div>
   <div class="d-flex flex-wrap justify-content-center profiles-content-wrapper">
@@ -47,7 +62,7 @@
 <div id="tab-albums" class="public-profile-tab-content">
   <div class="d-flex flex-wrap justify-content-end mt-0 mb-3 mr-3">
     <% if current_user.id.equal? @user.id%>
-      <%= link_to 'Add Album', new_user_album_path(current_user), class: "btn btn-sm btn-success", id: "btn-add-album" %>
+      <%= link_to 'Add Album', new_user_album_path(current_user), class: "btn btn-sm btn-success", id: "btn-add-album", :"data-turbolinks" => false %>
     <% end %>
   </div>
   <div class="d-flex flex-wrap justify-content-center profiles-content-wrapper-albums">
@@ -55,7 +70,7 @@
     <% @user.albums.each do |album| %>
       <div class="wrap-a-albums">
         <div class="div-a-albums">
-          <% if album.pics.length > 0 then
+          <% if album.pics.size > 0 then
             img_link = album.pics.first.image.url
             else 
             img_link = root_path + './assets/default-no-image.jpg'
@@ -63,13 +78,13 @@
           <img src="<%= img_link %>" class="img-thumbnail a-albums-img">
           <img src="<%= img_link %>" class="img-thumbnail a-albums-img">
           <a href="javascript:;" class="a-albums-main-photo">
-            <span><%= album.pics.length %></span>
+            <span><%= album.pics.size %></span>
             <img src="<%= img_link %>" class="img-thumbnail a-albums-img">
           </a>
           <%= link_to "edit", edit_user_album_path(album.user, album), class: "a-edit"%>
           <a href="javascript:;" class="a-lock"><i class="fa fa-lock"></i></a>
         </div>
-        <p class="text-center albums-title"><%= album.title%></p>
+        <p class="text-center albums-title"><%= album.title %></p>
       </div>
     <% end %>
     <!-- end element albums -->
@@ -78,103 +93,81 @@
 <!-- TAB FOLLOWINGS -->
 <div id="tab-followings" class="public-profile-tab-content">
   <div class="d-flex flex-wrap justify-content-center profiles-content-wrapper-followings">
+    <% @user.followers.each do |follower| %>
     <!-- element -->
     <div class="d-flex flex-column followings-card">
       <div class="p-2 text-center">
-        <a class="a-person" href="#">
-          <img src="avt.jpeg" alt="avt" class="rounded-circle" width="100" height="100">
+        <a class="a-person" href="javascript:;">
+          <img src="<%= follower.image.url %>" alt="<%= "#{follower.last_name} #{follower.first_name}" %>" class="rounded-circle" width="100" height="100">
         </a>
       </div>
-      <h5 class="text-center a-person-name">Hieu Nguyen</h5>
+      <h5 class="text-center a-person-name"><%= "#{follower.last_name} #{follower.first_name}" %></h5>
       <div class="d-flex justify-content-around mb-1">
         <div class="d-flex flex-fill flex-column a-person-card-photos">
-          <p>27</p>
+          <p><%= follower.photos.size %></p>
           <small>PHOTOS</small>
         </div>
         <div class="d-flex flex-fill flex-column a-person-card-albums">
-          <p>7</p>
+          <p><%= follower.albums.size %></p>
           <small>ALBUMS</small>
         </div>
       </div>
       <div class="text-center">
-        <a href="javascript:;" class="a-person-card-follow">follow</a>                
+        <% if current_user != follower %>
+          <% if current_user == @user %>
+              <%= link_to 'unfollow', {:controller => "users", :action => "edit_add_follow", :user_follow_id => follower.id}, method: :post, remote: true , onclick: "follow_click(this,1)",  class: "a-person-card-follow unfollow" %>
+          <% else %>
+            <% if current_user.followers.include? follower %>
+              <%= link_to 'following', {:controller => "users", :action => "edit_add_follow", :user_follow_id => follower.id}, method: :post, remote: true , onclick: "follow_click(this)",  class: "a-person-card-follow following" %>
+            <% else %>
+              <%= link_to 'follow', {:controller => "users", :action => "edit_add_follow", :user_follow_id => follower.id}, method: :post, remote: true , onclick: "follow_click(this)",  class: "a-person-card-follow" %>
+            <% end %>
+          <% end %>
+        <% else %>
+          <button href="javascript:;" class="a-person-card-follow following">it's you</button>
+        <% end %>                
       </div>
     </div>
     <!-- end element -->
-    <!-- element -->
-    <div class="d-flex flex-column followings-card">
-      <div class="p-2 text-center">
-        <a class="a-person" href="#">
-          <img src="img3.jpeg" alt="avt" class="rounded-circle" width="100" height="100">
-        </a>
-      </div>
-      <h5 class="text-center a-person-name">Hieu Nguyen</h5>
-      <div class="d-flex justify-content-around mb-1">
-        <div class="d-flex flex-fill flex-column a-person-card-photos">
-          <p>27</p>
-          <small>PHOTOS</small>
-        </div>
-        <div class="d-flex flex-fill flex-column a-person-card-albums">
-          <p>7</p>
-          <small>ALBUMS</small>
-        </div>
-      </div>
-      <div class="text-center">
-        <a href="javascript:;" class="a-person-card-follow">follow</a>                
-      </div>
-    </div>
-    <!-- end element -->
+    <% end %>
   </div>
 </div>
 <!-- TAB FOLLOWERS -->
 <div id="tab-followers" class="public-profile-tab-content">
   <div class="d-flex flex-wrap justify-content-center profiles-content-wrapper-followers">
-    <!-- element -->
-    <div class="d-flex flex-column followers-card">
-      <div class="p-2 text-center">
-        <a class="a-person" href="#">
-          <img src="avt.jpeg" alt="avt" class="rounded-circle" width="100" height="100">
-        </a>
-      </div>
-      <h5 class="text-center a-person-name">Hieu Nguyen</h5>
-      <div class="d-flex justify-content-around mb-1">
-        <div class="d-flex flex-fill flex-column a-person-card-photos">
-          <p>27</p>
-          <small>PHOTOS</small>
+    <% @user.followees.each do |followee| %>
+      <!-- element -->
+      <div class="d-flex flex-column followers-card">
+        <div class="p-2 text-center">
+          <a class="a-person" href="javascript:;">
+            <img src="<%= followee.image.url %>" alt="<%= "#{followee.last_name} #{followee.first_name}" %>" class="rounded-circle" width="100" height="100">
+          </a>
         </div>
-        <div class="d-flex flex-fill flex-column a-person-card-albums">
-          <p>7</p>
-          <small>ALBUMS</small>
+        <h5 class="text-center a-person-name"><%= "#{followee.last_name} #{followee.first_name}" %></h5>
+        <div class="d-flex justify-content-around mb-1">
+          <div class="d-flex flex-fill flex-column a-person-card-photos">
+            <p><%= followee.photos.size %></p>
+            <small>PHOTOS</small>
+          </div>
+          <div class="d-flex flex-fill flex-column a-person-card-albums">
+            <p><%= followee.albums.size %></p>
+            <small>ALBUMS</small>
+          </div>
+        </div>
+        <div class="text-center">
+          <% if current_user != followee %>
+            <% if current_user.followers.include? followee %>
+              <%= link_to 'following', {:controller => "users", :action => "edit_add_follow", :user_follow_id => followee.id}, method: :post, remote: true , onclick: "follow_click(this)",  class: "a-person-card-follow following" %>
+            <% else %>
+              <%= link_to 'follow', {:controller => "users", :action => "edit_add_follow", :user_follow_id => followee.id}, method: :post, remote: true , onclick: "follow_click(this)",  class: "a-person-card-follow" %>
+            <% end %>
+          <% else %>
+            <button href="javascript:;" class="a-person-card-follow following" id="its_you_follow_<%= current_user.id %>">it's you</button>
+          <% end %>
         </div>
       </div>
-      <div class="text-center">
-        <a href="javascript:;" class="a-person-card-follow following">follow</a>                
-      </div>
-    </div>
     <!-- end element -->
-    <!-- element -->
-    <div class="d-flex flex-column followers-card">
-      <div class="p-2 text-center">
-        <a class="a-person" href="#">
-          <img src="img1.jpeg" alt="avt" class="rounded-circle" width="100" height="100">
-        </a>
-      </div>
-      <h5 class="text-center a-person-name">Hieu Nguyen</h5>
-      <div class="d-flex justify-content-around mb-1">
-        <div class="d-flex flex-fill flex-column a-person-card-photos">
-          <p>27</p>
-          <small>PHOTOS</small>
-        </div>
-        <div class="d-flex flex-fill flex-column a-person-card-albums">
-          <p>7</p>
-          <small>ALBUMS</small>
-        </div>
-      </div>
-      <div class="text-center">
-        <a href="javascript:;" class="a-person-card-follow following">follow</a>                
-      </div>
-    </div>
-    <!-- end element -->
+    <% end %>
   </div>
 </div>
 

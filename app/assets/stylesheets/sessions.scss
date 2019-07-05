@@ -88,3 +88,46 @@ body.body-devise{
 .forgot-password{
   text-decoration: none !important;
 }
+
+
+#img_avatar{
+  position: relative;
+  border-radius: 5px;
+}
+#a_change_avatar{
+  position: absolute;
+  bottom: 5px;
+  left: 28px;
+  font-size: 12px;
+  padding: 4px 12px;
+  background-color: #ffffff6e;
+  border-radius: 8px;
+  text-decoration: none;
+  color:black;
+}
+.title{
+  font-size: 14px;
+  font-weight: bold;
+}
+.form *{
+  font-size: 14px;
+}
+.name_form{
+  font-size: 14px;
+  color:#3C5999;
+  font-weight: bold;
+}
+
+#error_explanation {
+  margin: auto;
+  border: 1px solid red;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+.title-left-form-self-edit{
+  display: flex;
+  vertical-align: middle;
+  justify-content: end;
+  align-items: self-end;
+}

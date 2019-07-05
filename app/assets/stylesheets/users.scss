@@ -118,14 +118,33 @@ img.profile-card-image{
 	height: 150px;
 }
 a.profile-card-follow{
-	color:white;
-	/*background-color: #FF004B;*/
-	background-image: linear-gradient(to left, rgb(123, 67, 151), rgb(220, 36, 48));
+  color: #FF004B;
+  border: 1px solid #FF004B;
 	border-radius: 24px;
 	padding: 0.125rem 0.5rem;
 	text-decoration: none;
 	font-weight: 700;
 	font-size: 12px;
+}
+a.profile-card-follow:hover, a.profile-card-follow.following{
+  background-image: linear-gradient(to left, rgb(123, 67, 151), rgb(220, 36, 48));
+  color: #fff;
+}
+a.profile-card-follow.following:hover{
+  background-image: linear-gradient(to left, #c8a632, #5d0096);
+  color: #fff;
+}
+a.profile-card-follow.edit-profile{
+	color:white;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #3C5999;
+  color: #3C5999;
+  font-weight: 600;
+}
+a.profile-card-follow.edit-profile:hover{
+  color:white;
+  background-color: #3C5999;
 }
 .card-title{
 	font-weight: 700;
@@ -360,6 +379,10 @@ a.profile-card-follow{
 #tab-followers .a-person-card-follow:hover, #tab-followers .a-person-card-follow.following{
 	background-image: linear-gradient(to left, rgb(123, 67, 151), rgb(220, 36, 48));
 	color: white;
+}
+#tab-followings .a-person-card-follow.unfollow, #tab-followers .a-person-card-follow.unfollow{
+  background-image: linear-gradient(to left, #db5603, #d5aa15);
+  color: white;
 }
 //end PUBLIC PROFILE
 

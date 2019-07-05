@@ -47,6 +47,7 @@ $(function () {
   });
   /* ***************************** */
   /* ADD ALBUM*/
+  $('#album_title').focus();
   $arr_imgs_valid_album = [];
   $arr_imgs_error_album = [];
   show_preview_images_album = function(arr,type){

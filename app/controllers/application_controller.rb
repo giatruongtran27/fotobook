@@ -12,4 +12,9 @@ class ApplicationController < ActionController::Base
   def after_sign_out_path_for(*)
     new_user_session_path
   end
+
+  def after_update_path_for(*)
+    # edit_user_registration_path
+    redirect_to edit_user_registration_path
+  end
 end

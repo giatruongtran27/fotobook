@@ -18,6 +18,11 @@ class User < ApplicationRecord
   validates :email, length:{ maximum: 255 }, presence:true, uniqueness:{case_sensitive:false},format:{with:VALID_EMAIL_REGEX}
   validates :first_name, presence: true, length: {maximum: 25}
   validates :last_name, presence: true, length: {maximum: 25}
-  validates :password, presence: true, length: {in: 6..64}
+  # validates :password, presence: true, length: {in: 6..64}
+
+  has_attached_file :image, styles: { medium: "300x300>", thumb: "150x150>" }, :default_url => "/assets/missing_avatar.png"
+  # validates_attachment_presence :image
+  # validates_attachment :image, content_type: { content_type: /\Aimage\/.*\z/ }, size: { less_than: 5.megabyte }
+  validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
 
 end
