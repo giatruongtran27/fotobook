@@ -1,273 +1,131 @@
-<!-- main-content -->
-<!--  -->
 <ul class="tabs mb-3">
-  <li class="tab-link current" data-tab="tab-photo">photo</li>
-  <li class="tab-link" data-tab="tab-album">album</li>
+  <li class="tab-link <% if @active_photo_tag %>current <% end %>" data-tab="tab-photo"> 
+    <% if @active_feeds %>
+      <%= link_to "PHOTOS", feeds_photos_path %>
+    <% end %>
+    <% if @active_discover %>
+      <%= link_to "PHOTOS", discover_photos_path %>
+    <% end %>
+  </li>
+  <li class="tab-link <% if @active_album_tag %>current <% end %>" data-tab="tab-album">
+    <% if @active_feeds %>
+      <%= link_to "ALBUMS", feeds_albums_path %>  
+    <% end %>
+    <% if @active_discover %>
+      <%= link_to "ALBUMS", discover_albums_path %>  
+    <% end %>
+  </li>
 </ul>
 <!-- TAB PHOTO -->
-<div id="tab-photo" class="tab-content current">
+<div id="tab-photo" class="tab-content <% if @active_photo_tag %>current <% end %>">
+<% if @photos and @photos.size > 0 %>
   <div class="row">
     <!-- element -->
+    <% @photos.each do |photo|%>
+    <% _user = photo.user %>
     <div class="col-md-6 mb-3">
       <div class="container-fluid p-0">
         <div class="d-flex element-wrapper">
           <a href="javascript:;" class="flex-fill a-img-element" data-toggle="modal" data-target="#myModal">
-            <img src="/assets/avt.jpeg" alt="avt" class="img-fluid img-custom">
+            <img src="<%= photo.image.url %>" alt="<%= photo.title %>" class="img-fluid img-custom">
           </a>
           <div class="flex-fill element-col-right">
             <div class="element-content">
               <div class="element-content-head">
-                <a class="nav-link" href="javascript:;">
+                <div class="nav-link" href="javascript:;">
                   <span class="element-user-wrapper">
-                    <img src="/assets/avt.jpeg" alt="avatar" class="rounded-circle">
-                    <span class="element-user-name">TruongTG</span>
+                    <img src="<%= _user.image.url %>" alt="<%= "#{_user.last_name} #{_user.first_name}"%>" class="rounded-circle">
+                    <%= link_to user_path(photo.user), :"data-turbolinks" => false do %>
+                      <span class="element-user-name"><%= "#{_user.last_name.capitalize} #{_user.first_name.capitalize}"%></span>
+                    <% end %>                    
                   </span>
-                </a>
+                </div>
                 <a href="javascript:;" class="element-a-flow">flow</a>
               </div>
-              <h5 class="element-content-title">Eagle</h5>
-              <p class="element-content-mid">Eagle Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis tempora necessitatibus.</p>
-              <span class="text-blue element-right-heart"><i class="fa fa-heart"></i> <small>27</small> </span>
-              <span class="element-right-time"><small>4:56pm 17/01/2019</small></span>
+              <h5 class="element-content-title"><%= photo.title %></h5>
+              <p class="element-content-mid"><%= photo.description %></p>
+              <span class="text-blue element-right-heart"><i class="fa fa-heart"></i> <small><%= photo.likes.size %></small> </span>
+              <span class="element-right-time"><small><%= photo.created_at.strftime("%I:%M %p %-d/%-m/%Y") %></small></span>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <!-- end element -->
-    <!-- element -->
-    <div class="col-md-6 mb-3">
-      <div class="container-fluid p-0">
-        <div class="d-flex element-wrapper">
-          <a href="javascript:;" class="flex-fill a-img-element" data-toggle="modal" data-target="#myModal">
-            <img src="/assets/img2.jpeg" alt="img2" class="img-fluid img-custom">
-          </a>
-          <div class="flex-fill element-col-right">
-            <div class="element-content">
-              <div class="element-content-head">
-                <a class="nav-link" href="javascript:;">
-                  <span class="element-user-wrapper">
-                    <img src="/assets/avt.jpeg" alt="avatar" class="rounded-circle">
-                    <span class="element-user-name">TruongTG</span>
-                  </span>
-                </a>
-                <a href="javascript:;" class="element-a-flow">flow</a>
-              </div>
-              <h5 class="element-content-title">View 222Lorem ipsum dolor sit amet.</h5>
-              <p class="element-content-mid">Lorem 2222222ipsum dolor sit amet, consectetur adipisicing elit!</p>
-              <span class="text-blue element-right-heart"><i class="fa fa-heart"></i> <small>27</small> </span>
-              <span class="element-right-time"><small>4:56pm 17/01/2019</small></span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- end element -->
-    <!-- element -->
-    <div class="col-md-6 mb-3">
-      <div class="container-fluid p-0">
-        <div class="d-flex element-wrapper">
-          <a href="javascript:;" class="flex-fill a-img-element" data-toggle="modal" data-target="#myModal">
-            <img src="/assets/img3.jpeg" alt="img3" class="img-fluid img-custom">
-          </a>
-          <div class="flex-fill element-col-right">
-            <div class="element-content">
-              <div class="element-content-head">
-                <a class="nav-link" href="javascript:;">
-                  <span class="element-user-wrapper">
-                    <img src="/assets/avt.jpeg" alt="avatar" class="rounded-circle">
-                    <span class="element-user-name">TruongTG</span>
-                  </span>
-                </a>
-                <a href="javascript:;" class="element-a-flow">flow</a>
-              </div>
-              <h5 class="element-content-title">Image3.</h5>
-              <p class="element-content-mid">Aliquid necessitatibus error itaque dignissimos magnam quis atque accusamus, minus. Ab obcaecati, dolore maxime.</p>
-              <span class="text-blue element-right-heart"><i class="fa fa-heart"></i> <small>27</small> </span>
-              <span class="element-right-time"><small>4:56pm 17/01/2019</small></span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- end element -->
-    <!-- element -->
-    <div class="col-md-6 mb-3">
-      <div class="container-fluid p-0">
-        <div class="d-flex element-wrapper">
-          <a href="javascript:;" class="flex-fill a-img-element" data-toggle="modal" data-target="#myModal">
-            <img src="/assets/img4.jpeg" alt="img4" class="img-fluid img-custom">
-          </a>
-          <div class="flex-fill element-col-right">
-            <div class="element-content">
-              <div class="element-content-head">
-                <a class="nav-link" href="javascript:;">
-                  <span class="element-user-wrapper">
-                    <img src="/assets/avt.jpeg" alt="avatar" class="rounded-circle">
-                    <span class="element-user-name">TruongTG</span>
-                  </span>
-                </a>
-                <a href="javascript:;" class="element-a-flow">flow</a>
-              </div>
-              <h5 class="element-content-title">Image 4 akamula</h5>
-              <p class="element-content-mid">Reiciendis facilis molestias minus quia nemo aut, magni asperiores quas, odit adipisci?</p>
-              <span class="text-blue element-right-heart"><i class="fa fa-heart"></i> <small>27</small> </span>
-              <span class="element-right-time"><small>4:56pm 17/01/2019</small></span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <% end %>
     <!-- end element -->
   </div>
+  <div class="row justify-content-center">
+    <%= will_paginate @photos, :param_name => 'page', renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+  </div>
+<% else %>
+<h5 class="text-danger">No Photos</h5>
+<% end %>
+
 </div>
+
+
 <!-- end TAB PHOTO -->
 
 <!-- TAB ALBUM -->
-<div id="tab-album" class="tab-content">
-  <div class="row">
-    <!-- test -->
+
+<div id="tab-album" class="tab-content <% if @active_album_tag %>current <% end %>">
+  <% if @albums and @albums.size > 0 %>
+    <div class="row">
+    <% @albums.each do |album|%>
     <!-- element -->
+    <% 
+      represent_img_album = album.pics.size > 0 ? album.pics.first.image.url: root_path + './assets/default-no-image.jpg'      
+      user_album = album.user
+    %>
     <div class="col-md-6 mb-3">
       <div class="container-fluid p-0">
         <div class="d-flex element-wrapper">
           <!-- left -->
-          <a class="flex-fill element-album" href="javascript:;" data-toggle="modal" data-target="#myModal2">
-            <img src="/assets/avt.jpeg" alt="avt" data-title="title-image2" data-description="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod;" class="img-fluid img-thumbnail img-element">
-            <img src="/assets/avt.jpeg" alt="avt" data-title="title-image3" data-description="Dolor sit amet, consectetur adipisicing elit, sed do eiusmod;" class="img-fluid img-thumbnail img-element">
-            <img src="/assets/avt.jpeg" alt="avt" data-title="title-image4" data-description="Consectetur adipisicing elit, sed do eiusmod;" class="img-fluid img-thumbnail img-element">
-            <img src="/assets/avt.jpeg" alt="avt" data-title="Lorem ipsum dolor sit amet, consectetur adipisicing elit" data-description="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis tempora necessitatibus." class="img-fluid img-thumbnail">
-          </a>
+          <div class="d-flex flex-fill align-items-center element-col-left">
+              <div class="element-album ml-3">
+                <img src="<%= represent_img_album %>" alt="<%= album.title%>" class="img-fluid img-thumbnail-custom img-element">
+                <img src="<%= represent_img_album %>" alt="<%= album.title%>" class="img-fluid img-thumbnail-custom img-element">
+                <a class="element-album-main-image" href="javascript:;" data-toggle="modal" data-target="#myModal2">                  
+                  <img src="<%= represent_img_album %>" alt="<%= album.title%>" class="img-fluid img-thumbnail-custom">
+                </a>
+              </div>
+          </div>
           <!-- end left -->
-          <div class="flex-fill element-col-right">
+          <div class="d-flex flex-fill element-col-right">
             <div class="element-content">
               <div class="element-content-head">
-                <a class="nav-link" href="javascript:;">
+                <div class="nav-link">
                   <span class="element-user-wrapper">
-                    <img src="/assets/avt.jpeg" alt="avatar" class="rounded-circle">
-                    <span class="element-user-name">TruongTG</span>
+                    <img src="<%= user_album.image.url %>" alt="<%= "#{user_album.last_name} #{user_album.first_name}" %>" class="rounded-circle">
+                    <%= link_to user_path(user_album), :"data-turbolinks" => false do %>
+                      <span class="element-user-name"><%= "#{user_album.last_name.capitalize} #{user_album.first_name.capitalize}" %></span>
+                    <% end %>
                   </span>
-                </a>
                 <a href="javascript:;" class="element-a-flow">flow</a>
+                </div>
               </div>
-              <h5 class="element-content-title">Eagle</h5>
-              <p class="element-content-mid">Eagle Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis tempora necessitatibus.</p>
-              <span class="text-blue element-right-heart"><i class="fa fa-heart"></i> <small>27</small> </span>
-              <span class="element-right-time"><small>4:56pm 17/01/2019</small></span>
+              <h5 class="element-content-title"><%= album.title %></h5>
+              <p class="element-content-mid"><%= album.description %></p>
+              <span class="text-blue element-right-heart"><i class="fa fa-heart"></i> <small><%= album.likes.size %></small> </span>
+              <span class="element-right-time"><small><%= album.created_at.strftime("%I:%M %p %-d/%-m/%Y") %></small></span>
             </div>
           </div>
         </div>
       </div>
     </div>
     <!-- end element -->
-    <!-- element -->
-    <div class="col-md-6 mb-3">
-      <div class="container-fluid p-0">
-        <div class="d-flex element-wrapper">
-          <!-- left -->
-          <a class="flex-fill element-album" href="javascript:;" data-toggle="modal" data-target="#myModal2">
-            <img src="/assets/img4.jpeg" alt="avt" data-title="title-image2" data-description="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod;" class="img-fluid img-thumbnail img-element">
-            <img src="/assets/img4.jpeg" alt="avt" data-title="title-image3" data-description="Dolor sit amet, consectetur adipisicing elit, sed do eiusmod;" class="img-fluid img-thumbnail img-element">
-            <img src="/assets/img4.jpeg" alt="avt" data-title="title-image4" data-description="Consectetur adipisicing elit, sed do eiusmod;" class="img-fluid img-thumbnail img-element">
-            <img src="/assets/img4.jpeg" alt="avt" data-title="Lorem ipsum dolor sit amet, consectetur adipisicing elit" data-description="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis tempora necessitatibus." class="img-fluid img-thumbnail">
-          </a>
-          <!-- end left -->
-          <div class="flex-fill element-col-right">
-            <div class="element-content">
-              <div class="element-content-head">
-                <a class="nav-link" href="javascript:;">
-                  <span class="element-user-wrapper">
-                    <img src="/assets/avt.jpeg" alt="avatar" class="rounded-circle">
-                    <span class="element-user-name">TruongTG</span>
-                  </span>
-                </a>
-                <a href="javascript:;" class="element-a-flow">flow</a>
-              </div>
-              <h5 class="element-content-title">Eagle</h5>
-              <p class="element-content-mid">Eagle Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis tempora necessitatibus.</p>
-              <span class="text-blue element-right-heart"><i class="fa fa-heart"></i> <small>27</small> </span>
-              <span class="element-right-time"><small>4:56pm 17/01/2019</small></span>
-            </div>
-          </div>
-        </div>
-      </div>
+    <% end %>
     </div>
-    <!-- end element -->
-    <!-- element -->
-    <div class="col-md-6 mb-3">
-      <div class="container-fluid p-0">
-        <div class="d-flex element-wrapper">
-          <!-- left -->
-          <a class="flex-fill element-album" href="javascript:;" data-toggle="modal" data-target="#myModal2">
-            <img src="/assets/img6.jpeg" alt="avt" data-title="title-image2" data-description="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod;" class="img-fluid img-thumbnail img-element">
-            <img src="/assets/img6.jpeg" alt="avt" data-title="title-image3" data-description="Dolor sit amet, consectetur adipisicing elit, sed do eiusmod;" class="img-fluid img-thumbnail img-element">
-            <img src="/assets/img6.jpeg" alt="avt" data-title="title-image4" data-description="Consectetur adipisicing elit, sed do eiusmod;" class="img-fluid img-thumbnail img-element">
-          </a>
-          <!-- end left -->
-          <div class="flex-fill element-col-right">
-            <div class="element-content">
-              <div class="element-content-head">
-                <a class="nav-link" href="javascript:;">
-                  <span class="element-user-wrapper">
-                    <img src="/assets/avt.jpeg" alt="avatar" class="rounded-circle">
-                    <span class="element-user-name">TruongTG</span>
-                  </span>
-                </a>
-                <a href="javascript:;" class="element-a-flow">flow</a>
-              </div>
-              <h5 class="element-content-title">Eagle</h5>
-              <p class="element-content-mid">Eagle Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis tempora necessitatibus.</p>
-              <span class="text-blue element-right-heart"><i class="fa fa-heart"></i> <small>27</small> </span>
-              <span class="element-right-time"><small>4:56pm 17/01/2019</small></span>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div class="row justify-content-center">
+      <%= will_paginate @albums, :param_name => 'page', renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
     </div>
-    <!-- end element -->
-    <!-- element -->
-    <div class="col-md-6 mb-3">
-      <div class="container-fluid p-0">
-        <div class="d-flex element-wrapper">
-          <!-- left -->
-          <a class="flex-fill element-album" href="javascript:;" data-toggle="modal" data-target="#myModal2">
-            <img src="/assets/img3.jpeg" alt="img2" data-title="title-image2" data-description="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod;" class="img-fluid img-thumbnail img-element">
-            <img src="/assets/img3.jpeg" alt="img4" data-title="title-image4" data-description="Consectetur adipisicing elit, sed do eiusmod;" class="img-fluid img-thumbnail img-element">
-            <img src="/assets/img3.jpeg" alt="avt" data-title="Lorem ipsum dolor sit amet, consectetur adipisicing elit" data-description="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis tempora necessitatibus." class="img-fluid img-thumbnail">
-          </a>
-          <!-- end left -->
-          <div class="flex-fill element-col-right">
-            <div class="element-content">
-              <div class="element-content-head">
-                <a class="nav-link" href="javascript:;">
-                  <span class="element-user-wrapper">
-                    <img src="/assets/img3.jpeg" alt="avatar" class="rounded-circle">
-                    <span class="element-user-name">TruongTG</span>
-                  </span>
-                </a>
-                <a href="javascript:;" class="element-a-flow">flow</a>
-              </div>
-              <h5 class="element-content-title">Eagle</h5>
-              <p class="element-content-mid">Eagle Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis tempora necessitatibus.</p>
-              <span class="text-blue element-right-heart"><i class="fa fa-heart"></i> <small>27</small> </span>
-              <span class="element-right-time"><small>4:56pm 17/01/2019</small></span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- end element -->
-  </div>
+  <% else %>
+  <h5 class="text-danger">No Albums</h5>
+  <% end %>
 </div>
+
 <!-- end TAB ALBUM -->
-<!--  -->
-<ul class="pagination">
-  <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-  <li class="page-item"><a class="page-link" href="#">1</a></li>
-  <li class="page-item active"><a class="page-link" href="#">2</a></li>
-  <li class="page-item"><a class="page-link" href="#">3</a></li>
-  <li class="page-item"><a class="page-link" href="#">Next</a></li>
-</ul>
+
 <!-- Modal Photo -->
 <div id="myModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
@@ -279,7 +137,7 @@
       </div>
       <div class="modal-body pl-0 pr-0">
         <div class="container text-center img-container">
-          <img src="img2.jpeg" class="img-fluid img-modal" alt="img">
+          <img src="" class="img-fluid img-modal" alt="img">
         </div>
         <p class="modal-description">Some text in the modal.</p>
       </div>
@@ -299,7 +157,7 @@
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <div class="carousel-inner">
             <div class="carousel-item active">
-              <img src="img2.jpeg" alt="Los Angeles" class="img-fluid">
+              <img src="" alt="Los Angeles" class="img-fluid">
             </div>
           </div>
           <!-- Left and right controls -->

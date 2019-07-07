@@ -14,17 +14,23 @@ ul.tabs li{
   background: none;
   color: #3C5999;
   display: inline-block;
-  padding: 10px 15px;
   cursor: pointer;
   text-transform: uppercase;
   font-weight: 700;
+  padding: 5px 0px;
 }
-
+ul.tabs li a{
+  padding: 10px 15px;
+  text-decoration: none;
+  color: #3C5999;
+  line-height: 2;
+}
 ul.tabs li.current{
-  color: #fff;
   background-color: #3C5999;
 }
-
+ul.tabs li.current a{
+  color: #fff;
+}
 .tab-content{
   display: none;
 }
@@ -33,12 +39,8 @@ ul.tabs li.current{
   display: inherit;
 }
 .element-album {
-    position: relative;
-    margin-top: 35px;
-    display: block;
-    max-width: 45%;
-    margin-left: 15px;
-    margin-right: 5px;
+  position: relative;
+  margin-left: 10px;
 }
 
 .element-album .img-element{
@@ -47,29 +49,48 @@ ul.tabs li.current{
   left: 0;
 }
 .element-album img{
-  max-width: 90%;
+  max-width: 88%;
+  height: 155px;
+  min-width: 160px;
+}
+a.element-album-main-image{
+  position: relative;
 }
 .element-album>img:last-child{
   position: inherit;
 }
 .element-album .img-element:first-child{
-  transform: rotateZ(14.75deg);
+  transform: rotateZ(9.75deg);
 }
 .element-album .img-element:nth-child(2){
-  transform: rotateZ(7.25deg);
+  transform: rotateZ(5.25deg);
 }
 .element-wrapper{
   background-color: #e9ebee;
   border-radius: 10px;
   min-height: 188.5px;
 }
+img.img-thumbnail-custom{
+  padding: 0.06125rem;
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+  border-radius: 0.25rem;
+}
 .element-wrapper-row{
   min-height: 188.5px;
+}
+.element-col-left {
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+  max-width: 50%;
+  width: 100%;
 }
 .element-col-right{
   position: relative;
   padding-left: 5px;
   padding-right: 5px;
+  width: 100%;
+  max-width: 50%;
 }
 .element-content-head{
   margin-left: 10px;
@@ -156,7 +177,8 @@ a.element-a-flow.flowing{
   max-width: 50%;
 }
 .element-content {
-    padding: 5px;
+  padding: 5px;
+  width: 100%;
 }
 
 /*black background*/

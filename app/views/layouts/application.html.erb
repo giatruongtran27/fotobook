@@ -16,10 +16,10 @@
       <!-- Left <div class="d-flex flex-column left"></div> -->
       <div class="col-lg-2 d-flex flex-column">
         <div class="d-flex flex-row justify-content-center">
-          <a href="javascript:;" class="left-item active">Feeds</a>        
-        </div>
-        <div class="d-flex flex-row justify-content-center">
-          <a href="javascript:;" class="left-item">Discover</a>
+          <div>
+            <%= link_to "Feeds", feeds_path, class: if @active_feeds then "d-block left-item active" else "d-block left-item" end , :"data-turbolinks" => false %>
+            <%= link_to "Discover", root_path, class: if @active_discover then "d-block left-item active" else "d-block left-item" end , :"data-turbolinks" => false %>
+          </div>                
         </div>
       </div>
       <!-- end Left -->

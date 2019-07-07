@@ -1,6 +1,11 @@
 Rails.application.routes.draw do  
   get 'feeds', to: 'feeds#feeds'
+  get 'feeds/photos', to: 'feeds#feeds_photos'
+  get 'feeds/albums', to: 'feeds#feeds_albums'
+
   get 'discover', to: 'feeds#discover'
+  get 'discover/photos', to: 'feeds#discover_photos'
+  get 'discover/albums', to: 'feeds#discover_albums'
 
   get 'users/index'
   devise_for :users, controllers: {
