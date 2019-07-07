@@ -1,10 +1,4 @@
 class PicsController < ApplicationController
-  # def index
-  #   @album = Album.find(params[:album_id])
-  #   @pics = @album.pics
-  #   puts @pics[0].image.path
-  #   render json: @pics
-  # end
   def create
     @album = Album.find(params[:album_id])
     @pic = @album.pics.new(pic_params)
@@ -16,12 +10,7 @@ class PicsController < ApplicationController
   end
 
   def list
-    puts "---------------------------------------------"
-    puts params
-    puts "---------------------------------------------"
     @album ||= Album.find(params[:album_id])
-    puts @album
-    puts "---------------------------------------------"
     uploads = []
     @pics = @album.pics 
 		@pics.each do |upload|
@@ -33,15 +22,10 @@ class PicsController < ApplicationController
 			}
 			uploads.push(new_upload)
     end
-    puts "---------------------------------------------"
-    
-    puts uploads
-
 		render json: { images: uploads }
 	end
 
   def destroy
-    # @album = Album.find(params[:album_id])
     @pic = Pic.find(params[:id])
     if @pic.destroy
       render json: {message: "img delete from server"}

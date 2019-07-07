@@ -20,6 +20,10 @@
       <%= f.label :title %>
       <%= f.text_field :title, :class => "form-control", placeholder: "title" %>
     </div>
+    <div class="form-group">
+      <%= f.label :sharing_mode %>
+      <%= f.select :sharing_mode, options_for_select([["Public", :public_mode], ["Private", :private_mode]], @photo.sharing_mode ),{:prompt => "Select One"}, {required: 'true', autofocus: 'true', class: 'form-control'} %>
+    </div>
   </div>
   <div class="col-md-6">
     <div class="form-group">

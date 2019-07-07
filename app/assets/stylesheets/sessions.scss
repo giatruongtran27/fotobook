@@ -131,3 +131,11 @@ body.body-devise{
   justify-content: end;
   align-items: self-end;
 }
+#form-edit-self-image{
+  position: absolute;
+  top: 50%;
+  left: 50px;
+  transform: translate(-50%,-50%);
+  width: 0;
+  height: 0;
+}

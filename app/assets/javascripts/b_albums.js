@@ -113,7 +113,7 @@ $(function () {
       obj.value = f;
       obj.added = false;
       if (type == "image/jpeg" || type == "image/png" || type == "image/gif") {
-        if(size > 300000){// checks the file more than 5 MB // 5 * 1024 * 1024
+        if(size > (5*1024*1024)){// checks the file more than 5 MB // 5 * 1024 * 1024
           // $('#photo_image').val('');
           $arr_imgs_error_album.push(obj);
           errors.push(f);

@@ -1,6 +1,6 @@
-Rails.application.routes.draw do
-  get 'welcome/index'
-  get 'feeds/index'
+Rails.application.routes.draw do  
+  get 'feeds', to: 'feeds#feeds'
+  get 'discover', to: 'feeds#discover'
 
   get 'users/index'
   devise_for :users, controllers: {
@@ -33,12 +33,7 @@ Rails.application.routes.draw do
     get "forgot-password", to: "devise/passwords#new"
   end
 
-  # resources :users
- 
-  # ===========================
-  # get '/login' => 'sessions#new'
-  # get '/signup' => 'users#new'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  root 'feeds#index'
+  root 'feeds#discover'
+  get '*path' => redirect('/404.html')
 
 end

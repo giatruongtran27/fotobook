@@ -3,7 +3,7 @@ class CreateAlbums < ActiveRecord::Migration[5.2]
     create_table :albums do |t|
       t.string :title
       t.text :description
-      t.boolean :sharing_mode, default: 1
+      t.boolean :sharing_mode, null: false, default: true
       t.references :user, foreign_key: true
 
       t.timestamps

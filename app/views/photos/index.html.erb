@@ -19,5 +19,6 @@
 </table>
 
 <br>
-
+<% if current_user and ( current_user.id == @user.id || current_user.admin) %>
 <%= link_to 'New Photo', new_user_photo_url,:"data-turbolinks" => false, class: "btn btn-sm btn-info" %>
+<% end %>

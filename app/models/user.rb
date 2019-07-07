@@ -21,7 +21,6 @@ class User < ApplicationRecord
   # validates :password, presence: true, length: {in: 6..64}
 
   has_attached_file :image, styles: { medium: "300x300>", thumb: "150x150>" }, :default_url => "/assets/missing_avatar.png"
-  # validates_attachment_presence :image
   # validates_attachment :image, content_type: { content_type: /\Aimage\/.*\z/ }, size: { less_than: 5.megabyte }
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
 

@@ -1,12 +1,23 @@
 class UsersController < ApplicationController
   # layout "s_layout"
-  before_action :authenticate_user!, only: [:edit_add_follow]
+  before_action :authenticate_user!, only: [:index, :edit_add_follow, :create, :edit, :update]
+  before_action :check_authorize, only: [:create, :edit, :update, :destroy]  
   before_action :set_user, only: [:show, :edit, :update, :destroy, :get_followers, :edit_add_follow]
 
   def index
+    redirect_to current_user
   end
 
   def show
+    if current_user and (current_user.id.equal? @user.id or current_user.admin?)
+      @list_photos = @user.photos
+      @list_albums = @user.albums
+      @full_authorities_for_this_user = true
+    else
+      @list_photos = @user.photos.public_mode;
+      @list_albums = @user.albums.public_mode;
+      @full_authorities_for_this_user = false    
+    end
   end
 
   def edit
@@ -74,6 +85,11 @@ class UsersController < ApplicationController
   end
 
   private
+    def check_authorize
+      unless current_user and  (current_user.id == params[:id] or current_user.admin)
+        render :file => "#{Rails.root}/public/422.html",  :status => 422
+      end 
+    end 
     def set_user
       @user = User.find(params[:id])
     end

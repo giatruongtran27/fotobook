@@ -12,6 +12,10 @@ $(function(){
   // end TAB
 
   //PUBLIC PROFILE CLICK FOLLOW
+  please_login = function(){
+    toastr["error"]("Please login to follow this user");
+  }
+
   follow_click = function(e, own = 0){
     var _this = $(e);
     if(own==1){
@@ -28,7 +32,7 @@ $(function(){
   $(document).on('ajax:success','.a-person-card-follow',function(event){
     var detail = event.detail;
     var data = detail[0], status = detail[1],  xhr = detail[2];
-    console.log(data);
+    // console.log(data);
     toastr["success"](data["messages"]);
     _counts_followings_tab = parseInt($('#counts-followings-tab').text());
     _counts_followers_tab = parseInt($('#counts-followers-tab').text());
@@ -101,7 +105,7 @@ $(function(){
   $(document).on('ajax:error','.a-person-card-follow',function(event){
     var detail = event.detail;    
     var data = detail[0], status = detail[1],  xhr = detail[2];
-    console.log("error",data);
+    // console.log("error",data);
     toastr["error"]("Action Error!");
   });
 

@@ -50,7 +50,7 @@ $(function () {
         required: true,
         maxlength: 300
       },
-      share_mode: {
+      "photo[sharing_mode]": {
         required: true
       },
       "photo[image]": {
@@ -68,7 +68,7 @@ $(function () {
         required: "Description is required.",
         maxlength: "Description must be less than 300 characters."
       },
-      share_mode: {
+      "photo[sharing_mode]": {
         required: "Share mode is required.",
       },
       "photo[image]": {

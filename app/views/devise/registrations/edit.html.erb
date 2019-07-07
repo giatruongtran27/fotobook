@@ -2,11 +2,11 @@
 <hr>
 <div class="row mb-3">
   <div class="col-md-4 m-auto">
-  <%= form_with(model: @user, controller: "users", action: "update", method: :put, local: true, id: "form-edit-self-image") do |f| %>
     <img src="<%= current_user.image.url %>" width="100" height="100" id="img_avatar">  
-    <a href="javascript:;" id="a_change_avatar">CHANGE</a>
+    <%= form_with(model: @user, controller: "users", action: "update", method: :put, local: true, id: "form-edit-self-image") do |f| %>
       <%= f.file_field :image , :class => "custom-file-input"%>
     <% end %>
+    <a href="javascript:;" id="a_change_avatar">CHANGE</a>
   </div>
 </div>
 <div class="row">

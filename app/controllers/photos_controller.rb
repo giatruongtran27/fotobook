@@ -1,11 +1,17 @@
 class PhotosController < ApplicationController
-  # before_action :authenticate_user!, :except => [:show, :index]
+  before_action :authenticate_user! , only: [:check_authorize]
+  before_action :check_authorize, only: [:show, :create, :new, :edit, :update, :destroy]
   before_action :set_photo, only: [:show, :edit, :update, :destroy]
-  # skip_before_action :verify_authenticity_token, only: [:delete_image]
+  
   # GET /photos
   # GET /photos.json
   def index
-    @photos = Photo.all
+    if current_user.id == params[:user_id].to_i || current_user.admin
+      @user = User.find(params[:user_id])
+      @photos = @user.photos
+    else
+      redirect_to user_path(params[:user_id])
+    end
   end
 
   # GET /photos/1
@@ -26,7 +32,9 @@ class PhotosController < ApplicationController
   # POST /photos.json
   def create
     # current_user = User.find(1)
-    @photo = current_user.photos.new(photo_params)
+    params[:sharing_mode] = params[:sharing_mode] == "1"
+    @user = User.find(params[:user_id])
+    @photo = @user.photos.new(photo_params)
 
     respond_to do |format|
       if @photo.save
@@ -64,14 +72,17 @@ class PhotosController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+    def check_authorize
+      if current_user.id != params[:user_id].to_i and !current_user.admin
+        render :file => "#{Rails.root}/public/422.html",  :status => 422
+      end 
+    end   
+
     def set_photo
       @photo = Photo.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def photo_params
-      params.require(:photo).permit(:title, :description, :image)
-      # params.fetch(:photo, {})
+      params.require(:photo).permit(:title, :description, :sharing_mode, :image)
     end
 end

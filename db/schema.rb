@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_03_043132) do
+ActiveRecord::Schema.define(version: 2019_07_07_015720) do
 
   create_table "albums", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title"
     t.text "description"
-    t.boolean "sharing_mode", default: true
+    t.boolean "sharing_mode", default: true, null: false
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -29,10 +29,18 @@ ActiveRecord::Schema.define(version: 2019_07_03_043132) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "likes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "likeable_type"
+    t.integer "likeable_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "photos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title"
     t.text "description"
-    t.boolean "sharing_mode", default: true
+    t.boolean "sharing_mode", default: true, null: false
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -61,7 +69,7 @@ ActiveRecord::Schema.define(version: 2019_07_03_043132) do
     t.string "first_name"
     t.string "last_name"
     t.string "password_digest"
-    t.string "image_url"
+    t.boolean "admin", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "encrypted_password", default: "", null: false

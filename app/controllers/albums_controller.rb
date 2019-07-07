@@ -1,11 +1,17 @@
 class AlbumsController < ApplicationController
-  before_action :authenticate_user! #, only: [:add_image, :create, :new, :edit, :update, :destroy]
+  before_action :authenticate_user! , only: [:check_authorize]
+  before_action :check_authorize, only: [:show, :create, :new, :edit, :update, :destroy]
   before_action :set_album, only: [:show, :edit, :update, :destroy]
 
   # GET /albums
   # GET /albums.json
   def index
-    @albums = Album.all
+    if current_user.id == params[:user_id].to_i || current_user.admin
+      @user = User.find(params[:user_id])
+      @albums = @user.albums
+    else
+      redirect_to user_path(params[:user_id])
+    end
   end
 
   # GET /albums/1
@@ -27,30 +33,26 @@ class AlbumsController < ApplicationController
   # POST /albums
   # POST /albums.json
   def create
-    @album = current_user.albums.create(album_params)
-    def insert_data
-      # puts "aaaaaaaaaaaaaaaaaaaaa"
-      ActiveRecord::Base.transaction do
-        params[:pics]["image"].each do |i|
-          @img = Pic.create image: i
-          @img.album = @album
-          @img.save
-        end
+    begin
+      @user = User.find(params[:user_id])
+      @album = @user.albums.create(album_params)
+      def insert_data
+        ActiveRecord::Base.transaction do
+          params[:pics]["image"].each do |i|
+            @img = Pic.create image: i
+            @img.album = @album
+            @img.save
+          end
+        end 
+      end
+      #
+      if params[:pics] and params[:pics]["image"].size > 0
+        insert_data
       end 
+      redirect_to user_album_path(@album.user, @album), notice: 'Album was successfully created.'  
+    rescue => e      
+      redirect_to new_user_album_path(@album.user), alert: 'Album created failed. Please try again.' 
     end
-    #
-    insert_data
-    redirect_to user_album_path(@album.user, @album)
-    # 
-    # respond_to do |format|
-    #   if @album.save
-    #     format.html { redirect_to user_album_path(@album.user, @album), notice: 'Album was successfully created.' }
-    #     format.json { render :show, status: :created, location: @album }
-    #   else
-    #     format.html { render :new }
-    #     format.json { render json: @album.errors, status: :unprocessable_entity }
-    #   end
-    # end
   end
 
   # PATCH/PUT /albums/1
@@ -78,14 +80,19 @@ class AlbumsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+    def check_authorize
+      if current_user.id != params[:user_id].to_i and !current_user.admin
+        render :file => "#{Rails.root}/public/422.html",  :status => 422
+      end 
+    end 
+
     def set_album
       @album = Album.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def album_params
-      params.require(:album).permit(:title, :description, pics_attributes: [:id, :title, :description, :image])
+      params.require(:album).permit(:title, :description, :sharing_mode, pics_attributes: [:id, :title, :description, :image])
       # params.fetch(:album, {})
     end
   end
