@@ -8,17 +8,48 @@ $(document).ready(function(){
     $(this).addClass('current');
     $("#"+tab_id).addClass('current');
   });
-  $('.element-a-flow').click(function(){
-    var $this = $(this);
-    if($this.text()==="flowing"){
-      $this.removeClass("flowing");
-      $this.text("flow");
-    }else{
-      $this.addClass("flowing");
-      $this.text("flowing");
-    }
+  
+  $('.element-a-follow').on('ajax:success',function(event){
+    var detail = event.detail;
+    var data = detail[0], status = detail[1],  xhr = detail[2];
+    toastr["success"](data["messages"]);
+    var a = $('a[href="'+$(this).attr('href')+'"]');
+    var fol = a.toggleClass("following");
+    if(fol.hasClass("following")) 
+      fol.text("following");
+    else fol.text("follow");
   });
 
+  $('.element-a-follow').on('ajax:error',function(event){
+    var detail = event.detail;
+    var data = detail[0], status = detail[1],  xhr = detail[2];
+    toastr["error"]("Action Error!" + data);
+  });
+
+  //LIKE
+  $('.a-like').on('ajax:success',function(event){
+    var detail = event.detail;
+    var data = detail[0], status = detail[1],  xhr = detail[2];
+    toastr["success"](data["messages"]);
+    var fol = $(this).toggleClass("liked");
+    var span_count_like = $(this).siblings('.count-like');
+    var text_count_like = parseInt(span_count_like.text());
+
+    if(data["type"]=="like"){
+      text_count_like += 1;
+      span_count_like.text(text_count_like);
+    }else if(data["type"]=="unlike"){
+      text_count_like -= 1;
+      span_count_like.text(text_count_like);
+    }
+  });
+  $('.a-like').on('ajax:error',function(event){
+    var detail = event.detail;
+    var data = detail[0], status = detail[1],  xhr = detail[2];
+    toastr["error"]("error");
+  });
+
+  //Follow click on Feeds and Discover Page
   $('.a-img-element').click(function(){
     var img = $(this).find('img').attr('src');
     var alt = $(this).find('img').attr('alt');
@@ -33,32 +64,47 @@ $(document).ready(function(){
     $('#myModal p.modal-description').text(description);
   });
 
-  $('a.element-album').click(function(){
-    var imgs = $(this).children();
-    $('#myModal2 .carousel-inner').empty();
-    $.each(imgs, function( index, value ) {
-      var v = $(value);
-      // console.log(v);
-      var i_html = "";
-      var title = v.attr('data-title');
-      var description = v.attr('data-description');
-      if(index != imgs.length-1){
-        i_html += '<div class="carousel-item">';
-      }else{
-        i_html += '<div class="carousel-item active">';
-      }
-      i_html += '<h5 class="modal-title">'+title+'</h5>';
-      i_html += '<img src="'+ v.attr('src')+'"' + 'alt="'+ v.attr('alt')+'"' + 'class="img-fluid">';
-      i_html += '<p class="modal-description">'+description+'</p>';
-      i_html+= '</div>';
-      $('#myModal2 .carousel-inner').append(i_html);
-    });
-    if(imgs.length<=1){
-      $('#myModal2 .carousel-control-prev').hide();
-      $('#myModal2 .carousel-control-next').hide();
+  
+  // Modal
+
+  $('.element-album-main-image').on('ajax:success',function(){
+    var detail = event.detail;
+    var data = detail[0], status = detail[1],  xhr = detail[2];
+    var pics = data["pics"];
+    var has_images = data["has_images"]
+    if(!has_images){
+      toastr["info"]("There is no image in this album.");
     }else{
-      $('#myModal2 .carousel-control-prev').show();
-      $('#myModal2 .carousel-control-next').show();
+      $('#myModal2 .carousel-inner').empty();
+      $.each(pics,function(i){
+        var pic = pics[i];
+        var title = data['title'];
+        var description = data['description'];
+        var i_html = "";
+        if(i==0){
+          i_html += '<div class="carousel-item active">';
+        }else{
+          i_html += '<div class="carousel-item">';
+        }
+        i_html += '<h5 class="modal-title">'+title+'</h5>';
+        i_html += '<img src="'+ pic.image +'"' + 'alt="'+ pic.title +'"' + 'class="img-fluid">';
+        i_html += '<p class="modal-description">'+description+'</p>';
+        i_html+= '</div>';
+        $('#myModal2 .carousel-inner').append(i_html);
+      });
+      if (data["size_images"] <= 1){
+        $('#myModal2 .carousel-control-prev').hide();
+        $('#myModal2 .carousel-control-next').hide();
+      }else{
+        $('#myModal2 .carousel-control-prev').show();
+        $('#myModal2 .carousel-control-next').show();
+      }
+      $('#myModal2').modal('show');
     }
+  });
+  $('.element-album-main-image').on('ajax:error',function(event){
+    var detail = event.detail;
+    var data = detail[0], status = detail[1],  xhr = detail[2];
+    toastr["error"]("error");
   });
 })

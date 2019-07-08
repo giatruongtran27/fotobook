@@ -60,10 +60,10 @@ a.element-album-main-image{
   position: inherit;
 }
 .element-album .img-element:first-child{
-  transform: rotateZ(9.75deg);
+  transform: rotateZ(11.75deg);
 }
 .element-album .img-element:nth-child(2){
-  transform: rotateZ(5.25deg);
+  transform: rotateZ(6.25deg);
 }
 .element-wrapper{
   background-color: #e9ebee;
@@ -134,7 +134,7 @@ p.element-content-mid{
   transform: translate(-50%,-50%);
   width: 87%;
 }
-a.element-a-flow {
+a.element-a-follow {
     width: 45px;
     position: absolute;
     padding: 0px;
@@ -146,10 +146,12 @@ a.element-a-flow {
     font-size: 10px;
     background-color: white;
     text-align: center;
+    font-weight: 700;
 }
-a.element-a-flow.flowing{
-  background-color: #fd7e14;
+a.element-a-follow.following, a.element-a-follow:hover{
+  background-image: linear-gradient(to left, #fd7e14, #dc2430);
   color:white;
+  min-width: 55px;
 }
 .element-right-heart{
   position: absolute;
@@ -180,7 +182,13 @@ a.element-a-flow.flowing{
   padding: 5px;
   width: 100%;
 }
-
+.a-like{
+  color: gray;
+  text-decoration: none !important;
+}
+.a-like.liked, .a-like:hover{
+  color: #3C5999;
+}
 /*black background*/
 .black-background{
   background-color: #0009;
@@ -244,3 +252,4 @@ a.element-a-flow.flowing{
   border-color: #3C5999;
   color: white;
 }
+

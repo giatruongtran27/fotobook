@@ -21,8 +21,16 @@ Rails.application.routes.draw do
       get 'followees', to: 'user#get_followees'
     end
     
-    resources :photos
+    resources :photos do 
+      member do 
+        post :like
+      end
+    end
     resources :albums do
+      member do 
+        get :images
+        post :like
+      end
       resources :pics do
         collection do
           get :list #list_uploads_url

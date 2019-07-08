@@ -1,7 +1,7 @@
 class AlbumsController < ApplicationController
-  before_action :authenticate_user! , only: [:check_authorize]
+  before_action :authenticate_user! , only: [:check_authorize, :like]
   before_action :check_authorize, only: [:show, :create, :new, :edit, :update, :destroy]
-  before_action :set_album, only: [:show, :edit, :update, :destroy]
+  before_action :set_album, only: [:show, :edit, :update, :destroy, :like, :images]
 
   # GET /albums
   # GET /albums.json
@@ -11,6 +11,47 @@ class AlbumsController < ApplicationController
       @albums = @user.albums
     else
       redirect_to user_path(params[:user_id])
+    end
+  end
+
+  def images 
+    pics = []
+    has_images = false
+    size_images = @album.pics.size
+    if size_images > 0
+      @album.pics.each do |pic|
+        obj = {
+          image: pic.image.url,
+          title: pic.image_file_name
+        }
+        pics.push obj
+      end
+      has_images = true
+    end
+    render json: {
+      messages: "success",
+      size_images: size_images,
+      has_images: has_images,
+      pics: pics,
+      title: @album.title,
+      description: @album.description
+    }
+  end
+
+  def like 
+    begin
+      check_like = @album.likes.find_by(user_id: current_user)
+      if check_like
+        check_like.delete
+        render json: { messages: "You have unliked photo: #{@album.title}", type: "unlike"}, status: 200
+      else
+        @album.likes.create(user_id: current_user.id)
+        render json: { messages: "You have liked photo: #{@album.title}", type: "like"}, status: 200 
+      end
+    rescue StandardError => e
+      render json: {
+        error: e.to_s
+      }, status: :not_found
     end
   end
 

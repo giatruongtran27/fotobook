@@ -1,7 +1,7 @@
 class PhotosController < ApplicationController
-  before_action :authenticate_user! , only: [:check_authorize]
+  before_action :authenticate_user! , only: [:check_authorize, :like]
   before_action :check_authorize, only: [:show, :create, :new, :edit, :update, :destroy]
-  before_action :set_photo, only: [:show, :edit, :update, :destroy]
+  before_action :set_photo, only: [:show, :edit, :update, :destroy, :like]
   
   # GET /photos
   # GET /photos.json
@@ -13,6 +13,23 @@ class PhotosController < ApplicationController
       redirect_to user_path(params[:user_id])
     end
   end
+
+  def like
+    begin
+      check_like = @photo.likes.find_by(user_id: current_user)
+      if check_like
+        check_like.delete
+        render json: { messages: "You have unliked photo: #{@photo.title}", type: "unlike"}, status: 200
+      else
+        @photo.likes.create(user_id: current_user.id)
+        render json: { messages: "You have liked photo: #{@photo.title}", type: "like"}, status: 200 
+      end
+    rescue StandardError => e
+      render json: {
+        error: e.to_s
+      }, status: :not_found
+    end
+  end 
 
   # GET /photos/1
   # GET /photos/1.json
