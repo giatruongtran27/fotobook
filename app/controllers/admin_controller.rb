@@ -1,6 +1,7 @@
 class AdminController < ApplicationController
   layout "admin_layout"
-  before_action :authenticate_user!
+  before_action :authenticate_user!, only: [:is_admin]
+  before_action :is_admin
   before_action :set_photo, only: [:edit_photo, :update_photo, :destroy_photo]
   before_action :set_album, only: [:edit_album, :update_album, :destroy_album]
 
@@ -80,7 +81,12 @@ class AdminController < ApplicationController
   end
 
   private
-    
+    def is_admin
+      unless current_user and  current_user.admin
+        render :file => "#{Rails.root}/public/422.html",  :status => 422
+      end 
+    end
+
     def set_photo
       @photo = Photo.find(params[:id])
     end
