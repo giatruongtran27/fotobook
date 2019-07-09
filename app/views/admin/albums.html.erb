@@ -1,0 +1,26 @@
+<div class="d-flex flex-wrap justify-content-start profiles-content-wrapper-albums" id="admin_manage_albums">
+  <% @albums.each do |album|%>
+  <% if album.pics.size > 0 then
+    img_link = album.pics.first.image.url
+    else 
+    img_link = root_path + './assets/default-no-image.jpg'
+  end %>
+  <!-- element albums -->
+  <div class="wrap-a-albums">
+    <div class="div-a-albums">
+      <img src="<%= img_link %>" class="a-albums-img">
+      <img src="<%= img_link %>" class="a-albums-img">
+      <a href="#" class="a-albums-main-photo">
+        <img src="<%= img_link %>" class="img-thumbnail a-albums-img">
+      </a>
+    </div>
+    <div class="d-flex justify-content-end head">
+      <p class="albums-title"><%= album.title %></p>
+      <%= link_to admin_edit_album_path(album), class: "a-edit", :"data-turbolinks" => false do %>
+        <i class="fa fa-sm fa-edit"></i>
+      <% end %>
+    </div>
+  </div>
+  <!-- end element albums -->
+  <% end %>
+</div>

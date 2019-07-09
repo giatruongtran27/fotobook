@@ -15,6 +15,7 @@ $(function () {
     success: function (file, response) {
       $(file.previewElement).find('.dz-remove').attr('id', response.uploadId);
       $(file.previewElement).addClass('dz-success');
+      toastr["success"]("Add image to this album successfully.");
     },
     removedfile: function (file) {
       var id = $(file.previewTemplate).find('.dz-remove').attr('id');
@@ -24,7 +25,7 @@ $(function () {
         data: { authenticity_token: $('[name="csrf-token"]')[0].content },
         url: "pics/" + id,
         success: function (data) {
-          // console.log(data.message);
+          toastr["info"]("Remove image from this album successfully.");
         }
       });
       var previewElement;

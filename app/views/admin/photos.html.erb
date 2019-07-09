@@ -1,0 +1,15 @@
+<div class="d-flex flex-wrap justify-content-start mt-3 profiles-content-wrapper" id="admin_manage_photos">
+  <% @photos.each do |photo| %> 
+  <!-- element -->
+  <div class="wrap-a-photos">
+    <div class="div-a-photos">
+      <a href="javascript:;"><img src="<%= photo.image.url %>" class="a-photos-img"></a>
+      <p><%= photo.title %></p>
+      <%= link_to admin_edit_photo_path(photo), class: "a-edit", :"data-turbolinks" => false do %>
+        <i class="fa fa-sm fa-edit"></i>
+      <% end %>
+    </div>
+  </div>
+  <!-- end element -->
+  <% end %>
+</div>

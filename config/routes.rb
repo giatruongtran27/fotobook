@@ -19,6 +19,10 @@ Rails.application.routes.draw do
       get 'followings', to: 'user#get_followers'
       #get followees for followers_tab
       get 'followees', to: 'user#get_followees'
+      #update by admin
+      put :update_by_admin
+      get '/update_by_admin', to: 'users#get_update_by_admin'
+
     end
     
     resources :photos do 
@@ -44,6 +48,25 @@ Rails.application.routes.draw do
     get "login", to: "devise/sessions#new"
     get "logout", to: "devise/sessions#destroy"
     get "forgot-password", to: "devise/passwords#new"
+  end
+
+  scope '/admin' do
+    get '/', to: 'admin#users', as: :admin_dashboard
+    get '/users', to: "admin#users", as: :admin_users
+    get '/photos', to: "admin#photos", as: :admin_photos
+    get '/albums', to: "admin#albums", as: :admin_albums
+
+    get '/users/:id', to: "users#edit", as: :admin_edit_user
+    get '/photos/:id', to: "admin#edit_photo", as: :admin_edit_photo
+    put '/photos/:id', to: "admin#update_photo"
+    delete '/photos/:id', to: "admin#destroy_photo", as: :admin_delete_photo
+
+    get '/albums/:id', to: "admin#edit_album", as: :admin_edit_album
+    put '/albums/:id', to: "admin#update_album"
+    delete '/albums/:id', to: "admin#destroy_album", as: :admin_delete_album
+    delete '/albums/pics/:id', to: "admin#destroy_pic", as: :admin_delete_pic
+
+
   end
 
   root 'feeds#discover'

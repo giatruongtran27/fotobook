@@ -1,9 +1,9 @@
 class UsersController < ApplicationController
-  # layout "s_layout"
-  before_action :authenticate_user!, only: [:index, :edit_add_follow, :create, :edit, :update]
+  layout "admin_layout", only: [:edit]
+  before_action :authenticate_user!, only: [:index, :edit_add_follow, :create, :edit, :update, :admin_only, :check_authorize]
   before_action :check_authorize, only: [:create, :edit, :update, :destroy]  
-  before_action :set_user, only: [:show, :edit, :update, :destroy, :get_followers, :edit_add_follow]
-
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :get_followers, :edit_add_follow, :update_by_admin, :get_update_by_admin]
+  before_action :admin_only, only: [:edit, :update_by_admin, :get_update_by_admin, :destroy]
   def index
     redirect_to current_user
   end
@@ -18,17 +18,14 @@ class UsersController < ApplicationController
       @list_albums = @user.albums.public_mode;
       @full_authorities_for_this_user = false    
     end
-  end
-
-  def edit
-  end
-
+  end 
+  
   # PATCH/PUT /users/edit
   # UPDATE SELF PROFILE
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to edit_user_registration_path, notice: 'User was successfully updated.' }
+        format.html { redirect_to :back, notice: 'User was successfully updated.' }
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit }
@@ -84,7 +81,48 @@ class UsersController < ApplicationController
     # render json: {errors: @follower.errors.full_messages.join(", ")}, status: 404
   end
 
+  # ADMIN ACTION ONLY
+  def edit
+    @manage_users = true
+  end
+
+  def get_update_by_admin
+    redirect_to edit_user_path(@user)
+  end
+  def update_by_admin
+    if params[:user][:password].blank?
+      my_params = params.require(:user).permit(:first_name, :last_name, :email, :image, :admin)
+    else
+      params[:user][:password_confirmation] = params[:user][:password]
+      my_params = params.require(:user).permit(:first_name, :last_name, :email, :image, :admin, :password, :password_confirmation)
+    end
+
+    respond_to do |format|
+      if @user.update(my_params)
+        format.html { redirect_to admin_edit_user_path(@user), notice: 'User was successfully updated.' }
+        format.json { render :show, status: :ok, location: @user }
+      else
+        format.html { render :edit }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def destroy
+    @user.destroy
+    respond_to do |format|
+      format.html { redirect_to admin_dashboard_path, notice: 'User was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end
+  ######
   private
+    def admin_only
+      unless current_user and  current_user.admin
+        render :file => "#{Rails.root}/public/422.html",  :status => 422
+      end
+    end
+
     def check_authorize
       unless current_user and  (current_user.id == params[:id] or current_user.admin)
         render :file => "#{Rails.root}/public/422.html",  :status => 422
