@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   # include SessionsHelper
+  before_action :set_locale
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   protected
@@ -16,6 +17,16 @@ class ApplicationController < ActionController::Base
   def after_update_path_for(*)
     # edit_user_registration_path
     redirect_to edit_user_registration_path
+  end
+
+  # def set_locale
+  #   I18n.locale = params[:locale] || I18n.default_locale
+  # end
+  def set_locale
+    I18n.locale = params[:locale] || I18n.default_locale
+  end
+  def default_url_options
+      { locale: I18n.locale }
   end
 
 end

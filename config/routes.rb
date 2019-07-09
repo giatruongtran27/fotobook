@@ -1,18 +1,20 @@
 Rails.application.routes.draw do  
-  get 'feeds', to: 'feeds#feeds'
-  get 'feeds/photos', to: 'feeds#feeds_photos'
-  get 'feeds/albums', to: 'feeds#feeds_albums'
+  scope "(:locale)", locale: /en|vi/ do
+    # 
+    get 'feeds', to: 'feeds#feeds'
+    get 'feeds/photos', to: 'feeds#feeds_photos'
+    get 'feeds/albums', to: 'feeds#feeds_albums'
 
-  get 'discover', to: 'feeds#discover'
-  get 'discover/photos', to: 'feeds#discover_photos'
-  get 'discover/albums', to: 'feeds#discover_albums'
+    get 'discover', to: 'feeds#discover'
+    get 'discover/photos', to: 'feeds#discover_photos'
+    get 'discover/albums', to: 'feeds#discover_albums'
 
-  get 'users/index'
-  devise_for :users, controllers: {
+    get 'users/index'
+    devise_for :users, controllers: {
     sessions: 'users/sessions',
     :registrations => 'users/registrations'
-  }
-  resources :users do
+    }
+    resources :users do
     member do 
       post 'follow/:user_follow_id', to: 'users#edit_add_follow'
       #get followers for followings_tab
@@ -24,7 +26,7 @@ Rails.application.routes.draw do
       get '/update_by_admin', to: 'users#get_update_by_admin'
 
     end
-    
+
     resources :photos do 
       member do 
         post :like
@@ -41,16 +43,16 @@ Rails.application.routes.draw do
         end
       end
     end
-  end
-  
-  devise_scope :user do
+    end
+
+    devise_scope :user do
     get "signup", to: "devise/registrations#new"
     get "login", to: "devise/sessions#new"
     get "logout", to: "devise/sessions#destroy"
     get "forgot-password", to: "devise/passwords#new"
-  end
+    end
 
-  scope '/admin' do
+    scope '/admin' do
     get '/', to: 'admin#users', as: :admin_dashboard
     get '/users', to: "admin#users", as: :admin_users
     get '/photos', to: "admin#photos", as: :admin_photos
@@ -66,10 +68,10 @@ Rails.application.routes.draw do
     delete '/albums/:id', to: "admin#destroy_album", as: :admin_delete_album
     delete '/albums/pics/:id', to: "admin#destroy_pic", as: :admin_delete_pic
 
+    end
 
+    root 'feeds#discover'
+    get '*path' => redirect('/404.html')
+    # 
   end
-
-  root 'feeds#discover'
-  get '*path' => redirect('/404.html')
-
 end

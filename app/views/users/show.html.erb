@@ -18,7 +18,7 @@
             <% end %>
           <% end %>
         <% end %>
-
+        <h1><%= t(".name") %></h1>
         <h2 class="card-title"><%= "#{@user.first_name} #{@user.last_name}" %></h2>
         <ul class="public-profile-tabs">
           <li class="tab-link current" data-tab="tab-photos"><span class="counts counts-photos-tab"><%= @list_photos.size %></span> photos</li>
@@ -73,7 +73,7 @@
           <% if album.pics.size > 0 then
             img_link = album.pics.first.image.url
             else 
-            img_link = root_path + './assets/default-no-image.jpg'
+            img_link = '/assets/default-no-image.jpg'
           end %>
           <img src="<%= img_link %>" class="img-thumbnail a-albums-img">
           <img src="<%= img_link %>" class="img-thumbnail a-albums-img">

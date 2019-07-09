@@ -92,7 +92,7 @@
     <% @albums.each do |album|%>
     <!-- element -->
     <% 
-      represent_img_album = album.pics.size > 0 ? album.pics.first.image.url: root_path + './assets/default-no-image.jpg'      
+      represent_img_album = album.pics.size > 0 ? album.pics.first.image.url: '/assets/default-no-image.jpg'      
       user_album = album.user
     %>
     <div class="col-md-6 mb-3">
