@@ -1,0 +1,5 @@
+vi:
+  site:
+    js:
+      login_to_do_action: "Vui lòng đăng nhập để  thực hiện"
+      no_images_in_album: "Album này chưa có hình ảnh."

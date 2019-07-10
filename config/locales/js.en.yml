@@ -1,0 +1,5 @@
+en:
+  site:
+    js:
+      login_to_do_action: "Please login to do this action"
+      no_images_in_album: "There is no image in this album."

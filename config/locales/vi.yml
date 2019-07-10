@@ -1,14 +1,42 @@
 vi:
-  name: 'Tên'
-  users:
-    show:
-      name: 'Tên'
-    index:
-      user: 'Người dùng'
-      name: 'Tên'
-      email: 'Địa chỉ mail'
-      show: 'Xem chi tiết'
-      edit: 'Chinh sửa'
-      destroy: 'Xóa'
-      new_user: 'Thêm người dùng'
-      date: 'Ngày tạo'
+  evaluators:
+    alert:
+      should_save: "cccfwbmwfwvwjkmvdmvdmvwccccc"
+  layouts:
+    nav:
+      login: 'Đăng nhập'
+      logout: 'Đăng xuất'
+      signup: 'Đăng kí'
+      search: 'Tìm kiếm hình ảnh hoặc bộ sưu tập'
+    application:
+  devise:
+    registrations:
+      new:
+        email: 'Email'
+        first_name: 'Tên'
+        last_name: 'Họ'
+        password: 'Mật khẩu'
+        password_confirmation: 'Nhập lại mật khẩu'
+        sign_up: 'Đăng kí'
+        characters_minimum: 'Mật khẩu phải có ít nhất %{minimum_password_length} kí tự'
+    shared:
+      links:
+        login: 'Đăng nhập'
+        sign_up: 'Đăng kí'
+        forgot_your_password: 'Quên mật khẩu?'
+        didnt_receive_confirmation_instructions: 'Chưa nhận được hướng dẫn xác nhận?'
+        didnt_receive_unlock_instructions: 'Chưa nhập được hướng dẫn mở khóa?'
+    sessions:
+      new:
+        title_login: 'Đăng nhập Fotobook'
+        email: 'Email'
+        password: 'Mật khẩu'
+        forgot_password: 'Quên mật khẩu?'
+        login: 'Đăng nhập'
+        create_an_account: 'Tạo tài khoản mới'
+    passwords:
+      new:
+        forgot_password: 'Quên mật khẩu?'
+        you_can: 'Bạn có thể đặt lại mật khẩu ở đây'
+        reset_password: 'Đặt lại mật khẩu'
+        

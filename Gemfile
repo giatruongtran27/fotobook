@@ -85,3 +85,7 @@ gem 'dropzonejs-rails'
 gem 'will_paginate-bootstrap4'
 
 gem 'rails-i18n'
+
+gem 'devise-i18n'
+
+gem "i18n-js"

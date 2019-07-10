@@ -11,7 +11,7 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <div class="col-md-6 mr-auto">
-        <input id="nav-search" type="text" class="form-control" placeholder="Search Photo/Album" aria-label="search" aria-describedby="basic-addon1">
+        <input id="nav-search" type="text" class="form-control" placeholder="<%= t '.search'%>" aria-label="search" aria-describedby="basic-addon1">
       </div>
       <ul class="nav navbar-nav pull-right">
         <% if user_signed_in? %>
@@ -28,10 +28,10 @@
             <%= link_to "Dashboard", admin_dashboard_path, :class=> "nav-link"%>
           </li>
         <% end %>
-        <li class="nav-item"><%= link_to 'Log out', destroy_user_session_path, class: "nav-link", method: :delete %></li>
+        <li class="nav-item"><%= link_to t('.logout'), destroy_user_session_path, class: "nav-link", method: :delete %></li>
         <% else %>
-        <li class="nav-item"><%= link_to 'Log In', new_user_session_path, class: "nav-link" %></li>
-        <li class="nav-item"><%= link_to 'Sign Up', new_user_registration_path, class: "nav-link" %></li>
+        <li class="nav-item"><%= link_to t('.login'), new_user_session_path, class: "nav-link" %></li>
+        <li class="nav-item"><%= link_to t('.signup'), new_user_registration_path, class: "nav-link" %></li>
         <% end %>
       </ul>
     </div>

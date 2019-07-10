@@ -76,4 +76,7 @@ Rails.application.configure do
       :enable_starttls_auto => true
   }
   # end SETTINGs SEND EMAIL // DEVISE
+  config.middleware.use I18n::JS::Middleware
+  config.assets.precompile += %w( i18n.js translation.js )
+
 end

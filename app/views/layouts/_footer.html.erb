@@ -1,8 +1,12 @@
 <footer class= "container-fluid bg-blue text-center p-1">
   <p class="text-light"><b>FOTOBOOK <i class="fa fa-heart"></i> TruongTG</b></p>
   <div class="btn-group float-right" role="group" id="group-multi-language" >
-    <%= link_to "en", {locale: "en"}, { class: "btn btn-sm btn-light" } %>
-    <%= link_to "vi", {locale: "vi"}, { class: "btn btn-sm btn-secondary" } %>
+    <%= link_to "en", {locale: "en"}, { class: if I18n.locale.to_s.eql? "en" then "btn btn-sm btn-danger" else "btn btn-sm btn-light" end, :"data-turbolinks" => false } %>
+    <%= link_to "vi", {locale: "vi"}, { class: if I18n.locale.to_s.eql? "vi" then "btn btn-sm btn-danger" else "btn btn-sm btn-light" end, :"data-turbolinks" => false } %>
   </div>
   <div class="clearfix"></div>
 </footer>
+<script type="text/javascript">
+  I18n.defaultLocale = "<%= I18n.default_locale %>";
+  I18n.locale = "<%= I18n.locale %>";
+</script>

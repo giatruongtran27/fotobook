@@ -13,7 +13,7 @@ $(function(){
 
   //PUBLIC PROFILE CLICK FOLLOW
   please_login = function(){
-    toastr["error"]("Please login to follow this user");
+    toastr["error"](I18n.t("site.js.login_to_do_action"));
   }
 
   follow_click = function(e, own = 0){

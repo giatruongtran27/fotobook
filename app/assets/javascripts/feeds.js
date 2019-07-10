@@ -50,7 +50,8 @@ $(document).ready(function(){
   });
 
   //Follow click on Feeds and Discover Page
-  $('.a-img-element').click(function(){
+  $(document).on('click','.a-img-element',function(){
+  
     var img = $(this).find('img').attr('src');
     var alt = $(this).find('img').attr('alt');
     $('#myModal .img-modal').attr('src',img);
@@ -73,7 +74,7 @@ $(document).ready(function(){
     var pics = data["pics"];
     var has_images = data["has_images"]
     if(!has_images){
-      toastr["info"]("There is no image in this album.");
+      toastr["info"](I18n.t("site.js.no_images_in_album"));
     }else{
       $('#myModal2 .carousel-inner').empty();
       $.each(pics,function(i){
