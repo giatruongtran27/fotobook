@@ -32,7 +32,11 @@
         <% if user_signed_in? %>
         <li class="nav-item">
           <%= link_to user_path(current_user), :class=> "nav-link", :"data-turbolinks" => false do %>
-          <span class="nav-user-wrapper">
+          <% if current_user.image.present? %>
+            <span class="nav-user-wrapper">
+          <% else %>
+            <span class="nav-user-wrapper no-avatar" data-name="<%= current_user.words_no_avatar %>">
+          <% end %>
             <img src="<%= current_user.image.url %>" alt="<%= current_user.first_name + " " + current_user.last_name %>" class="rounded-circle">
             <span class="nav-user-name"><%= current_user.nil? ? "no name" : current_user.first_name.capitalize + " " + current_user.last_name.capitalize %></span>
           </span>

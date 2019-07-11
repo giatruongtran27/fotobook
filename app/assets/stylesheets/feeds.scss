@@ -101,15 +101,33 @@ img.img-thumbnail-custom{
   position: relative;
   align-items: center;
 }
+.element-user-wrapper.no-avatar::before{
+  position: absolute;
+  content: attr(data-name);
+  width: 25.5px;
+  height: 25.5px;
+  color: white;
+  background: #3C5999;
+  z-index: 1;
+  display: inline-flex;
+  left: -29px;
+  bottom: -3px;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
 span.element-user-wrapper img{
   vertical-align: inherit;
-    margin: 2px 6px 0px -8px;
-    display: inline;
-    width: 25px;
-    height: 25px;
-    position: absolute;
-    left: -20px;
-    bottom: -3px;
+  margin: 2px 6px 0px -8px;
+  display: inline;
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  left: -20px;
+  bottom: -3px;
 }
 .element-content-head a{
   color:#3C5999;

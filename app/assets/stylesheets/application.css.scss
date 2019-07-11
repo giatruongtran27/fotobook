@@ -95,3 +95,18 @@ footer p{
   transform: translate(-50%,-50%);
   margin:0;
 }
+span.nav-user-wrapper.no-avatar::before {
+  position: absolute;
+  content: attr(data-name);
+  width: 35px;
+  height: 35px;
+  background: white;
+  color: #3C5999;
+  z-index: 1;
+  display: inline-flex;
+  left: -45px;
+  bottom: -5px;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+}

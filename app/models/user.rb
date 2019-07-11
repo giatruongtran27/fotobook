@@ -24,4 +24,11 @@ class User < ApplicationRecord
   # validates_attachment :image, content_type: { content_type: /\Aimage\/.*\z/ }, size: { less_than: 5.megabyte }
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
 
+  def full_name 
+    first_name + " " + last_name
+  end
+
+  def words_no_avatar
+    self.full_name.split.map(&:first).join.upcase.slice(0, 2)
+  end
 end

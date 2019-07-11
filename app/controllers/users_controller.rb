@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   layout "admin_layout", only: [:edit]
-  before_action :authenticate_user!, only: [:index, :edit_add_follow, :create, :edit, :update, :admin_only, :check_authorize]
+  before_action :authenticate_user!, only: [:index, :edit_add_follow, :create, :edit, :admin_only, :check_authorize]
   before_action :check_authorize, only: [:create, :edit, :update, :destroy]  
   before_action :set_user, only: [:show, :edit, :update, :destroy, :get_followers, :edit_add_follow, :update_by_admin, :get_update_by_admin]
   before_action :admin_only, only: [:edit, :update_by_admin, :get_update_by_admin, :destroy]
@@ -25,7 +25,7 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to :back, notice: 'User was successfully updated.' }
+        format.html { redirect_to edit_user_registration_path, notice: 'User was successfully updated.' }
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit }
@@ -119,13 +119,13 @@ class UsersController < ApplicationController
   private
     def admin_only
       unless current_user and  current_user.admin
-        render :file => "#{Rails.root}/public/422.html",  :status => 422
+        render :file => "#{Rails.root}/public/422.html",  :status => 422, layout: 'errors_layout'
       end
     end
 
     def check_authorize
-      unless current_user and  (current_user.id == params[:id] or current_user.admin)
-        render :file => "#{Rails.root}/public/422.html",  :status => 422
+      unless current_user.id == params[:id].to_i or current_user.admin
+        render :file => "#{Rails.root}/public/422.html",  :status => 422, layout: 'errors_layout'
       end 
     end 
     def set_user
