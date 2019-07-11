@@ -182,39 +182,45 @@ $(function () {
 
   $('#form-add-album').submit(function(e){
     e.preventDefault();
-    var form = $('#form-add-album').serializeArray();
-    // var files = $('#album_pics_attributes_0_image')[0].files;
-    var formData = new FormData();
-    for(var i=0;i<form.length;i++){
-      // console.log(form[i]);
-      formData.append(form[i].name, form[i].value);
-    }
-    for(var i = 0; i<$arr_imgs_valid_album.length;i++){
-      formData.append('pics[image][]',$arr_imgs_valid_album[i].value);
-    }
-    var u = $('#form-add-album').attr('action');
-    if($arr_imgs_valid_album.length > 25){
-      toastr["error"]("Please upload maximum 25 images!")
+    var is_valid = $('#form-add-album').valid();
+    if(!is_valid) {
+      toastr["error"]("ERROR");
+      // e.preventDefault();
     }else{
-      $.ajax({
-        url: u,
-        data:formData,
-        type: 'POST',
-        contentType: false,
-        processData: false,
-        beforeSend: function(){
-          $('#preload').fadeIn('fast');
-        },
-        success: function(){
-          $('#preload').fadeOut('fast');
-          console.log("success");
-        },
-        error:function(){
-          $('#preload').fadeOut('fast');
-          console.log("error");
-        }
-      });
-    }
+      var form = $('#form-add-album').serializeArray();
+      // var files = $('#album_pics_attributes_0_image')[0].files;
+      var formData = new FormData();
+      for(var i=0;i<form.length;i++){
+        // console.log(form[i]);
+        formData.append(form[i].name, form[i].value);
+      }
+      for(var i = 0; i<$arr_imgs_valid_album.length;i++){
+        formData.append('pics[image][]',$arr_imgs_valid_album[i].value);
+      }
+      var u = $('#form-add-album').attr('action');
+      if($arr_imgs_valid_album.length > 25){
+        toastr["error"]("Please upload maximum 25 images!")
+      }else{
+        $.ajax({
+          url: u,
+          data:formData,
+          type: 'POST',
+          contentType: false,
+          processData: false,
+          beforeSend: function(){
+            $('#preload').fadeIn('fast');
+          },
+          success: function(){
+            $('#preload').fadeOut('fast');            
+            // console.log("success");
+          },
+          error:function(){
+            $('#preload').fadeOut('fast');
+            // console.log("error");
+          }
+        });
+      }
+    } 
   });
   /* ***************************** */
 });
