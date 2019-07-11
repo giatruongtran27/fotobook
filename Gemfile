@@ -91,3 +91,8 @@ gem 'devise-i18n'
 gem "i18n-js"
 
 gem 'bootstrap-glyphicons'
+
+# gem 'sweet-alert'
+# gem 'sweet-alert-confirm'
+gem 'sweetalert2' 
+gem 'rails-sweetalert2-confirm'

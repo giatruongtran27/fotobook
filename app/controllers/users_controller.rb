@@ -22,17 +22,17 @@ class UsersController < ApplicationController
   
   # PATCH/PUT /users/edit
   # UPDATE SELF PROFILE
-  def update
-    respond_to do |format|
-      if @user.update(user_params)
-        format.html { redirect_to edit_user_registration_path, notice: 'User was successfully updated.' }
-        format.json { render :show, status: :ok, location: @user }
-      else
-        format.html { render :edit }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+  # def update
+  #   respond_to do |format|
+  #     if @user.update_without_password(user_params)
+  #       format.html { redirect_to edit_user_registration_path, notice: 'User was successfully updated.' }
+  #       format.json { render :show, status: :ok, location: @user }
+  #     else
+  #       format.html { render 'devise/registrations/edit' }
+  #       format.json { render json: @user.errors, status: :unprocessable_entity }
+  #     end
+  #   end
+  # end
 
   def edit_add_follow
     begin
@@ -136,7 +136,7 @@ class UsersController < ApplicationController
       end
     end
     def user_params
-      params.require(:user).permit(:first_name, :last_name, :email, :image)
+      params.require(:user).permit(:first_name, :last_name, :email, :image, :password, :password_confirmation)
     end
 end
 

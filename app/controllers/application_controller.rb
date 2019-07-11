@@ -6,17 +6,13 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_permitted_parameters
-    added_attrs = [:username, :email, :password, :password_confirmation, :remember_me, :first_name, :last_name]
+    added_attrs = [:username, :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, :current_password]
     devise_parameter_sanitizer.permit :sign_up, keys: added_attrs
     devise_parameter_sanitizer.permit :account_update, keys: added_attrs
   end
+  
   def after_sign_out_path_for(*)
     new_user_session_path
-  end
-
-  def after_update_path_for(*)
-    # edit_user_registration_path
-    redirect_to edit_user_registration_path
   end
 
   # def set_locale

@@ -15,7 +15,8 @@
   </div>
 </div>
 <%#  %>
-<%= form_with(model: @user, controller: "users", action: "update", method: :put, local: true, id: "form-edit-self-basic-info" ,class: "form mb-5") do |f| %>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, id: "form-edit-self-basic-info", class: "form mb-5" }) do |f| %>
+
   <% if @user.errors.any? %>
     <% if !@user.errors[:current_password] && !@user.errors[:password] && !@user.errors[:password_confirmation] %>
     <div id="error_explanation">
