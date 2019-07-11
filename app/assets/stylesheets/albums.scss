@@ -6,13 +6,15 @@
   font-size: 20px;
 }
 .remove-img-album-preview.error {
-  color: red;
+  color: white;
 }
 .img-preview-new-album{
   position: relative;
   margin-right: 10px;
   margin-bottom: 10px;
   min-width: 200px;
+  overflow-x: hidden;
+  display: flex;
   // min-height: 135px;
 }
 .div-img-preview-album-content{

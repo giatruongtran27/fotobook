@@ -91,12 +91,16 @@ class PhotosController < ApplicationController
   private
     def check_authorize
       if current_user.id != params[:user_id].to_i and !current_user.admin
-        render :file => "#{Rails.root}/public/422.html",  :status => 422
+        render :file => "#{Rails.root}/public/422.html",  :status => 422, layout: 'errors_layout'
       end 
     end   
 
     def set_photo
-      @photo = Photo.find(params[:id])
+      begin
+        @photo = Photo.find(params[:id])
+      rescue
+        render :file => "#{Rails.root}/public/404.html",  :status => 404, layout: 'errors_layout'
+      end
     end
 
     def photo_params

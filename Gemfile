@@ -89,3 +89,5 @@ gem 'rails-i18n'
 gem 'devise-i18n'
 
 gem "i18n-js"
+
+gem 'bootstrap-glyphicons'

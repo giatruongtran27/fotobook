@@ -202,8 +202,16 @@ $(function () {
         type: 'POST',
         contentType: false,
         processData: false,
+        beforeSend: function(){
+          $('#preload').fadeIn('fast');
+        },
         success: function(){
+          $('#preload').fadeOut('fast');
           console.log("success");
+        },
+        error:function(){
+          $('#preload').fadeOut('fast');
+          console.log("error");
         }
       });
     }

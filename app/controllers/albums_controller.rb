@@ -128,7 +128,11 @@ class AlbumsController < ApplicationController
     end 
 
     def set_album
-      @album = Album.find(params[:id])
+      begin
+        @album = Album.find(params[:id])
+      rescue
+        render :file => "#{Rails.root}/public/404.html",  :status => 404, layout: 'errors_layout'
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

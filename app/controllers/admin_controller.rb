@@ -83,16 +83,24 @@ class AdminController < ApplicationController
   private
     def is_admin
       unless current_user and  current_user.admin
-        render :file => "#{Rails.root}/public/422.html",  :status => 422
+        render :file => "#{Rails.root}/public/422.html",  :status => 422, layout: 'errors_layout'
       end 
     end
 
     def set_photo
-      @photo = Photo.find(params[:id])
+      begin
+        @photo = Photo.find(params[:id])
+      rescue
+        render :file => "#{Rails.root}/public/404.html",  :status => 404, layout: 'errors_layout'
+      end      
     end
     
     def set_album
-      @album = Album.find(params[:id])
+      begin
+        @album = Album.find(params[:id])
+      rescue
+        render :file => "#{Rails.root}/public/404.html",  :status => 404, layout: 'errors_layout'
+      end      
     end
 
     def photo_params

@@ -6,6 +6,9 @@
     <% if @active_discover %>
       <%= link_to "PHOTOS", discover_photos_path, :"data-turbolinks" => false %>
     <% end %>
+    <% unless @active_discover or @active_feeds %>
+      <%= link_to "PHOTOS", "javascript:;", :"data-turbolinks" => false %>      
+    <% end %>
   </li>
   <li class="tab-link <% if @active_album_tag %>current <% end %>" data-tab="tab-album">
     <% if @active_feeds %>
@@ -14,11 +17,13 @@
     <% if @active_discover %>
       <%= link_to "ALBUMS", discover_albums_path, :"data-turbolinks" => false %>  
     <% end %>
+    <% unless @active_discover or @active_feeds %>
+      <%= link_to "ALBUMS", "javascript:;", :"data-turbolinks" => false %>      
+    <% end %>
   </li>
 </ul>
 <!-- TAB PHOTO -->
 <div id="tab-photo" class="tab-content <% if @active_photo_tag %>current <% end %>">
-<% if @active_photo_tag %>
 <% if @photos and @photos.size > 0 %>
   <div class="row">
     <!-- element -->
@@ -76,17 +81,15 @@
     <!-- end element -->
   </div>
   <div class="row justify-content-center">
-    <%= will_paginate @photos, :param_name => 'page', renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+    <%= will_paginate @photos, :param_name => 'page', renderer: WillPaginate::ActionView::BootstrapLinkRenderer, data: {turbolinks: false} %>
   </div>
 <% else %>
 <h5 class="text-danger">No Photos</h5>
-<% end %>
 <% end %>
 </div>
 <!-- end TAB PHOTO -->
 <!-- TAB ALBUM -->
 <div id="tab-album" class="tab-content <% if @active_album_tag %>current <% end %>">
-   <% if @active_album_tag %>
   <% if @albums and @albums.size > 0 %>
     <div class="row">
     <% @albums.each do |album|%>
@@ -157,12 +160,11 @@
     <% end %>
     </div>
     <div class="row justify-content-center">
-      <%= will_paginate @albums, :param_name => 'page', renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+      <%= will_paginate @albums, :param_name => 'page', renderer: WillPaginate::ActionView::BootstrapLinkRenderer, data: {turbolinks: false} %>
     </div>
   <% else %>
   <h5 class="text-danger">No Albums</h5>
-  <% end %>
-  <% end %>
+<% end %>
 </div>
 
 <!-- end TAB ALBUM -->
@@ -173,7 +175,7 @@
     <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header-custom">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <button type="button" class="close" data-dismiss="modal"><i class="fa fa-sm fa-times"></i></button>
         <h4 class="modal-title">Modal Header</h4>
       </div>
       <div class="modal-body pl-0 pr-0">
@@ -195,7 +197,7 @@
         <!--  -->
         <div id="demo" class="carousel slide" data-ride="carousel">
           <!-- The slideshow -->
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <button type="button" class="close" data-dismiss="modal"><i class="fa fa-sm fa-times"></i></button>
           <div class="carousel-inner">
             <div class="carousel-item active">
               <img src="" alt="Los Angeles" class="img-fluid">

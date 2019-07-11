@@ -129,7 +129,11 @@ class UsersController < ApplicationController
       end 
     end 
     def set_user
-      @user = User.find(params[:id])
+      begin
+        @user = User.find(params[:id])
+      rescue
+        render :file => "#{Rails.root}/public/404.html",  :status => 404, layout: 'errors_layout'
+      end
     end
     def user_params
       params.require(:user).permit(:first_name, :last_name, :email, :image)

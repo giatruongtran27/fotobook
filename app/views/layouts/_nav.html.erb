@@ -11,7 +11,22 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <div class="col-md-6 mr-auto">
-        <input id="nav-search" type="text" class="form-control" placeholder="<%= t '.search'%>" aria-label="search" aria-describedby="basic-addon1">
+        <%#  %>
+        <% 
+          target_url = discover_path if @active_discover
+          target_url = feeds_path if @active_feeds
+        %>
+        <%= form_tag(target_url,method: :get) do %>
+          <div class="input-group">
+            <%= text_field_tag :search, "", class: "form-control", placeholder: t('.search'), id: "nav-search" %>
+            <div class="input-group-append">
+            <%= button_tag(type: "submit", name:nil, class: "btn btn-sm btn-default") do %>
+              <i class="fa fa-sm fa-search"></i>
+            <% end %>
+            </div>
+          </div>
+        <% end %>
+        <%#  %>
       </div>
       <ul class="nav navbar-nav pull-right">
         <% if user_signed_in? %>
@@ -25,7 +40,7 @@
         </li>
         <% if !isAdminPage and current_user.admin %>
           <li class="nav-item">
-            <%= link_to "Dashboard", admin_dashboard_path, :class=> "nav-link"%>
+            <%= link_to "Dashboard", admin_dashboard_path, :class=> "nav-link", :"data-turbolinks" => false %>
           </li>
         <% end %>
         <li class="nav-item"><%= link_to t('.logout'), destroy_user_session_path, class: "nav-link", method: :delete %></li>
