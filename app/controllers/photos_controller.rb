@@ -38,7 +38,7 @@ class PhotosController < ApplicationController
 
   # GET /photos/new
   def new
-    @photo = Photo.new
+    @photo = @user.photos.build
   end
 
   # GET /photos/1/edit
@@ -97,6 +97,7 @@ class PhotosController < ApplicationController
 
     def set_photo
       begin
+        @user = User.find(params[:user_id])
         @photo = Photo.find(params[:id])
       rescue
         render :file => "#{Rails.root}/public/404.html",  :status => 404, layout: 'errors_layout'

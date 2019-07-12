@@ -1,8 +1,7 @@
-<%= form_with(model: [photo.user, photo], url: user_photos_path,  local: true, :html => { :id => "form_new_photo" }) do |f| %>
+<%= form_with model: [user, photo],  local: true, :html => { :id => "form_new_photo" } do |f| %>
 <% if photo.errors.any? %>
 <div id="error_explanation">
   <h2><%= pluralize(photo.errors.count, "error") %> prohibited this photo from being saved:</h2>
-
   <ul>
     <% photo.errors.full_messages.each do |message| %>
     <li><%= message %></li>
@@ -39,6 +38,10 @@
     </div>
   </div>
   <div class="d-flex col-up-load" id="img_preview">
+    <% if photo.image.present?%>
+      <%= image_tag(photo.image.url, width: 250, class: "img-fluid img-thumbnail") if @photo.image.exists? %>
+      <a href="javascript:;" id="remove_img_edit_photo"><i class="fa fa-sm fa-close"></i></a>
+    <% end %>
   </div>
 </div>
 <div class="actions">
