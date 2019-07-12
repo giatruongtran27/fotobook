@@ -63,6 +63,7 @@ class AlbumsController < ApplicationController
 
   # GET /albums/new
   def new
+    @user = User.find(params[:user_id])
     @album = Album.new 
     @album.pics.new
   end
@@ -130,6 +131,7 @@ class AlbumsController < ApplicationController
     def set_album
       begin
         @album = Album.find(params[:id])
+        @user = @album.user
       rescue
         render :file => "#{Rails.root}/public/404.html",  :status => 404, layout: 'errors_layout'
       end

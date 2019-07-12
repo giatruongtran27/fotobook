@@ -51,7 +51,6 @@ $(document).ready(function(){
 
   //Follow click on Feeds and Discover Page
   $(document).on('click','.a-img-element',function(){
-  
     var img = $(this).find('img').attr('src');
     var alt = $(this).find('img').attr('alt');
     $('#myModal .img-modal').attr('src',img);

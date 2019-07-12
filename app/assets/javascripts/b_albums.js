@@ -1,14 +1,11 @@
 Dropzone.autoDiscover = false;
 $(function () {
-  /* ***************************** */
   /* EDIT ALBUM WITH DROPZONE */
   var url_dropzone_album = $('#my-dropzone-album').attr('action'); //current url
   var get_url_album_dropzone_pics = url_dropzone_album + '/list'; //url to get list pics of album
   $("#my-dropzone-album").dropzone({
-    //autoProcessQueue: false,
     maxFilesize: 5,
-    //parallelUploads: 5,
-    maxFiles: 5,
+    maxFiles: 25,
     addRemoveLinks: true,
     acceptedFiles: ".png,.jpg,.gif,.jpeg",
     paramName: 'pic[image]',
@@ -46,7 +43,7 @@ $(function () {
 			});
     }
   });
-  /* ***************************** */
+
   /* ADD ALBUM*/
   $('#album_title').focus();
   $arr_imgs_valid_album = [];
@@ -115,10 +112,8 @@ $(function () {
       obj.added = false;
       if (type == "image/jpeg" || type == "image/png" || type == "image/gif") {
         if(size > (5*1024*1024)){// checks the file more than 5 MB // 5 * 1024 * 1024
-          // $('#photo_image').val('');
           $arr_imgs_error_album.push(obj);
-          errors.push(f);
-          // return false;
+          errors.push(f); // return false;
         }else{
           // return true;
           $arr_imgs_valid_album.push(obj);
@@ -143,9 +138,9 @@ $(function () {
         required: true,
         maxlength: 300
       },
-      // share_mode: {
-      //   required: true
-      // },
+      "album[sharing_mode]": {
+        required: true
+      },
       "pics[image][]": {
         uploadFilesAlbum: true,
       }
@@ -159,9 +154,9 @@ $(function () {
         required: "Description is required.",
         maxlength: "Description must be less than 300 characters."
       },
-      // share_mode: {
-      //   required: "Share mode is required.",
-      // },
+      "album[sharing_mode]": {
+        required: "Share mode is required.",
+      },
       "pics[image][]": {
         uploadFilesAlbum: "You have invalid image."
       }
@@ -185,13 +180,11 @@ $(function () {
     var is_valid = $('#form-add-album').valid();
     if(!is_valid) {
       toastr["error"]("ERROR");
-      // e.preventDefault();
     }else{
       var form = $('#form-add-album').serializeArray();
       // var files = $('#album_pics_attributes_0_image')[0].files;
       var formData = new FormData();
       for(var i=0;i<form.length;i++){
-        // console.log(form[i]);
         formData.append(form[i].name, form[i].value);
       }
       for(var i = 0; i<$arr_imgs_valid_album.length;i++){
@@ -211,16 +204,13 @@ $(function () {
             $('#preload').fadeIn('fast');
           },
           success: function(){
-            $('#preload').fadeOut('fast');            
-            // console.log("success");
+            $('#preload').fadeOut('fast'); // success
           },
           error:function(){
-            $('#preload').fadeOut('fast');
-            // console.log("error");
+            $('#preload').fadeOut('fast'); // error
           }
         });
       }
     } 
   });
-  /* ***************************** */
 });

@@ -38,6 +38,7 @@ class PhotosController < ApplicationController
 
   # GET /photos/new
   def new
+    @user = User.find(params[:user_id])
     @photo = @user.photos.build
   end
 
