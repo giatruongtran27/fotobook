@@ -3,8 +3,6 @@ class PhotosController < ApplicationController
   before_action :check_authorize, only: [:show, :create, :new, :edit, :update, :destroy]
   before_action :set_photo, only: [:show, :edit, :update, :destroy, :like]
   
-  # GET /photos
-  # GET /photos.json
   def index
     if current_user.id == params[:user_id].to_i || current_user.admin
       @user = User.find(params[:user_id])
@@ -31,25 +29,18 @@ class PhotosController < ApplicationController
     end
   end 
 
-  # GET /photos/1
-  # GET /photos/1.json
   def show
   end
 
-  # GET /photos/new
   def new
     @user = User.find(params[:user_id])
     @photo = @user.photos.build
   end
 
-  # GET /photos/1/edit
   def edit
   end
 
-  # POST /photos
-  # POST /photos.json
   def create
-    # current_user = User.find(1)
     params[:sharing_mode] = params[:sharing_mode] == "1"
     @user = User.find(params[:user_id])
     @photo = @user.photos.new(photo_params)
@@ -65,8 +56,6 @@ class PhotosController < ApplicationController
     end
   end
 
-  # PATCH/PUT /photos/1
-  # PATCH/PUT /photos/1.json
   def update
     respond_to do |format|
       if @photo.update(photo_params)
@@ -79,8 +68,6 @@ class PhotosController < ApplicationController
     end
   end
 
-  # DELETE /photos/1
-  # DELETE /photos/1.json
   def destroy
     @photo.destroy
     respond_to do |format|

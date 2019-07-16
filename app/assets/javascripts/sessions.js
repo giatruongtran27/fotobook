@@ -23,9 +23,6 @@ $(function() {
       label.addClass('error-validattion-arrow');
       label.insertAfter(element);
     },
-    wrapper: 'span',
-    // onfocusout: false,
-    // onkeyup: false,
-    // onclick: false
+    wrapper: 'span'
   });
 });

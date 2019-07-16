@@ -1,8 +1,5 @@
 $(function() {
-  //SIGNUP
   $("#user_email").focus();
-  // $('#form_sign_up').trigger("reset");
-
   $('#new_user').validate({
     rules:{
       "user[email]":{
@@ -25,8 +22,7 @@ $(function() {
       "user[password_confirmation]":{
         required: true,
         equalTo: "#user_password"
-      },
-
+      }
     },
     messages:{
       "user[email]":{
@@ -56,20 +52,15 @@ $(function() {
       label.insertAfter(element);
     },
     wrapper: 'span',
-    // onfocusout: false,
-    // onkeyup: false,
-    // onclick: false,
     submitHandler: function(form) {
       form.submit();
     }
   });
 
   $('#new_user button[type=submit]').click(function(e){
-    alert("Cc");
     var isValid = $(e.target).parents('form').isValid();
     if(!isValid) {
-      e.preventDefault(); //prevent the default action
+      e.preventDefault();
     }
   });
-  //END SIGNUP
 });

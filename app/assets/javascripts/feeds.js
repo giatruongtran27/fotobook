@@ -1,35 +1,22 @@
 $(document).ready(function(){
   $(document).on('click','ul.tabs li',function(){
     var tab_id = $(this).attr('data-tab');
-
     $('ul.tabs li').removeClass('current');
     $('.tab-content').removeClass('current');
-
     $(this).addClass('current');
     $("#"+tab_id).addClass('current');
   });
-  
-  $('.element-a-follow').on('ajax:success',function(event){
-    var detail = event.detail;
-    var data = detail[0], status = detail[1],  xhr = detail[2];
-    toastr["success"](data["messages"]);
-    var a = $('a[href="'+$(this).attr('href')+'"]');
-    var fol = a.toggleClass("following");
-    if(fol.hasClass("following")) 
-      fol.text("following");
-    else fol.text("follow");
-  });
 
-  $('.element-a-follow').on('ajax:error',function(event){
+  $(document).on('ajax:error', '.element-a-follow', function(event){
     var detail = event.detail;
-    var data = detail[0], status = detail[1],  xhr = detail[2];
+    var data = detail[0];
     toastr["error"]("Action Error!" + data);
   });
 
-  //LIKE
-  $('.a-like').on('ajax:success',function(event){
+  //Like
+  $(document).on('ajax:success', '.a-like', function(event){
     var detail = event.detail;
-    var data = detail[0], status = detail[1],  xhr = detail[2];
+    var data = detail[0];
     toastr["success"](data["messages"]);
     var fol = $(this).toggleClass("liked");
     var span_count_like = $(this).siblings('.count-like');
@@ -43,13 +30,13 @@ $(document).ready(function(){
       span_count_like.text(text_count_like);
     }
   });
-  $('.a-like').on('ajax:error',function(event){
+  $(document).on('ajax:error', '.a-like', function(event){
     var detail = event.detail;
     var data = detail[0], status = detail[1],  xhr = detail[2];
     toastr["error"]("error");
   });
 
-  //Follow click on Feeds and Discover Page
+  //Modal Photo
   $(document).on('click','.a-img-element',function(){
     var img = $(this).find('img').attr('src');
     var alt = $(this).find('img').attr('alt');
@@ -65,9 +52,8 @@ $(document).ready(function(){
   });
 
   
-  // Modal
-
-  $('.element-album-main-image').on('ajax:success',function(){
+  // Modal Album
+  $(document).on('ajax:success', '.element-album-main-image', function(event){
     var detail = event.detail;
     var data = detail[0], status = detail[1],  xhr = detail[2];
     var pics = data["pics"];
@@ -102,9 +88,9 @@ $(document).ready(function(){
       $('#myModal2').modal('show');
     }
   });
-  $('.element-album-main-image').on('ajax:error',function(event){
+  $(document).on('ajax:error', '.element-album-main-image', function(event){
     var detail = event.detail;
     var data = detail[0], status = detail[1],  xhr = detail[2];
-    toastr["error"]("error");
+    toastr["error"]("Error");
   });
 })

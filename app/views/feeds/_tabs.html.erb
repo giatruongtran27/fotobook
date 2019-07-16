@@ -1,0 +1,8 @@
+<ul class="tabs mb-3">
+  <li class="tab-link <%= "current" if params[:active_tab] == "photos" or params[:active_tab].nil? %>" data-tab="tab-photo"> 
+    <%= link_to "PHOTOS", photos_path %>
+  </li>
+  <li class="tab-link <%= "current" if params[:active_tab] == "albums" %>" data-tab = "tab-album">
+    <%= link_to "ALBUMS", albums_path %>  
+  </li>
+</ul>

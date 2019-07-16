@@ -3,17 +3,14 @@ $(function () {
 
   jQuery.validator.addMethod("uploadFile", function (val, element) {
     var file = element.files[0];
-    // console.log(file);
     var size = element.files[0].size;
     var type = element.files[0].type;
-    if (type == "image/jpeg" || type == "image/png" || type == "image/gif") {
+    if (type == "image/jpeg" || type == "image/png" || type == "image/gif"){
       if (size > 5 * 1024 * 1024)// checks the file more than 5 MB
       {
-        // console.log("returning false");
         $('#photo_image').val('');
         return false;
-      } else {
-        // console.log("returning true");
+      }else {
         return true;
       }
     }
@@ -26,7 +23,6 @@ $(function () {
   });
 
   $('#photo_image').change(function () {
-    // console.log($x.element("#photo_image")==true);
     if ($x.element("#photo_image")) {
       let file = $(this)[0].files[0];
       let url = URL.createObjectURL(file);
@@ -90,8 +86,7 @@ $(function () {
     }
   });
   $('#remove_img_edit_photo').click(function () {
-    // alert("cc");
     $(this).parent().addClass('hidden');
-    $('#col-input-file').show();
+    $('#col-input-file').removeClass('hidden').show();
   });
 });

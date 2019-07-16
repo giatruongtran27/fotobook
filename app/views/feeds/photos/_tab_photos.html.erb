@@ -1,0 +1,10 @@
+<% if photos and photos.size > 0 %>
+  <div class="row">
+    <%= render partial: 'feeds/photos/photo', collection: photos, locals: {photo: :photo} %>
+  </div>
+  <div class="row justify-content-center">
+    <%= will_paginate photos, :param_name => 'photo_page', renderer: WillPaginate::ActionView::BootstrapLinkRenderer, params: {active_tab: 'photos'} %>
+  </div>
+<% else %>
+  <h5 class="text-danger">No Photos</h5>
+<% end %>

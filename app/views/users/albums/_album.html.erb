@@ -1,0 +1,22 @@
+<div class="wrap-a-albums">
+  <div class="div-a-albums">
+    <% if album.pics.size > 0 then
+      img_link = album.pics.first.image.url
+      else 
+      img_link = '/assets/default-no-image.jpg'
+    end %>
+    <img src="<%= img_link %>" class="img-thumbnail a-albums-img">
+    <img src="<%= img_link %>" class="img-thumbnail a-albums-img">
+    <a href="javascript:;" class="a-albums-main-photo">
+      <span><%= album.pics.size %></span>
+      <img src="<%= img_link %>" class="img-thumbnail a-albums-img">
+    </a>
+    <% if full_authorities_for_this_user %>
+      <%= link_to "edit", edit_user_album_path(album.user, album), class: "a-edit", :"data-turbolinks" => false %>
+      <% if album.private_mode? %>
+        <a href="javascript:;" class="a-lock"><i class="fa fa-lock"></i></a>
+      <% end %>
+    <% end %>
+  </div>
+  <p class="text-center albums-title"><%= album.title %></p>
+</div>

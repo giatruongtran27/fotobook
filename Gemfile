@@ -38,7 +38,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'byebug', '~> 11.0', '>= 11.0.1', platforms: [:mri, :mingw, :x64_mingw]
 end
 
 group :development do
@@ -46,53 +46,46 @@ group :development do
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
+  gem 'spring', '~> 2.1'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
 group :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 2.15'
-  gem 'selenium-webdriver'
+  gem 'selenium-webdriver', '~> 3.142', '>= 3.142.3'
   # Easy installation and use of chromedriver to run system tests with Chrome
-  gem 'chromedriver-helper'
+  gem 'chromedriver-helper', '~> 2.1', '>= 2.1.1'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'tzinfo-data', '~> 1.2019', '>= 1.2019.2', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-# Bootstrap
+# Bootstrap 4
 gem "bootstrap", "~> 4.0.0"
-gem 'jquery-rails'
+gem 'jquery-rails', '~> 4.3', '>= 4.3.5'
 gem 'rails-ujs', '~> 0.1.0'
-
-gem 'sprockets'
-
-gem "font-awesome-rails"
-
-gem "jquery-validation-rails"
-
+gem 'sprockets', '~> 3.7', '>= 3.7.2'
+# Font Awesome
+gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.5'
+# Jquery Validation
+gem 'jquery-validation-rails', '~> 1.19'
+# Paperclip
 gem "paperclip", "~> 6.0.0"
-
-gem 'devise'
-
-gem 'toastr-rails'
-
-gem 'dropzonejs-rails'
-
-# gem 'will_paginate', '>= 3.0'
-
-gem 'will_paginate-bootstrap4'
-
-gem 'rails-i18n'
-
-gem 'devise-i18n'
-
-gem "i18n-js"
-
-gem 'bootstrap-glyphicons'
-
-# gem 'sweet-alert'
-# gem 'sweet-alert-confirm'
-gem 'sweetalert2' 
-gem 'rails-sweetalert2-confirm'
+# Devise
+gem 'devise', '~> 4.6', '>= 4.6.2'
+# Toastr
+gem 'toastr-rails', '~> 1.0', '>= 1.0.3'
+# Dropzone
+gem 'dropzonejs-rails', '~> 0.8.4'
+# Will Paginate Bs4
+gem 'will_paginate-bootstrap4', '~> 0.2.2'
+# I18n
+gem 'rails-i18n', '~> 5.1', '>= 5.1.3'
+gem 'devise-i18n', '~> 1.8'
+gem 'i18n-js', '~> 3.3'
+# Bootstrap Glyphicons
+gem 'bootstrap-glyphicons', '~> 0.0.1'
+# Sweet Alert2
+gem 'sweetalert2', '~> 7.25', '>= 7.25.6'
+gem 'rails-sweetalert2-confirm', '~> 0.9.10'

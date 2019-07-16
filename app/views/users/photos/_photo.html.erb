@@ -1,0 +1,12 @@
+<div class="wrap-a-photos">
+  <div class="div-a-photos">
+    <%= link_to image_tag(photo.image.url, :alt => photo.image_file_name, :class => "img-thumbnail a-photos-img"), 'javascript:;' %>
+    <% if full_authorities_for_this_user %>
+      <%= link_to "edit", edit_user_photo_path(photo.user, photo), class: "a-edit", :"data-turbolinks" => false%>
+      <% if photo.private_mode? %>
+        <a href="javascript:;" class="a-lock"><i class="fa fa-lock"></i></a>
+      <% end %>
+    <% end %>
+  </div>
+  <p class="text-center"><small><%= photo.title%></small></p>  
+</div>

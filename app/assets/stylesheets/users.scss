@@ -41,35 +41,6 @@ label.error {
   border-color: #3C5999;
 }
 
-/*flash*/
-// .alert-error {
-//     background-color: #f2dede;
-//     border-color: #eed3d7;
-//     color: #b94a48;
-//     text-align: left;
-//  }
-
-// .alert-alert {
-//     background-color: #f2dede;
-//     border-color: #eed3d7;
-//     color: #b94a48;
-//     text-align: left;
-//  }
-
-// .alert-success {
-//     background-color: #dff0d8;
-//     border-color: #d6e9c6;
-//     color: #468847;
-//     text-align: left;
-//  }
-
-// .alert-notice {
-//     background-color: #dff0d8;
-//     border-color: #d6e9c6;
-//     color: #468847;
-//     text-align: left;
-//  }
-
 // FORM RESET PASSWORD
 .form-gap {
     padding-top: 70px;
@@ -333,7 +304,7 @@ a.profile-card-follow.edit-profile:hover{
 	border-radius: 24px;
 	font-weight: 700;
 	color: #FF004B;
-	border: 0.0125rem solid #FF004B;
+	border: 0.05rem solid #FF004B;
 	background-color: white;
 }
 #tab-followings .a-person-card-follow:hover, #tab-followings .a-person-card-follow.following{
@@ -373,7 +344,7 @@ a.profile-card-follow.edit-profile:hover{
 	border-radius: 24px;
 	font-weight: 700;
 	color: #FF004B;
-	border: 0.0125rem solid #FF004B;
+	border: 0.05rem solid #FF004B;
 	background-color: white;
 }
 #tab-followers .a-person-card-follow:hover, #tab-followers .a-person-card-follow.following{

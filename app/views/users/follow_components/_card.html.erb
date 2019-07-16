@@ -1,0 +1,21 @@
+<div id="<%= type + "_" + follower.id.to_s %>" class="d-flex flex-column <%=type%>-card">
+  <div class="p-2 text-center">
+    <%= link_to user_path(follower), class: "a-person" do %>
+      <img src="<%= follower.image.url %>" alt="<%= "#{follower.full_name}" %>" class="rounded-circle" width="100" height="100">
+    <% end %> 
+  </div>
+  <h5 class="text-center a-person-name"><%= "#{follower.last_name} #{follower.first_name}" %></h5>
+  <div class="d-flex justify-content-around mb-1">
+    <div class="d-flex flex-fill flex-column a-person-card-photos">
+      <p><%= follower.photos.size %></p>
+      <small>PHOTOS</small>
+    </div>
+    <div class="d-flex flex-fill flex-column a-person-card-albums">
+      <p><%= follower.albums.size %></p>
+      <small>ALBUMS</small>
+    </div>
+  </div>
+  <div class="text-center">
+    <%= render "users/follow_components/follow_button", follower: follower, user: user, type: type %>         
+  </div>
+</div>

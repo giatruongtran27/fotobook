@@ -24,11 +24,3 @@
 //= require toastr
 //= require turbolinks
 //= require_tree .
-
-var myFunc = function() {
-  $('#preload').delay(400).fadeOut('fast');
-};
-
-$(document).ready(myFunc);
-$(document).on('page:load', myFunc); // Classic Turbolinks
-$(document).on('turbolinks:load', myFunc); // Turbolinks 5

@@ -31,7 +31,6 @@ $(function () {
     init: function() {
 			var me = this;
 			$.get( get_url_album_dropzone_pics, function(data) {
-        // console.log(data);
         $.each(data.images, function(key, value) {
 					if (data.images != undefined && data.images.length > 0) {
 						me.emit("addedfile", value);
@@ -93,8 +92,6 @@ $(function () {
       });
     }
     $(this).parent().remove();
-    // console.log("valid",$arr_imgs_valid_album);
-    // console.log("error",$arr_imgs_error_album);
   });
 
   jQuery.validator.addMethod("uploadFilesAlbum", function (val, element) {
@@ -115,15 +112,13 @@ $(function () {
           $arr_imgs_error_album.push(obj);
           errors.push(f); // return false;
         }else{
-          // return true;
-          $arr_imgs_valid_album.push(obj);
+          $arr_imgs_valid_album.push(obj); // return true;
         }
       }else{
         errors.push(f);
         $arr_imgs_error_album.push(obj);
       }
     }
-    //validate
     if (errors.length > 0) return false;
     else return true;
   });
@@ -169,20 +164,16 @@ $(function () {
     onfocusout: false,
     onfocus: false,
     onkeyup: false,
-    onclick: false,
-    // submitHandler: function (form) {
-    //   form.submit();
-    // }
+    onclick: false
   });
 
   $('#form-add-album').submit(function(e){
     e.preventDefault();
     var is_valid = $('#form-add-album').valid();
     if(!is_valid) {
-      toastr["error"]("ERROR");
+      toastr["error"]("Error");
     }else{
       var form = $('#form-add-album').serializeArray();
-      // var files = $('#album_pics_attributes_0_image')[0].files;
       var formData = new FormData();
       for(var i=0;i<form.length;i++){
         formData.append(form[i].name, form[i].value);

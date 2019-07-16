@@ -27,7 +27,7 @@ class User < ApplicationRecord
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
 
   def full_name 
-    first_name + " " + last_name
+    first_name.capitalize + " " + last_name.capitalize
   end
 
   def words_no_avatar

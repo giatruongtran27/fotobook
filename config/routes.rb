@@ -11,16 +11,11 @@ Rails.application.routes.draw do
 
     get 'users/index'
     devise_for :users, controllers: {
-      sessions: 'users/sessions',
       :registrations => 'users/registrations'
     }
     resources :users do
       member do 
         post 'follow/:user_follow_id', to: 'users#edit_add_follow'
-        #get followers for followings_tab
-        get 'followings', to: 'user#get_followers'
-        #get followees for followers_tab
-        get 'followees', to: 'user#get_followees'
         #update by admin
         put :update_by_admin
         get '/update_by_admin', to: 'users#get_update_by_admin'

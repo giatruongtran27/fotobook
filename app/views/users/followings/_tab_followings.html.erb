@@ -1,0 +1,5 @@
+<div id="tab-followings" class="public-profile-tab-content">
+  <div class="d-flex flex-wrap justify-content-center profiles-content-wrapper-followings">
+    <%= render partial: "users/follow_components/card", collection: followers, as: :follower, locals: {follower: :follower, user: user, type: "followings"} %>
+  </div>
+</div>

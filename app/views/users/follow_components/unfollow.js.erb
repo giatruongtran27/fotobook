@@ -1,0 +1,19 @@
+var count_followings_tab = parseInt($('#counts-followings-tab').text()); 
+var count_followers_tab = parseInt($('#counts-followers-tab').text()); 
+
+var href = '/users/<%= @user.id %>/follow/<%= @follower.id %>';
+var followings_container = $('.profiles-content-wrapper-followings');
+var btn_a = followings_container.find('a[href$="'+ href +'"]');
+
+<% if @at_your_profile %>
+  $('#counts-followings-tab').text(count_followings_tab - 1);
+  $('#followings_<%= @follower.id %>').remove();
+<% end %>
+
+<% if @at_follower_profile %>
+  $('#counts-followers-tab').text(count_followers_tab - 1);
+  $('#followers_<%= current_user.id %>').remove();
+<% end %>
+
+$('a[href$="'+ href +'"]').removeClass('following').text('follow');
+toastr['success']('You have unfollowed <%= @follower.full_name %>');
