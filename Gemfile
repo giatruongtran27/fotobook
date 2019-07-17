@@ -5,8 +5,6 @@ ruby '2.6.3'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.3'
-# Use mysql as the database for Active Record
-gem 'mysql2', '>= 0.4.4', '< 0.6.0'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
@@ -42,6 +40,8 @@ group :development, :test do
 end
 
 group :development do
+  # Use mysql as the database for Active Record
+  gem 'mysql2', '>= 0.4.4', '< 0.6.0'
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
@@ -58,6 +58,10 @@ group :test do
   gem 'chromedriver-helper', '~> 2.1', '>= 2.1.1'
 end
 
+group :production do 
+  gem 'pg', '~> 0.18.1'
+end
+
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', '~> 1.2019', '>= 1.2019.2', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
@@ -72,6 +76,7 @@ gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.5'
 gem 'jquery-validation-rails', '~> 1.19'
 # Paperclip
 gem "paperclip", "~> 6.0.0"
+gem 'aws-sdk', '~> 2'
 # Devise
 gem 'devise', '~> 4.6', '>= 4.6.2'
 # Toastr
