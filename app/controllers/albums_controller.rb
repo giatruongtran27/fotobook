@@ -61,12 +61,10 @@ class AlbumsController < ApplicationController
       @user = User.find(params[:user_id])
       @album = @user.albums.create(album_params)
       def insert_data
-        ActiveRecord::Base.transaction do
-          params[:pics]["image"].each do |i|
-            @img = Pic.create image: i
-            @img.album = @album
-            @img.save
-          end
+        params[:pics]["image"].each do |i|
+          @img = Pic.create image: i
+          @img.album = @album
+          @img.save
         end 
       end
       if params[:pics] and params[:pics]["image"].size > 0
