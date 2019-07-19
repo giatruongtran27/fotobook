@@ -12,11 +12,16 @@ class UsersController < ApplicationController
   def show
     @full_authorities_for_this_user = UsersService.full_authorities_for_this_user? current_user, @user
     if @full_authorities_for_this_user
-      @list_photos = @user.photos
-      @list_albums = @user.albums
+      @list_photos = @user.photos.paginate(:page => params[:photos_page], :per_page => 4)
+      @list_albums = @user.albums.paginate(:page => params[:albums_page], :per_page => 4)
     else
-      @list_photos = @user.photos.public_mode
-      @list_albums = @user.albums.public_mode
+      @list_photos = @user.photos.public_mode.paginate(:page => params[:photos_page], :per_page => 4)    
+      @list_albums = @user.albums.public_mode.paginate(:page => params[:albums_page], :per_page => 4)      
+    end
+
+    respond_to do |format|
+      format.html
+      format.js
     end
   end 
 

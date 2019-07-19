@@ -14,6 +14,7 @@
 //= require activestorage
 //= require i18n
 //= require i18n/translations
+//= require jquery3
 //= require jquery
 //= require jquery_ujs
 //= require dropzone
@@ -21,6 +22,7 @@
 //= require jquery.validate.additional-methods
 //= require popper
 //= require bootstrap-sprockets
+//= require will_paginate_infinite
 //= require toastr
 //= require turbolinks
 //= require_tree .

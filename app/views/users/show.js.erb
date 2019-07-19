@@ -1,0 +1,21 @@
+<%  
+  if params then
+    photos_page ||= params[:photos_page]
+    albums_page ||= params[:albums_page]
+  else 
+    photos_page = 1
+    albums_page = 1
+  end
+%>
+var photo_data_page = $('#tab-photos').attr('data-page');
+var album_data_page = $('#tab-albums').attr('data-page');
+
+if(photo_data_page < "<%= photos_page %>"){
+  <%= infinite_append "#tab-photos .profiles-content-wrapper", { partial: "users/photos/photo", collection: @list_photos, as: :photo, locals: {photo: :photo, full_authorities_for_this_user: @full_authorities_for_this_user} }  %>
+  $('#tab-photos').attr('data-page',parseInt(photo_data_page)+1);
+}
+
+if(album_data_page < "<%= albums_page %>"){
+  <%= infinite_append "#tab-albums .profiles-content-wrapper-albums", { partial: "users/albums/album", collection: @list_albums, as: :album, locals: {album: :album, full_authorities_for_this_user: @full_authorities_for_this_user} }  %>
+  $('#tab-albums').attr('data-page',parseInt(album_data_page)+1);
+}

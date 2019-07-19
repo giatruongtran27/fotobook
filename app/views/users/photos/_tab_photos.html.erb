@@ -1,4 +1,4 @@
-<div id="tab-photos" class="public-profile-tab-content current">
+<div id="tab-photos" data-page="1" class="public-profile-tab-content current">
   <div class="d-flex flex-wrap justify-content-end mt-0 mb-3 mr-3">
     <% if full_authorities_for_this_user %>
     <%= link_to "Add Photo", new_user_photo_path(user), class: "btn btn-sm btn-success", id: "btn-add-photo", :"data-turbolinks" => false %>
@@ -7,4 +7,7 @@
   <div class="d-flex flex-wrap justify-content-center profiles-content-wrapper">
     <%= render partial: "users/photos/photo", collection: list_photos, as: :photo, locals: {photo: :photo, full_authorities_for_this_user: full_authorities_for_this_user} %>
   </div>
+
+  <%= will_paginate list_photos, :param_name => 'photos_page', renderer: WillPaginateInfinite::InfinitePagination, class: "photo-infinite-pagination d-none" %>
+
 </div>

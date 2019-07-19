@@ -13,6 +13,7 @@
  *= require_self
  *= require toastr
  *= require dropzone/dropzone
+ *= require will_paginate_infinite
  *= require_tree .
  */
 @import "bootstrap";

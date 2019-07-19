@@ -20,8 +20,8 @@
         <% end %>
         <h2 class="card-title"><%= user.full_name %></h2>
         <ul class="public-profile-tabs">
-          <li class="tab-link current" data-tab="tab-photos"><span class="counts counts-photos-tab"><%= list_photos.size %></span> photos</li>
-          <li class="tab-link" data-tab="tab-albums"><span class="counts counts-albums-tab"><%= list_albums.size %></span> albums </li>
+          <li class="tab-link current" data-tab="tab-photos"><span class="counts counts-photos-tab"><%= list_photos.total_entries %></span> photos</li>
+          <li class="tab-link" data-tab="tab-albums"><span class="counts counts-albums-tab"><%= list_albums.total_entries %></span> albums </li>
           <li class="tab-link" data-tab="tab-followings" id="_tab_followings"><span class="counts" id = "counts-followings-tab"><%= user.followers.size %></span> followings</li>
           <li class="tab-link" data-tab="tab-followers" id="_tab_followers"><span class="counts" id = "counts-followers-tab"><%= user.followees.size %></span> followers</li>
         </ul>

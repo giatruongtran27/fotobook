@@ -86,6 +86,8 @@ gem 'toastr-rails', '~> 1.0', '>= 1.0.3'
 gem 'dropzonejs-rails', '~> 0.8.4'
 # Will Paginate Bs4
 gem 'will_paginate-bootstrap4', '~> 0.2.2'
+# Will paginate infinite
+gem 'will_paginate_infinite', '~> 0.1.3'
 # I18n
 gem 'rails-i18n', '~> 5.1', '>= 5.1.3'
 gem 'devise-i18n', '~> 1.8'
