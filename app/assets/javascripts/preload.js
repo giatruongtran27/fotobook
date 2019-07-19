@@ -1,5 +1,7 @@
 var myPreloadFunc = function() {
+  $('.element-content-mid').mCustomScrollbar();
   $('#preload').delay(300).fadeOut('fast');
+
 };
 
 $(document).ready(myPreloadFunc);

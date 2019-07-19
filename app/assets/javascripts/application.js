@@ -24,5 +24,6 @@
 //= require bootstrap-sprockets
 //= require will_paginate_infinite
 //= require toastr
+//= require jquery.mCustomScrollbar.concat.min
 //= require turbolinks
 //= require_tree .

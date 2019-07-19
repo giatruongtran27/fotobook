@@ -1,4 +1,7 @@
 $(document).ready(function(){
+  $(document).ready(function(){
+    $('.element-content-mid').mCustomScrollbar();
+  });
   $(document).on('click','ul.tabs li',function(){
     var tab_id = $(this).attr('data-tab');
     $('ul.tabs li').removeClass('current');
