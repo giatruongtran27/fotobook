@@ -1,0 +1,24 @@
+doctype html
+html
+  head
+    title Fotobook Admin
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+  body
+    = render "layouts/nav", isAdminPage: true, active_page: "discover"
+    .container-fluid.mt-3.mb-3
+      .row
+        .col-lg-2.d-flex.flex-column
+          .d-flex.flex-row.justify-content-center
+            div
+              = link_to "Manager Photos", admin_photos_path , :"data-turbolinks" => false, class: if @manage_photos then "d-block left-item active" else "d-block left-item" end
+              = link_to "Manager Albums", admin_albums_path, :"data-turbolinks" => false, class: if @manage_albums then "d-block left-item active" else "d-block left-item" end
+              = link_to "Manager Users", {controller: "admin", action: "users"}, :"data-turbolinks" => false, class: if @manage_users then "d-block left-item active" else "d-block left-item" end
+        .col-lg-8.pb-3.main-content
+          = yield
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    javascript: 
+      #{sanitize custom_bootstrap_flash}
+      I18n.defaultLocale = "#{I18n.default_locale}";
+      I18n.locale = "#{I18n.locale}"

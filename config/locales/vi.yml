@@ -1,12 +1,13 @@
 vi:
-  evaluators:
-    alert:
-      should_save: "cccfwbmwfwvwjkmvdmvdmvwccccc"
+  login: 'Đăng nhập'
+  logout: 'Đăng xuất'
+  signup: 'Đăng kí'
   layouts:
     nav:
       login: 'Đăng nhập'
       logout: 'Đăng xuất'
       signup: 'Đăng kí'
+    nav_search:
       search: 'Tìm kiếm hình ảnh hoặc bộ sưu tập'
     application:
   devise:

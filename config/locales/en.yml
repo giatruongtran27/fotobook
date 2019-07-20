@@ -1,12 +1,13 @@
 en:
-  evaluators:
-    alert:
-      should_save: "You should save csccccx fix!"
+  login: 'Login'
+  logout: 'Logout'
+  signup: 'Sign Up'
   layouts:
     nav:
       login: 'Login'
       logout: 'Logout'
       signup: 'Sign Up'
+    nav_search:
       search: 'Search Photo/Album'
     application:
   devise:

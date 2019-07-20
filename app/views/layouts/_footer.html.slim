@@ -1,0 +1,14 @@
+footer.container-fluid.bg-blue.text-center.p-1
+  p.text-light 
+    b FOTOBOOK <i class="fa fa-heart"></i> TruongTG
+  #group-multi-language.btn-group.float-right role="group"
+    = link_to "en", {locale: "en"}, class: if I18n.locale.to_s.eql? "en" then "btn btn-sm btn-danger" else "btn btn-sm btn-light" end, "data-turbolinks": false
+    = link_to "vi", {locale: "vi"}, class: if I18n.locale.to_s.eql? "vi" then "btn btn-sm btn-danger" else "btn btn-sm btn-light" end, "data-turbolinks": false
+  .clearfix
+#preload.preload-container.text-center
+  .container-preload
+    div
+      img src="/assets/logo.png" alt="fotobook"
+    .lds-ellipsis
+      - for i in (1..4)
+        div

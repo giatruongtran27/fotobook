@@ -1,0 +1,19 @@
+doctype html
+html
+  head
+    title Fotobook
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag "application", media: "all", "data-turbolinks-track": "reload"
+  body.body-devise
+    = render "layouts/nav", isAdminPage: false, active_page: "discover"
+    .container-fluid.mt-3.mb-3
+      .row.justify-content-center
+        .col-lg-8.pb-5.main-content
+          = yield
+    = render "layouts/footer"
+    = javascript_include_tag "application", "data-turbolinks-track": "reload"
+    javascript: 
+      #{sanitize custom_bootstrap_flash}
+      I18n.defaultLocale = "#{I18n.default_locale}";
+      I18n.locale = "#{I18n.locale}"

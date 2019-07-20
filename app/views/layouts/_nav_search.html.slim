@@ -1,0 +1,7 @@
+.col-md-6.mr-auto
+  = form_tag(search_feeds?(active_page) ? feeds_path : discover_path , method: :get) do
+    .input-group
+      = text_field_tag :search, "", class: "form-control", placeholder: t('.search'), id: "nav-search"
+      .input-group-append
+        = button_tag(type: "submit", name:nil, class: "btn btn-sm btn-default") do
+          i.fa.fa-sm.fa-search 
