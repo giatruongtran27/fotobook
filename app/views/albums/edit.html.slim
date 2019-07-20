@@ -10,6 +10,6 @@ hr
       = f.file_field :image
       = f.submit t('upload_image')
 hr
-= link_to t('show').capitalize, user_album_path(@album.user, @album), class: "btn btn-sm btn-info"
+= link_to t('show'), user_album_path(@album.user, @album), class: "btn btn-sm btn-info"
 |  | 
-= link_to t('back').capitalize, user_albums_path, class: "btn btn-sm btn-primary"
+= link_to t('back'), user_albums_path, class: "btn btn-sm btn-primary"

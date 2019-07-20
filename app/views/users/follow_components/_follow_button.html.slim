@@ -1,0 +1,14 @@
+- if current_user
+  - if current_user != follower
+    - if current_user.id == user.id and type == "followings"
+      = link_to 'unfollow', {:controller => "users", :action => "edit_add_follow", :user_follow_id => follower.id}, method: :post, remote: true,  class: "a-person-card-follow unfollow"
+    - else
+      - if current_user.followers.include? follower
+        = link_to 'following', {:controller => "users", :action => "edit_add_follow", :user_follow_id => follower.id}, method: :post, remote: true,  class: "a-person-card-follow following"
+      - else
+        = link_to 'follow', {:controller => "users", :action => "edit_add_follow", :user_follow_id => follower.id}, method: :post, remote: true,  class: "a-person-card-follow"
+  - else
+    button.a-person-card-follow.following[href="javascript:;"]
+      | it's you
+- else
+  = link_to 'follow', "javascript:;", title: "Please login to follow this user", class: "a-person-card-follow please-login"

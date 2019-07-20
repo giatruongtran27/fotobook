@@ -25,7 +25,7 @@ hr
     = f.submit t('save'), :class => "btn btn-sm btn-success"
     |  | 
     = link_to admin_delete_album_path(@album), method: :delete, data: { confirm: t('are_you_sure') }, class: "btn btn-sm btn-danger" do
-      i.fa.fa-trash = t('destroy').capitalize 
+      i.fa.fa-trash = t('destroy') 
 hr
 #content
   = form_for :pic, :url => {:controller => "pics", :action => "create", :album_id => @album.id, user_id: @album.user}, html: { multipart: true, class: "dropzone", id: "my-dropzone-album" } do |f|

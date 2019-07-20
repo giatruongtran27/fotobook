@@ -1,0 +1,23 @@
+h5.mt-3.d-inline-block 
+  = t('search') 
+  small
+    =< t('in')
+  b.text-blue
+    =< @search_in
+= link_to t("back"), root_path, class: "btn btn-sm btn-primary float-right mt-3"
+hr
+h5
+  small
+    = t('result_for')
+  code
+    =< @search
+ul.list-group
+  li.list-group-item.d-flex.justify-content-between.align-items-center
+    = t('photos') 
+    span.badge.badge-primary.badge-pill
+      = @photos.total_entries
+  li.list-group-item.d-flex.justify-content-between.align-items-center
+    = t('albums') 
+    span.badge.badge-primary.badge-pill
+      = @albums.total_entries
+= render  :template => "feeds/index"

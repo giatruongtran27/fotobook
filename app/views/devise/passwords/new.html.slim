@@ -1,0 +1,24 @@
+.container
+  .row
+    .col-md-6.m-auto
+      .card.card-default.bg-light
+        .card-body
+          .text-center
+            h3
+              i.fa.fa-lock.fa-4x
+            h2.text-center
+              = t('.forgot_password')
+            p
+              = t('.you_can')
+            .card-body
+              = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, id: "register-form" }) do |f|
+                = render "devise/shared/error_messages", resource: resource
+                .input-group.mb-3
+                  .input-group-prepend
+                    span.input-group-text
+                      i.fa.fa-envelope.color-blue
+                  = f.email_field :email, class: "form-control" , autofocus: true, autocomplete: "email", placeholder: "email@example.com", required: true
+                .form-group
+                  = f.submit t('.reset_password'), class: "btn btn-lg btn-secondary btn-lock"
+  .container.text-center.mt-3
+    = render "devise/shared/links"

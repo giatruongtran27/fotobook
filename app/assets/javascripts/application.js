@@ -16,7 +16,6 @@
 //= require i18n/translations
 //= require jquery3
 //= require jquery
-//= require jquery_ujs
 //= require dropzone
 //= require jquery.validate
 //= require jquery.validate.additional-methods

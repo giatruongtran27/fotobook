@@ -1,0 +1,5 @@
+= render 'card_info', user: @user, list_photos: @list_photos, list_albums: @list_albums
+= render 'users/photos/tab_photos', list_photos: @list_photos, user: @user, full_authorities_for_this_user: @full_authorities_for_this_user
+= render 'users/albums/tab_albums', list_albums: @list_albums, user: @user, full_authorities_for_this_user: @full_authorities_for_this_user
+= render 'users/followings/tab_followings', followers: @user.followers, user: @user
+= render 'users/followers/tab_followers', followees: @user.followees, user: @user

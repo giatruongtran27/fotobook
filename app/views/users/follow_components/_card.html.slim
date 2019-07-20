@@ -1,0 +1,19 @@
+div id="#{type + "_" + follower.id.to_s}" class="d-flex flex-column #{type}-card" 
+  .p-2.text-center
+    = link_to user_path(follower), class: "a-person" do
+      img src="#{follower.image.url}" alt="#{follower.full_name}" class="rounded-circle" width="100" height="100"
+  h5.text-center.a-person-name
+    = follower.full_name
+  .d-flex.justify-content-around.mb-1
+    .d-flex.flex-fill.flex-column.a-person-card-photos
+      p
+        = follower.photos.size
+      small
+        | PHOTOS
+    .d-flex.flex-fill.flex-column.a-person-card-albums
+      p
+        = follower.albums.size
+      small
+        | ALBUMS
+  .text-center
+    = render "users/follow_components/follow_button", follower: follower, user: user, type: type

@@ -1,0 +1,8 @@
+- if albums and albums.size > 0
+  .row
+    = render partial: 'feeds/albums/album', collection: albums, locals: {album: :album}
+  .row.justify-content-center
+    = will_paginate albums, :param_name => 'album_page', renderer: WillPaginate::ActionView::BootstrapLinkRenderer, params: {active_tab: 'albums'}
+- else
+  h5.text-danger
+    | No Albums

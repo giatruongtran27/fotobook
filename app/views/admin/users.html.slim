@@ -15,5 +15,5 @@ table.table.table-stripped
         td
           - if user.last_sign_in_at
             = user.last_sign_in_at.strftime("%I:%M %p %-d/%-m/%Y")
-        td = link_to t('edit').capitalize, admin_edit_user_path(user), class: "btn btn-sm btn-warning", :"data-turbolinks" => false
-        td = link_to t('destroy').capitalize, user, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-danger"
+        td = link_to t('edit'), admin_edit_user_path(user), class: "btn btn-sm btn-warning", :"data-turbolinks" => false
+        td = link_to t('destroy'), user, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-danger"

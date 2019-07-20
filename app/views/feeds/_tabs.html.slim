@@ -1,0 +1,5 @@
+ul.tabs.mb-3
+  li class=(-if params[:active_tab].eql? "photos" or params[:active_tab].nil? then "tab-link current" else "tab-link" end) data-tab="tab-photo" 
+    = link_to "PHOTOS", photos_path, :"data-turbolinks" => false
+  li class=(-if params[:active_tab].eql? "albums" then "tab-link current" else "tab-link" end)  data-tab="tab-album" 
+    = link_to "ALBUMS", albums_path, :"data-turbolinks" => false

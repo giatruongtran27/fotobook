@@ -1,0 +1,20 @@
+p#notice
+  = notice
+h1 = t('photos')
+table.table.table-hover
+  tbody
+    - @photos.each do |photo|
+      tr
+        td
+          code = photo.title
+        td
+          = image_tag(photo.image.url, width: 100, class: "img-fluid") if photo.image.exists?
+        td
+          = link_to t('show'), user_photo_path(photo.user, photo), class: "btn btn-sm btn-info"
+        td
+          = link_to t('edit'), edit_user_photo_path(photo.user, photo), :"data-turbolinks" => false, class: "btn btn-sm btn-warning"
+        td
+          = link_to t('destroy'), [photo.user, photo], method: :delete, data: { confirm: t('are_you_sure') }, class: "btn btn-sm btn-danger"
+br
+- if current_user and ( current_user.id == @user.id || current_user.admin)
+  = link_to t('new_photo'), new_user_photo_url,:"data-turbolinks" => false, class: "btn btn-sm btn-info"

@@ -33,7 +33,7 @@ hr
       a#remove_img_edit_photo[href="javascript:;"]
         i.fa.fa-sm.fa-close
   .actions
-    = f.submit t('save').capitalize, :class => "btn btn-sm btn-success m-1"
+    = f.submit t('save'), :class => "btn btn-sm btn-success m-1"
     |  | 
     = link_to admin_delete_photo_path(@photo), method: :delete, data: { confirm: t('are_you_sure') }, class: "btn btn-sm btn-danger m-1" do
-      i.fa.fa-trash = t('destroy').capitalize 
+      i.fa.fa-trash = t('destroy') 
