@@ -6,7 +6,7 @@ ul.nav.navbar-nav.pull-right
             img.rounded-circle src="#{current_user.image.url}" alt="#{current_user.full_name}"
             span.nav-user-name = current_user.nil? ? "no name" : current_user.full_name
     - if !isAdminPage and current_user.admin
-      li.nav-item = link_to "Dashboard", admin_dashboard_path, class: "nav-link", "data-turbolinks": false
+      li.nav-item = link_to t('dash_board'), admin_dashboard_path, class: "nav-link", "data-turbolinks": false
     li.nav-item = link_to t('logout'), destroy_user_session_path, class: "nav-link", method: :delete
   - else
     li.nav-item = link_to t('login'), new_user_session_path, class: "nav-link"

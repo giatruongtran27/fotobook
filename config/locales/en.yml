@@ -1,7 +1,56 @@
 en:
+  albums: 'Abums'
+  new_album: 'New Album'
+  edit_album: 'Edit Album'
+  images_of_album: 'Images of Album'
+  photos: 'Photos'
+  new_photo: 'New Photo'
+  dash_board: 'Admin Page'
   login: 'Login'
   logout: 'Logout'
   signup: 'Sign Up'
+  first_name: 'First Name'
+  last_name: 'Last Name'
+  last_login: 'Last Login'
+  back: 'back'
+  email: 'Email'
+  show: 'show'
+  edit: 'edit'
+  destroy: destroy
+  manage_photos: 'Manage Photos'
+  manage_albums: 'Manage Albums'
+  manage_users: 'Manage Users'
+  edit_album: 'Edit Album'
+  edit_photo: 'Edit Photo'
+  edit_user: 'Edit User'
+  submit: 'Submit'
+  save: 'Save'
+  add_or_remove_images_here: 'Add or Remove Images of Album here'
+  upload_image: 'Upload Image'
+  are_you_sure: 'Are you sure?'
+  public: 'Public'
+  private: 'Private'
+  select_one: 'Select one'
+  activerecord:
+    models:
+      user: 'User'
+      album: 'Album'
+      photo: 'Photo'
+    attributes:
+      photo:
+        title: 'Title'
+        description: 'Description'
+        sharing_mode: 'Sharing Mode'
+        image: 'Photo'
+      album:
+        title: 'Title'
+        description: 'Description'
+        sharing_mode: 'Sharing Mode'
+      user:
+        first_name: 'First Name'
+        last_name: 'Last Name'
+        email: 'Email'
+        password: 'Password'
   layouts:
     nav:
       login: 'Login'

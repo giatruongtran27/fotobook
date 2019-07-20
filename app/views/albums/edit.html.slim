@@ -1,0 +1,15 @@
+h2.mt-3.mb-3 = t('edit_album')
+hr
+= render 'form', album: @album, user: @user
+hr
+#content
+  = form_for :pic, :url => {:controller => "pics", :action => "create", :album_id => @album.id}, html: { multipart: true, class: "dropzone", id: "my-dropzone-album" } do |f|
+    .dz-message.needsclick
+      h3 = t('add_or_remove_images_here')
+    .fallback
+      = f.file_field :image
+      = f.submit t('upload_image')
+hr
+= link_to t('show').capitalize, user_album_path(@album.user, @album), class: "btn btn-sm btn-info"
+|  | 
+= link_to t('back').capitalize, user_albums_path, class: "btn btn-sm btn-primary"

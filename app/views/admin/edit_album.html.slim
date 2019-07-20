@@ -1,0 +1,36 @@
+h5.mt-3.d-inline-block.title = t('edit_album') 
+= link_to t('back').capitalize, admin_albums_path, class: "btn btn-sm btn-primary float-right mt-3"
+hr
+= form_with(model: @album, url: :admin_edit_album, method: :put, local: true, :html => { :id => "form_new_photo" } ) do |f|
+  - if @album.errors.any?
+    #error_explanation
+      h2
+        = pluralize(@album.errors.count, "error")
+        |  prohibited this album from being saved:
+      ul
+        - @album.errors.full_messages.each do |message|
+          li = message
+  .row
+    .col-md-6
+      .form-group
+        = f.label :title
+        = f.text_field :title, placeholder: true, :class => 'form-control'
+      .form-group
+        = f.label :sharing_mode
+        = f.select :sharing_mode, options_for_select([[t('public'), :public_mode], [t('private'), :private_mode]], @album.sharing_mode ),{:prompt => t('select_one')}, {required: 'true', class: 'form-control'}
+    .col-md-6.form-group
+      = f.label :description
+      = f.text_area(:description, size: '50x3', class: 'form-control', placeholder: true)
+  .actions
+    = f.submit t('save'), :class => "btn btn-sm btn-success"
+    |  | 
+    = link_to admin_delete_album_path(@album), method: :delete, data: { confirm: t('are_you_sure') }, class: "btn btn-sm btn-danger" do
+      i.fa.fa-trash = t('destroy').capitalize 
+hr
+#content
+  = form_for :pic, :url => {:controller => "pics", :action => "create", :album_id => @album.id, user_id: @album.user}, html: { multipart: true, class: "dropzone", id: "my-dropzone-album" } do |f|
+    .dz-message.needsclick
+      h3 = t('add_or_remove_images_here')
+    .fallback
+      = f.file_field :image
+      = f.submit t('upload_image')

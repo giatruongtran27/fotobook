@@ -1,0 +1,13 @@
+.container
+  h1.mt-3 = t('albums')
+  table.table.table-hover
+    tbody
+      - @albums.each do |album|
+        tr
+          td = album.title
+          td = link_to t('show').capitalize, user_album_path(album.user,album),  class: "btn btn-sm btn-info"
+          td = link_to t('edit').capitalize, edit_user_album_path(album.user,album), :"data-turbolinks" => false,  class: "btn btn-sm btn-warning"
+          td = link_to t('destroy').capitalize, [album.user, album], method: :delete, data: {confirm: t('are_you_sure')}, class: "btn btn-sm btn-danger"
+  hr
+  = link_to t('new_album'), new_user_album_path, :"data-turbolinks" => false,  class: "btn btn-sm btn-info"
+  div

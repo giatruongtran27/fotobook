@@ -1,0 +1,13 @@
+#admin_manage_albums.d-flex.flex-wrap.justify-content-start.profiles-content-wrapper-albums
+  - @albums.each do |album|
+    - img_link = album.pics.size > 0 ? album.pics.first.image.url : "/assets/default-no-image.jpg"
+    .wrap-a-albums
+      .div-a-albums
+        img src="#{img_link}" class="a-albums-img" 
+        img src="#{img_link}" class="a-albums-img"
+        a.a-albums-main-photo[href="javascript:;"]
+          img src="#{img_link}" class="img-thumbnail a-albums-img" 
+      .d-flex.justify-content-end.head
+        p.albums-title = album.title
+        = link_to admin_edit_album_path(album), class: "a-edit", "data-turbolinks": false do
+          i.fa.fa-sm.fa-edit

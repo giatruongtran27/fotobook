@@ -1,7 +1,56 @@
 vi:
+  albums: 'Danh sách bộ sưu tập'
+  new_album: 'Tạo bộ sưu tập mới'
+  edit_album: 'Chỉnh sửa bộ sưu tập'
+  images_of_album: 'Hình ảnh của bộ sưu tập'
+  photos: 'Danh sách hình ảnh'
+  new_photo: 'Tạo hình ảnh mới'
+  dash_board: 'Trang quản lý'
   login: 'Đăng nhập'
   logout: 'Đăng xuất'
   signup: 'Đăng kí'
+  first_name: 'Tên'
+  last_name: 'Họ'
+  last_login: 'Lần đăng nhập cuối'
+  back: 'quay lại'
+  email: 'Email'
+  show: 'xem'
+  edit: 'sửa'
+  destroy: 'xóa'
+  manage_photos: 'Quản lý ảnh'
+  manage_albums: 'Quản lý bộ sưu tập'
+  manage_users: 'Quản lý người dùng'
+  edit_album: 'Chỉnh sửa bộ sưu tập'
+  edit_photo: 'Chỉnh sửa hình ảnh'
+  edit_user: 'Chỉnh sửa người dùng'
+  submit: 'Xác nhận'
+  save: 'Lưu'
+  add_or_remove_images_here: 'Thêm hoặc xóa hình ảnh ở đây'
+  upload_image: 'Tải ảnh lên'
+  are_you_sure: 'Bạn có chắc?'
+  public: 'Công khai'
+  private: 'Chỉ mình tôi'
+  select_one: 'Chọn một'
+  activerecord:
+    models:
+      user: 'Người dùng'
+      album: 'Bộ sưu tập'
+      photo: 'Người dùng'
+    attributes:
+      photo:
+        title: "Tiêu đề"
+        description: 'Mô tả'
+        sharing_mode: 'Chế độ'
+        image: 'Hình ảnh'
+      album:
+        title: "Tiêu đề"
+        description: 'Mô tả'
+        sharing_mode: 'Chế độ'
+      user:
+        first_name: 'Tên'
+        last_name: 'Họ'
+        email: 'Email'
+        password: 'Mật khẩu' 
   layouts:
     nav:
       login: 'Đăng nhập'

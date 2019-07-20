@@ -1,0 +1,39 @@
+h5.mt-3.d-inline-block.title = t("edit_photo") 
+= link_to t("back").capitalize, admin_photos_path, class: "btn btn-sm btn-primary float-right mt-3"
+hr
+= form_with(model: @photo, url: :admin_edit_photo, method: :put, local: true, :html => { id: "form-add-album" }) do |f|
+  - if @photo.errors.any?
+    #error_explanation
+      h2
+        = pluralize(@photo.errors.count, "error")
+        |  prohibited this photo from being saved:
+      ul
+        - @photo.errors.full_messages.each do |message|
+          li = message
+  .row
+    .col-md-6
+      .form-group
+        = f.label :title
+        = f.text_field :title, :class => "form-control", placeholder: true, autofocus: 'true'
+      .form-group
+        = f.label :sharing_mode
+        = f.select :sharing_mode, options_for_select([[t('public'), :public_mode], [t('private'), :private_mode]], @photo.sharing_mode ),{:prompt => t('select_one')}, {required: 'true', class: 'form-control'}
+    .col-md-6
+      .form-group
+        = f.label :description
+        = f.text_area :description, :class => "form-control", placeholder: "description"
+  .d-flex.justify-content-start.form-group
+    #col-input-file.col-up-load[style="display:none !important;"]
+      .custom-file.my-custom-file
+        = f.file_field :image , :class => "custom-file-input my-custom-file"
+        label.custom-file-label.my-custom-file[for="customFile"]
+          i.fa.fa-plus
+    #img_preview.d-flex.col-up-load
+      = image_tag(@photo.image.url, width: 250, class: "img-fluid img-thumbnail") if @photo.image.exists?
+      a#remove_img_edit_photo[href="javascript:;"]
+        i.fa.fa-sm.fa-close
+  .actions
+    = f.submit t('save').capitalize, :class => "btn btn-sm btn-success m-1"
+    |  | 
+    = link_to admin_delete_photo_path(@photo), method: :delete, data: { confirm: t('are_you_sure') }, class: "btn btn-sm btn-danger m-1" do
+      i.fa.fa-trash = t('destroy').capitalize 

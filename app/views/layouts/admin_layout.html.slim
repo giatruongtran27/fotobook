@@ -12,11 +12,12 @@ html
         .col-lg-2.d-flex.flex-column
           .d-flex.flex-row.justify-content-center
             div
-              = link_to "Manager Photos", admin_photos_path , :"data-turbolinks" => false, class: if @manage_photos then "d-block left-item active" else "d-block left-item" end
-              = link_to "Manager Albums", admin_albums_path, :"data-turbolinks" => false, class: if @manage_albums then "d-block left-item active" else "d-block left-item" end
-              = link_to "Manager Users", {controller: "admin", action: "users"}, :"data-turbolinks" => false, class: if @manage_users then "d-block left-item active" else "d-block left-item" end
+              = link_to t('manage_photos'), admin_photos_path , :"data-turbolinks" => false, class: if @manage_photos then "d-block left-item active" else "d-block left-item" end
+              = link_to t('manage_albums'), admin_albums_path, :"data-turbolinks" => false, class: if @manage_albums then "d-block left-item active" else "d-block left-item" end
+              = link_to t('manage_users'), {controller: "admin", action: "users"}, :"data-turbolinks" => false, class: if @manage_users then "d-block left-item active" else "d-block left-item" end
         .col-lg-8.pb-3.main-content
           = yield
+    = render "layouts/footer"
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
     javascript: 
       #{sanitize custom_bootstrap_flash}
