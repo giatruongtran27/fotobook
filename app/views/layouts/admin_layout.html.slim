@@ -4,6 +4,7 @@ html
     title Fotobook Admin
     = csrf_meta_tags
     = csp_meta_tag
+    link rel="shortcut icon" type="image/png" href="/assets/logo.png"
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
   body
     = render "layouts/nav", isAdminPage: true, active_page: "discover"
