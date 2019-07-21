@@ -1,5 +1,52 @@
 en:
-  site:
-    js:
-      login_to_do_action: "Please login to do this action"
-      no_images_in_album: "There is no image in this album."
+  js:
+    login_to_do_action: "Please login to do this action"
+    no_images_in_album: "There is no image in this album."
+    album:
+      new:
+      edit:
+        add_image_to_album_success: 'Add image to this album successfully.'
+        remove_image_from_album_success: 'Remove image from this album successfully.'
+    validate:
+      try_again: 'There are some errors. Please try again.'
+      please_upload_valid_image: 'Please upload valid image.'
+      uploadFilesAlbum: 'You have invalid images.'
+      max_25_images: 'Please upload maximum 25 images.'
+      you_will_create_album: 'You will create this album'
+      only_accept_valid_images: 'We only accept valid images in this album'
+      accept: 'Accept'
+      cancel: 'Cancel'
+      cancelled: 'Cancelled'
+      you_can_redo_somethings: 'You can redo somethings'
+      email:
+        required: 'Email is required.'
+        email: 'Please enter a valid email address.'
+        maxlength: 'Email must be less than 255 characters.'
+      first_name:
+        required: 'First Name is required.'
+        maxlength: 'First Name must be less than 25 characters.'
+      last_name:
+        required: 'Last Name is required.'
+        maxlength: 'Last Name must be less than 25 characters.'
+      current_password:
+        required: 'Current password is required.'
+      password:
+        required: 'Password is required.'
+        minlength: 'Password must be more than 6 characters.'
+        maxlength: 'Password must be less than 64 characters.'
+      password_confirmation:
+        required: 'Password Confirmation is required.'
+        equalTo: 'Password and password confirmation must be same.'
+      title:
+        required: 'Title is required.'
+        maxlength: 'Title must be less than 140 characters.'
+      description:
+        required: 'Description is required.'
+        maxlength: 'Description must be less than 300 characters.'
+      sharing_mode:
+        required: 'Sharing mode is required.'
+      image:
+        max_size: 'Max file size is 5MB'
+        extension: 'Image type is invalid.'
+        required: 'Image is required.'
+        invalid: 'Image is invalid.'

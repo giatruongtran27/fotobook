@@ -42,6 +42,12 @@ en:
   select_one: 'Select one'
   please_login: 'Please login to do this action'
   activerecord:
+    errors:
+      models:
+        photo:
+          attributes:
+            image:
+              invalid: "Invalid image"
     models:
       user: 'User'
       album: 'Album'

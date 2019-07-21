@@ -42,6 +42,12 @@ vi:
   select_one: 'Chọn một'
   please_login: 'Vui lòng đăng nhập để thực hiện tác vụ này'
   activerecord:
+    errors:
+      models:
+        photo:
+          attributes:
+            image:
+              invalid: "Hình ảnh không hợp lệ"
     models:
       user: 'Người dùng'
       album: 'Bộ sưu tập'

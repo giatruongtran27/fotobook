@@ -28,19 +28,19 @@ hr
       label.float-right[for="first_name"]
         | First Name
     .col-md-4
-      = f.text_field :first_name, class: "form-control", placeholder: "first name"
+      = f.text_field :first_name, class: "form-control", placeholder: true
   .row.form-group
     .col-md-4.title-left-form-self-edit
       label.float-right[for="last_name"]
         | Last Name
     .col-md-4
-      = f.text_field :last_name, class: "form-control", placeholder: "last name"
+      = f.text_field :last_name, class: "form-control", placeholder: true
   .row.form-group
     .col-md-4.title-left-form-self-edit
       label.float-right[for="email"]
         | Email
     .col-md-4
-      = f.email_field :email, class: "form-control", placeholder: "email"
+      = f.email_field :email, class: "form-control", placeholder: true
   .row
     .col-md-4.m-auto
       = f.submit "Save", class: "btn btn-sm btn-success"
@@ -53,19 +53,19 @@ hr
     = render "devise/shared/error_messages", resource: resource
   .row.form-group
     .col-md-4.title-left-form-self-edit
-      = f.label :current_password, class: "float-right", placeholder: "current password"
+      = f.label :current_password, class: "float-right"
     .col-md-4
-      = f.password_field :current_password, autocomplete: "current-password", class: "form-control", placeholder: "current password"
+      = f.password_field :current_password, autocomplete: "current-password", class: "form-control", placeholder: true
   .row.form-group
     .col-md-4.title-left-form-self-edit
       = f.label "New Password", class: "float-right"
     .col-md-4
-      = f.password_field :password, autocomplete: "new-password", class: "form-control", placeholder: "new password"
+      = f.password_field :password, autocomplete: "new-password", class: "form-control", placeholder: true
   .row.form-group
     .col-md-4.title-left-form-self-edit
       = f.label :password_confirmation, class: "float-right"
     .col-md-4
-      = f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control", placeholder: "password confirmation"
+      = f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control", placeholder: true
   .row
     .col-md-4.m-auto
       = f.submit "Save", class: "btn btn-sm btn-success"

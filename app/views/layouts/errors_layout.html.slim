@@ -12,7 +12,7 @@ html
       .row.d-flex.justify-content-center.main-content-error
         = yield
     = render "layouts/footer"
-    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload', "data-turbolinks-eval": "false"
     javascript: 
       #{sanitize custom_bootstrap_flash}
       I18n.defaultLocale = "#{I18n.default_locale}";

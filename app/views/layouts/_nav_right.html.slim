@@ -9,5 +9,5 @@ ul.nav.navbar-nav.pull-right
       li.nav-item = link_to t('dash_board'), admin_dashboard_path, class: "nav-link", "data-turbolinks": false
     li.nav-item = link_to t('logout'), destroy_user_session_path, class: "nav-link", method: :delete
   - else
-    li.nav-item = link_to t('login'), new_user_session_path, class: "nav-link"
-    li.nav-item = link_to t('signup'), new_user_registration_path, class: "nav-link"
+    li.nav-item = link_to t('login'), new_user_session_path, class: "nav-link", "data-turbolinks": false
+    li.nav-item = link_to t('signup'), new_user_registration_path, class: "nav-link", "data-turbolinks": false
