@@ -17,10 +17,10 @@ class PhotosController < ApplicationController
       check_like = @photo.likes.find_by(user_id: current_user)
       if check_like
         check_like.delete
-        render json: { messages: "You have unliked photo: #{@photo.title}", type: "unlike"}, status: 200
+        render json: { messages: t('like.you_have_unliked', obj: @photo.title), type: "unlike"}, status: 200
       else
         @photo.likes.create(user_id: current_user.id)
-        render json: { messages: "You have liked photo: #{@photo.title}", type: "like"}, status: 200 
+        render json: { messages: t('like.you_have_liked', obj: @photo.title), type: "like"}, status: 200 
       end
     rescue StandardError => e
       render json: {
@@ -47,7 +47,7 @@ class PhotosController < ApplicationController
 
     respond_to do |format|
       if @photo.save
-        format.html { redirect_to user_photo_path(@photo.user, @photo), notice: 'Photo was successfully created.' }
+        format.html { redirect_to user_photo_path(@photo.user, @photo), notice: t('notice.photo.create') }
         format.json { render :show, status: :created, location: @photo }
       else
         format.html { render :new }
@@ -59,7 +59,7 @@ class PhotosController < ApplicationController
   def update
     respond_to do |format|
       if @photo.update(photo_params)
-        format.html { redirect_to user_photo_path(@photo.user, @photo), notice: 'Photo was successfully updated.' }
+        format.html { redirect_to user_photo_path(@photo.user, @photo), notice: t('notice.photo.update') }
         format.json { render :show, status: :ok, location: @photo }
       else
         format.html { render :edit }
@@ -71,7 +71,7 @@ class PhotosController < ApplicationController
   def destroy
     @photo.destroy
     respond_to do |format|
-      format.html { redirect_to user_photos_url, notice: 'Photo was successfully destroyed.' }
+      format.html { redirect_to user_photos_url, notice: t('notice.photo.destroy') }
       format.json { head :no_content }
     end
   end

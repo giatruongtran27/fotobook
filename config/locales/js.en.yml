@@ -1,5 +1,15 @@
 en:
   js:
+    you_have_followed: 'You have followed %{user}'
+    you_have_unfollowed: 'You have unfollowed %{user}'
+    you_have_liked: 'You have liked %{obj}'
+    you_have_unliked: 'You have unliked %{obj}'
+    follow:
+      follow: 'follow'
+      followed: 'followed'
+      following: 'following'
+      unfollow: 'unfollow'
+      unfollowed: 'unfollowed'
     login_to_do_action: "Please login to do this action"
     no_images_in_album: "There is no image in this album."
     album:

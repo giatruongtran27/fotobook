@@ -1,4 +1,4 @@
-- represent_img_album = album.pics.size > 0 ? album.pics.first.image.url: '/assets/default-no-image.jpg'      
+- represent_img_album = album.pics.size > 0 ? album.pics.first.image.url(:medium) : '/assets/default-no-image.jpg'      
 - user_album = album.user
 .col-md-6.mb-3
   .container-fluid.p-0
@@ -19,11 +19,11 @@
                   span.element-user-name = user_album.full_name
               - if current_user
                 - if current_user.followers.include? user_album
-                  = link_to 'following', {:controller => "users", :action => "edit_add_follow", :id => current_user.id , :user_follow_id => user_album.id}, method: :post, remote: true , class: "element-a-follow following"
+                  = link_to t('follow.following'), {:controller => "users", :action => "edit_add_follow", :id => current_user.id , :user_follow_id => user_album.id}, method: :post, remote: true , class: "element-a-follow following"
                 - else
-                  = link_to 'follow', {:controller => "users", :action => "edit_add_follow", :id => current_user.id , :user_follow_id => user_album.id}, method: :post, remote: true , class: "element-a-follow"
+                  = link_to t('follow.follow'), {:controller => "users", :action => "edit_add_follow", :id => current_user.id , :user_follow_id => user_album.id}, method: :post, remote: true , class: "element-a-follow"
               - else
-                = link_to 'follow', "javascript:;", title: t('please_login'), class: "element-a-follow please-login"
+                = link_to t('follow.follow'), "javascript:;", title: t('please_login'), class: "element-a-follow please-login"
           h5.element-content-title
             = album.title
           p.element-content-mid

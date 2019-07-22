@@ -15,5 +15,7 @@ var btn_a = followings_container.find('a[href$="'+ href +'"]');
   $('#followers_<%= current_user.id %>').remove();
 <% end %>
 
-$('a[href$="'+ href +'"]').removeClass('following').text('follow');
-toastr['success']('You have unfollowed <%= @follower.full_name %>');
+$('a[href$="'+ href +'"]').removeClass('following').text(I18n.t('js.follow.follow'));
+
+mess = I18n.t( 'js.you_have_unfollowed', {"user": "<%= @follower.full_name %>"});
+toastr['success'](mess);

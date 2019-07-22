@@ -7,7 +7,7 @@ class FeedsController < ApplicationController
       @search = params[:search].strip
       @photos = FeedsService.feeds(Photo ,@followers_ids, params[:photo_page], @search)
       @albums = FeedsService.feeds(Album ,@followers_ids, params[:album_page], @search) 
-      @search_in = "FEEDS"
+      @search_in = t('title.feeds')
       @active_page = "feeds_search"
       render "search"
     else 
@@ -32,7 +32,7 @@ class FeedsController < ApplicationController
       @search = params[:search].strip
       @photos = FeedsService.discover(Photo, current_user, params[:photo_page], @search)
       @albums = FeedsService.discover(Album, current_user, params[:album_page], @search)
-      @search_in = "DISCOVER"
+      @search_in = t('title.discover')
       @active_page = "discover_search"
       render "search"
     else 

@@ -31,7 +31,7 @@ class AdminController < ApplicationController
   def update_photo
     respond_to do |format|
       if @photo.update(photo_params)
-        format.html { redirect_to admin_photos_path, notice: 'Photo was successfully updated.' }
+        format.html { redirect_to admin_photos_path, notice: t('notice.photo.update') }
         format.json { render :show, status: :ok, location: @photo }
       else
         format.html { render :edit_photo }
@@ -43,7 +43,7 @@ class AdminController < ApplicationController
   def destroy_photo
     @photo.destroy
     respond_to do |format|
-      format.html { redirect_to admin_photos_path, notice: 'Photo was successfully destroyed.' }
+      format.html { redirect_to admin_photos_path, notice: t('notice.photo.destroy') }
       format.json { head :no_content }
     end
   end
@@ -55,7 +55,7 @@ class AdminController < ApplicationController
   def update_album
     respond_to do |format|
       if @album.update(album_params)
-        format.html { redirect_to admin_albums_path, notice: 'Album was successfully updated.' }
+        format.html { redirect_to admin_albums_path, notice: t('notice.album.update') }
         format.json { render :show, status: :ok, location: @album }
       else
         format.html { render :edit_album }
@@ -66,7 +66,7 @@ class AdminController < ApplicationController
   def destroy_album
     @album.destroy
     respond_to do |format|
-      format.html { redirect_to admin_albums_path, notice: 'Photo was successfully destroyed.' }
+      format.html { redirect_to admin_albums_path, notice: t('notice.album.destroy') }
       format.json { head :no_content }
     end
   end

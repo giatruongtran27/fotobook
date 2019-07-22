@@ -68,7 +68,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.update(my_params)
-        format.html { redirect_to admin_edit_user_path(@user), notice: 'User was successfully updated.' }
+        format.html { redirect_to admin_edit_user_path(@user), notice: t('notice.user.update') }
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit }
@@ -80,7 +80,7 @@ class UsersController < ApplicationController
   def destroy
     @user.destroy
     respond_to do |format|
-      format.html { redirect_to admin_dashboard_path, notice: 'User was successfully destroyed.' }
+      format.html { redirect_to admin_dashboard_path, notice: t('notice.user.destroy') }
       format.json { head :no_content }
     end
   end

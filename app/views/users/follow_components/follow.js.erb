@@ -2,7 +2,7 @@ var count_followings_tab = parseInt($('#counts-followings-tab').text());
 var count_followers_tab = parseInt($('#counts-followers-tab').text()); 
 
 $('#followers_<%= @follower.id %>').find('a.a-person-card-follow').addClass('following');
-$('#followers_<%= @follower.id %>').find('a.a-person-card-follow').text('following');
+$('#followers_<%= @follower.id %>').find('a.a-person-card-follow').text(I18n.t('js.follow.following'));
 
 <% if @at_your_profile %>
   $('#counts-followings-tab').text(count_followings_tab + 1);
@@ -14,10 +14,11 @@ $('#followers_<%= @follower.id %>').find('a.a-person-card-follow').text('followi
   $('#counts-followers-tab').text(count_followers_tab + 1);
   var followers_container = $('.profiles-content-wrapper-followers');
   followers_container.append('<%= escape_javascript render(:partial => "users/follow_components/card", :locals => { follower: current_user, user: @user, type: "followers" }) %>');
-  $('.a-person-card-follow.profile-card-follow').addClass('following').text('following');
+  $('.a-person-card-follow.profile-card-follow').addClass('following').text(I18n.t('js.follow.following'));
 <% end %>
 
 var href = '/users/<%= @user.id %>/follow/<%= @follower.id %>';
-$('a[href$="'+ href +'"]').addClass('following').text('following');
+$('a[href$="'+ href +'"]').addClass('following').text(I18n.t('js.follow.following'));
 
-toastr['success']('You have followed <%= @follower.full_name %>');
+mess = I18n.t( 'js.you_have_followed', {"user": "<%= @follower.full_name %>"});
+toastr['success'](mess);

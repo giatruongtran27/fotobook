@@ -1,4 +1,38 @@
 en:
+  title:
+    feeds: 'Feeds'
+    discover: 'Discover'
+    photos: 'PHOTOS'
+    albums: 'ALBUMS'
+  follow:
+    follow: 'follow'
+    followed: 'followed'
+    following: 'following'
+    unfollow: 'unfollow'
+    unfollowed: 'unfollowed'
+  like:
+    like: 'like'
+    liked: 'liked'
+    unlike: 'unlike'
+    unliked: 'unliked'
+    you_have_liked: 'You have liked %{obj}'
+    you_have_unliked: 'You have unliked %{obj}'
+  notice:
+    photo:
+      create: 'Photo was successfully created.'
+      update: 'Photo was successfully updated.'
+      destroy: 'Photo was successfully destroyed.'
+    album:
+      create: 'Album was successfully created.'
+      update: 'Album was successfully updated.'
+      destroy: 'Album was successfully destroyed.'
+      failed: 'Album created failed. Please try again.'
+    user:
+      create: 'User was successfully created.'
+      update: 'User was successfully updated.'
+      destroy: 'User was successfully destroyed.'
+  no_photos: 'No Photos'
+  no_albums: 'No Albums'
   change: 'CHANGE' 
   edit_profile: 'Edit Profile'
   edit_profile_of_user: 'Edit User Profile'

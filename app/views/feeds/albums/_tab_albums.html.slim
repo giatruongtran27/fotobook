@@ -4,5 +4,4 @@
   .row.justify-content-center
     = will_paginate albums, :param_name => 'album_page', renderer: WillPaginate::ActionView::BootstrapLinkRenderer, params: {active_tab: 'albums'}
 - else
-  h5.text-danger
-    | No Albums
+  h5.text-danger = t('no_albums')

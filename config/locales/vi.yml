@@ -1,4 +1,38 @@
 vi:
+  title:
+    feeds: 'Bảng tin'
+    discover: 'Khám phá'
+    photos: 'HÌNH ẢNH'
+    albums: 'BỘ SƯU TẬP'
+  follow:
+    follow: 'theo dõi'
+    followed: 'đã theo dõi'
+    following: 'đang theo dõi'
+    unfollow: 'bỏ theo dõi'
+    unfollowed: 'đã bỏ theo dõi'
+  like:
+    like: 'thích'
+    liked: 'đã thích'
+    unlike: 'bỏ thích'
+    unliked: 'đã bỏ thích'
+    you_have_liked: 'Bạn vừa thích %{obj}'
+    you_have_unliked: 'Bạn vừa bỏ thích %{obj}'
+  notice:
+    photo:
+      create: 'Tạo hình ảnh thành công.'
+      update: 'Cập nhật hình ảnh thành công.'
+      destroy: 'Xóa hình ảnh thành công.'
+    album:
+      create: 'Tạo bộ sưu tập thành công.'
+      update: 'Cập nhật bộ sưu tập thành công.'
+      destroy: 'Xóa bộ sưu tập thành công.'
+      failed: 'Tạo không thành công, vui lòng thử lại sau.'
+    user:
+      create: 'Tạo người dùng thành công.'
+      update: 'Cập nhật người dùng thành công.'
+      destroy: 'Xóa người dùng thành công.'
+  no_photos: 'Không có Hình ảnh'
+  no_albums: 'Không có Bộ sưu tập'
   change: 'Thay đổi'
   edit_profile: 'Chỉnh sửa thông tin cá nhân'
   edit_profile_of_user: 'Chỉnh sửa thông tin người dùng'

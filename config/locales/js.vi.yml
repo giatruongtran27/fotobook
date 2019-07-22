@@ -1,5 +1,15 @@
 vi:
   js:
+    you_have_followed: 'Bạn vừa theo dõi %{user}'
+    you_have_unfollowed: 'Bạn vừa bỏ theo dõi %{user}'
+    you_have_liked: 'Bạn vừa thích %{obj}'
+    you_have_unliked: 'Bạn vừa bỏ thích %{obj}'
+    follow:
+      follow: 'theo dõi'
+      followed: 'đã theo dõi'
+      following: 'đang theo dõi'
+      unfollow: 'bỏ theo dõi'
+      unfollowed: 'đã bỏ theo dõi'
     login_to_do_action: "Vui lòng đăng nhập để  thực hiện"
     no_images_in_album: "Album này chưa có hình ảnh."
     album:

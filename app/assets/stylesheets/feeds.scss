@@ -167,10 +167,14 @@ a.element-a-follow {
     text-align: center;
     font-weight: 700;
 }
-a.element-a-follow.following, a.element-a-follow:hover{
+a.element-a-follow.following{
   background-image: linear-gradient(to left, #fd7e14, #dc2430);
   color:white;
-  min-width: 55px;
+  min-width: 75px;
+}
+a.element-a-follow:hover{
+  background-image: linear-gradient(to left, #fd7e14, #dc2430);
+  color:white;
 }
 .element-right-heart{
   position: absolute;

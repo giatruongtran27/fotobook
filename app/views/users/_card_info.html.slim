@@ -5,15 +5,15 @@
     .col.p-3
       .card-block.px-2
         - if current_user.nil?
-          = link_to 'follow', "javascript:;", title: "Please login to follow this user", class: "profile-card-follow please-login"
+          = link_to t('follow.follow'), "javascript:;", title: "Please login to follow this user", class: "profile-card-follow please-login"
         - else
           - if current_user == user
             = link_to t('edit_profile'), edit_user_registration_path, class: "profile-card-follow edit-profile"
           - else
             - if current_user.followers.include? user
-              = link_to 'following', {:controller => "users", :action => "edit_add_follow", :user_follow_id => user.id}, method: :post, remote: true , class: "a-person-card-follow profile-card-follow following"
+              = link_to t('follow.following'), {:controller => "users", :action => "edit_add_follow", :user_follow_id => user.id}, method: :post, remote: true , class: "a-person-card-follow profile-card-follow following"
             - else
-              = link_to 'follow', {:controller => "users", :action => "edit_add_follow", :user_follow_id => user.id}, method: :post, remote: true , class: "a-person-card-follow profile-card-follow"
+              = link_to t('follow.follow'), {:controller => "users", :action => "edit_add_follow", :user_follow_id => user.id}, method: :post, remote: true , class: "a-person-card-follow profile-card-follow"
         h2.card-title
           = user.full_name
         ul.public-profile-tabs
