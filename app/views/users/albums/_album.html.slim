@@ -6,7 +6,7 @@
     a.a-albums-main-photo[href="javascript:;"]
       span = album.pics.size
       img src="#{img_link}" class="img-thumbnail a-albums-img"
-    - if full_authorities_for_this_user
+    - if can? :update, album
       = link_to t("edit"), edit_user_album_path(album.user, album), class: "a-edit", :"data-turbolinks" => false
       - if album.private_mode?
         a.a-lock[href="javascript:;"]

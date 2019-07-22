@@ -103,3 +103,5 @@ gem 'scrollbar-rails', '~> 1.0'
 gem 'slim-rails', '~> 3.2'
 gem 'html2slim', '~> 0.2.0'
 gem 'jquery-turbolinks', '~> 2.1'
+
+gem 'cancancan', '~> 3.0', '>= 3.0.1'

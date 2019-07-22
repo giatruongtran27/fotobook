@@ -1,6 +1,6 @@
 class AlbumsController < ApplicationController
-  before_action :authenticate_user!, only: [:check_authorize, :like]
-  before_action :check_authorize, only: [:show, :create, :new, :edit, :update, :destroy]
+  load_and_authorize_resource except: [:like, :images]
+  before_action :authenticate_user!, only: [:like]
   before_action :set_album, only: [:show, :edit, :update, :destroy, :like, :images]
 
   def index
@@ -45,6 +45,7 @@ class AlbumsController < ApplicationController
 
   def show
     @pics ||= @album.pics
+    authorize! :read, @album
   end
 
   def new
@@ -97,18 +98,13 @@ class AlbumsController < ApplicationController
   end
 
   private
-  def check_authorize
-    unless UsersService.check_authorize?(current_user, params[:user_id])
-      redirect_to error_422_path
-    end
-  end 
 
   def set_album
     begin
       @album = Album.find(params[:id])
       @user = @album.user
-    rescue
-      redirect_to error_404_path
+    rescue StandardError => e
+      redirect_to error_404_path, :alert => e.message
     end
   end
 

@@ -1,7 +1,7 @@
 .wrap-a-photos
   .div-a-photos
     = link_to image_tag(photo.image.url, :alt => photo.image_file_name, :class => "img-thumbnail a-photos-img"), 'javascript:;'
-    - if full_authorities_for_this_user
+    - if can? :update, photo
       = link_to t('edit'), edit_user_photo_path(photo.user, photo), class: "a-edit", :"data-turbolinks" => false
       - if photo.private_mode?
         a.a-lock[href="javascript:;"]

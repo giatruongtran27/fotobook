@@ -1,6 +1,6 @@
 class PhotosController < ApplicationController
-  before_action :authenticate_user!, only: [:check_authorize!, :like]
-  before_action :check_authorize!, only: [:show, :create, :new, :edit, :update, :destroy]
+  load_and_authorize_resource except: [:like]
+  before_action :authenticate_user!, only: [:like]
   before_action :set_photo, only: [:show, :edit, :update, :destroy, :like]
   
   def index
@@ -76,18 +76,12 @@ class PhotosController < ApplicationController
     end
   end
 
-  private
-    def check_authorize!
-      unless UsersService.check_authorize?(current_user, params[:user_id])
-        redirect_to error_422_path
-      end 
-    end   
-
+  private 
     def set_photo
       begin
-        @user = User.find(params[:user_id])
         @photo = Photo.find(params[:id])
-      rescue
+        @user = @photo.user
+      rescue StandardError => e
         redirect_to error_404_path
       end
     end

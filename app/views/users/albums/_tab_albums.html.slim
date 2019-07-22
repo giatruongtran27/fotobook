@@ -1,6 +1,6 @@
 #tab-albums.public-profile-tab-content[data-page="1"]
   .d-flex.flex-wrap.justify-content-end.mt-0.mb-3.mr-3
-    - if full_authorities_for_this_user
+    - if can? :update, user
       = link_to t('add_album'), new_user_album_path(user), class: "btn btn-sm btn-success", id: "btn-add-album", :"data-turbolinks" => false
   .d-flex.flex-wrap.justify-content-center.profiles-content-wrapper-albums
     = render partial: "users/albums/album", collection: list_albums, as: :album, locals: {album: :album, full_authorities_for_this_user: full_authorities_for_this_user}

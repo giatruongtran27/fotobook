@@ -7,6 +7,7 @@
     => @photo.description
   hr
   div
-    = link_to t('edit'), edit_user_photo_path(@photo.user, @photo), :"data-turbolinks" => false, class: "btn btn-sm btn-warning"
-    |  | 
+    - if can? :manage, @photo
+      = link_to t('edit'), edit_user_photo_path(@photo.user, @photo), :"data-turbolinks" => false, class: "btn btn-sm btn-warning"
+      |  | 
     = link_to t('back'), user_photos_path, class: "btn btn-sm btn-primary"
