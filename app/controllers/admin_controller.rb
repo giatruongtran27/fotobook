@@ -1,7 +1,7 @@
 class AdminController < ApplicationController
   layout "admin_layout"
-  before_action :authenticate_user!, only: [:is_admin]
-  before_action :is_admin
+  before_action :authenticate_user!
+  before_action :authenticate_admin!
   before_action :set_photo, only: [:edit_photo, :update_photo, :destroy_photo]
   before_action :set_album, only: [:edit_album, :update_album, :destroy_album]
 
@@ -81,9 +81,9 @@ class AdminController < ApplicationController
   end
 
   private
-    def is_admin
-      unless current_user and  current_user.admin
-        render :file => "#{Rails.root}/public/422.html",  :status => 422, layout: 'errors_layout'
+    def authenticate_admin!
+      unless current_user.admin
+        redirect_to error_422_path
       end 
     end
 
@@ -91,7 +91,7 @@ class AdminController < ApplicationController
       begin
         @photo = Photo.find(params[:id])
       rescue
-        render :file => "#{Rails.root}/public/404.html",  :status => 404, layout: 'errors_layout'
+        redirect_to error_404_path
       end      
     end
     
@@ -99,7 +99,7 @@ class AdminController < ApplicationController
       begin
         @album = Album.find(params[:id])
       rescue
-        render :file => "#{Rails.root}/public/404.html",  :status => 404, layout: 'errors_layout'
+        redirect_to error_404_path
       end      
     end
 

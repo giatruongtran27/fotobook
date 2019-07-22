@@ -1,10 +1,10 @@
 class PhotosController < ApplicationController
-  before_action :authenticate_user! , only: [:check_authorize, :like]
-  before_action :check_authorize, only: [:show, :create, :new, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:check_authorize!, :like]
+  before_action :check_authorize!, only: [:show, :create, :new, :edit, :update, :destroy]
   before_action :set_photo, only: [:show, :edit, :update, :destroy, :like]
   
   def index
-    if current_user.id == params[:user_id].to_i || current_user.admin
+    if UsersService.check_authorize?(current_user, params[:user_id])
       @user = User.find(params[:user_id])
       @photos = @user.photos
     else
@@ -77,9 +77,9 @@ class PhotosController < ApplicationController
   end
 
   private
-    def check_authorize
-      if current_user.id != params[:user_id].to_i and !current_user.admin
-        render :file => "#{Rails.root}/public/422.html",  :status => 422, layout: 'errors_layout'
+    def check_authorize!
+      unless UsersService.check_authorize?(current_user, params[:user_id])
+        redirect_to error_422_path
       end 
     end   
 
@@ -88,7 +88,7 @@ class PhotosController < ApplicationController
         @user = User.find(params[:user_id])
         @photo = Photo.find(params[:id])
       rescue
-        render :file => "#{Rails.root}/public/404.html",  :status => 404, layout: 'errors_layout'
+        redirect_to error_404_path
       end
     end
 

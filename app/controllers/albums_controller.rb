@@ -1,10 +1,10 @@
 class AlbumsController < ApplicationController
-  before_action :authenticate_user! , only: [:check_authorize, :like]
+  before_action :authenticate_user!, only: [:check_authorize, :like]
   before_action :check_authorize, only: [:show, :create, :new, :edit, :update, :destroy]
   before_action :set_album, only: [:show, :edit, :update, :destroy, :like, :images]
 
   def index
-    if current_user.id == params[:user_id].to_i || current_user.admin
+    if UsersService.check_authorize?(current_user, params[:user_id])
       @user = User.find(params[:user_id])
       @albums = @user.albums
     else
@@ -98,9 +98,9 @@ class AlbumsController < ApplicationController
 
   private
   def check_authorize
-    if current_user.id != params[:user_id].to_i and !current_user.admin
-      render :file => "#{Rails.root}/public/422.html",  :status => 422
-    end 
+    unless UsersService.check_authorize?(current_user, params[:user_id])
+      redirect_to error_422_path
+    end
   end 
 
   def set_album
@@ -108,7 +108,7 @@ class AlbumsController < ApplicationController
       @album = Album.find(params[:id])
       @user = @album.user
     rescue
-      render :file => "#{Rails.root}/public/404.html",  :status => 404, layout: 'errors_layout'
+      redirect_to error_404_path
     end
   end
 

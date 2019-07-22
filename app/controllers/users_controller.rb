@@ -87,22 +87,22 @@ class UsersController < ApplicationController
   
   private
   def admin_only
-    unless current_user and  current_user.admin
-      render :file => "#{Rails.root}/public/422.html",  :status => 422, layout: 'errors_layout'
+    unless current_user or current_user.admin
+      redirect_to error_422_path
     end
   end
 
   def check_authorize
-    unless current_user.id == params[:id].to_i or current_user.admin
-      render :file => "#{Rails.root}/public/422.html",  :status => 422, layout: 'errors_layout'
-    end 
+    unless UsersService.check_authorize?(current_user, params[:id])
+      redirect_to error_422_path
+    end
   end 
   
   def set_user
     begin
       @user = User.includes(:photos => [:user], :albums => [:pics]).find(params[:id])
     rescue
-      render :file => "#{Rails.root}/public/404.html",  :status => 404, layout: 'errors_layout'
+      redirect_to error_404_path
     end
   end
   

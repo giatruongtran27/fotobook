@@ -17,7 +17,16 @@ module UsersService
     end
 
     def full_authorities_for_this_user?(current_user, user)
-      current_user and (current_user.id.equal? user.id or current_user.admin?)
+      if current_user 
+        current_user.id.equal? user.id or current_user.admin?
+      end
     end
+
+    def check_authorize?(current_user, user_id)
+      if current_user
+        current_user.id.equal? user_id.to_i or current_user.admin?
+      end
+    end
+    
   end
 end
