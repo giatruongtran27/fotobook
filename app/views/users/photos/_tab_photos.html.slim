@@ -3,5 +3,5 @@
     - if can? :update, user
       = link_to t('add_photo'), new_user_photo_path(user), class: "btn btn-sm btn-success", id: "btn-add-photo", :"data-turbolinks" => false
   .d-flex.flex-wrap.justify-content-center.profiles-content-wrapper
-    = render partial: "users/photos/photo", collection: list_photos, as: :photo, locals: {photo: :photo, full_authorities_for_this_user: full_authorities_for_this_user}
+    = render partial: "users/photos/photo", collection: list_photos, as: :photo, locals: {photo: :photo}
   = will_paginate list_photos, :param_name => 'photos_page', renderer: WillPaginateInfinite::InfinitePagination, class: "photo-infinite-pagination d-none"
