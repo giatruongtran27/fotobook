@@ -1,0 +1,19 @@
+.container.mt-3.mb-3
+  h5
+    small
+      => t('activerecord.attributes.album.title') 
+    code
+      = @album.title
+  p.mt-3
+    => t('activerecord.attributes.album.description') 
+    code
+      = @album.description
+  h5 = t('images_of_album')
+  .d-flex.flex-wrap.justify-content-start
+    - @pics.each do |pic|
+      = image_tag(pic.image.url, class: "mr-2 mt-2 img-fluid img-thumbnail", width: 200)
+.m-3
+  - if can? :manage, @album
+    = link_to t('edit'),edit_user_album_path(@album.user, @album),  :"data-turbolinks" => false, class: "btn btn-sm btn-warning"
+    |  | 
+  = link_to t('back'), user_albums_path, class: "btn btn-sm btn-primary"

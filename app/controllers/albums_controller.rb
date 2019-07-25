@@ -1,10 +1,10 @@
 class AlbumsController < ApplicationController
-  before_action :authenticate_user! , only: [:check_authorize, :like]
-  before_action :check_authorize, only: [:show, :create, :new, :edit, :update, :destroy]
+  load_and_authorize_resource except: [:like, :images]
+  before_action :authenticate_user!, only: [:like]
   before_action :set_album, only: [:show, :edit, :update, :destroy, :like, :images]
 
   def index
-    if current_user.id == params[:user_id].to_i || current_user.admin
+    if UsersService.check_authorize?(current_user, params[:user_id])
       @user = User.find(params[:user_id])
       @albums = @user.albums
     else
@@ -31,10 +31,10 @@ class AlbumsController < ApplicationController
       check_like = @album.likes.find_by(user_id: current_user)
       if check_like
         check_like.delete
-        render json: { messages: "You have unliked photo: #{@album.title}", type: "unlike"}, status: 200
+        render json: { messages: t('like.you_have_unliked', obj: @album.title), type: "unlike"}, status: 200
       else
         @album.likes.create(user_id: current_user.id)
-        render json: { messages: "You have liked photo: #{@album.title}", type: "like"}, status: 200 
+        render json: { messages: t('like.you_have_liked', obj: @album.title), type: "like"}, status: 200 
       end
     rescue StandardError => e
       render json: {
@@ -45,6 +45,7 @@ class AlbumsController < ApplicationController
 
   def show
     @pics ||= @album.pics
+    authorize! :read, @album
   end
 
   def new
@@ -70,16 +71,16 @@ class AlbumsController < ApplicationController
       if params[:pics] and params[:pics]["image"].size > 0
         insert_data
       end 
-      redirect_to user_album_path(@album.user, @album), notice: 'Album was successfully created.'  
+      redirect_to user_album_path(@album.user, @album), notice: t('notice.album.create')  
     rescue => e      
-      redirect_to new_user_album_path(@album.user), alert: 'Album created failed. Please try again.' 
+      redirect_to new_user_album_path(@album.user), alert: t('notice.album.failed')
     end
   end
 
   def update
     respond_to do |format|
       if @album.update(album_params)
-        format.html { redirect_to user_album_path(@album.user, @album), notice: 'Album was successfully updated.' }
+        format.html { redirect_to user_album_path(@album.user, @album), notice: t('notice.album.update') }
         format.json { render :show, status: :ok, location: @album }
       else
         format.html { render :edit }
@@ -91,24 +92,19 @@ class AlbumsController < ApplicationController
   def destroy
     @album.destroy
     respond_to do |format|
-      format.html { redirect_to user_albums_url, notice: 'Album was successfully destroyed.' }
+      format.html { redirect_to user_albums_url, notice: t('notice.album.destroy') }
       format.json { head :no_content }
     end
   end
 
   private
-  def check_authorize
-    if current_user.id != params[:user_id].to_i and !current_user.admin
-      render :file => "#{Rails.root}/public/422.html",  :status => 422
-    end 
-  end 
 
   def set_album
     begin
       @album = Album.find(params[:id])
       @user = @album.user
-    rescue
-      render :file => "#{Rails.root}/public/404.html",  :status => 404, layout: 'errors_layout'
+    rescue StandardError => e
+      redirect_to error_404_path, :alert => e.message
     end
   end
 

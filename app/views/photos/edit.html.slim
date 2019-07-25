@@ -1,0 +1,9 @@
+.container.mt-3
+  h2.title = t('edit_photo')
+  hr
+  = render 'form', photo: @photo, user: @user
+  hr
+  .mt-3
+    = link_to t('show'), user_photo_path(@photo.user, @photo), class: "btn btn-sm btn-info"
+    |  | 
+    = link_to t('back'), user_photos_path(@photo.user), class: "btn btn-sm btn-primary"

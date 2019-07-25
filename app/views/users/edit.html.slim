@@ -1,0 +1,12 @@
+h5.mt-3.d-inline-block.title
+  = t('edit_profile_of_user')
+= link_to t('back'), {controller: :admin, action: :users}, class: "btn btn-sm btn-primary float-right mt-3"
+hr
+.row.mb-3
+  .col-md-4.m-auto
+    = render 'form_avatar', user: @user
+.row
+  .col-md-4.m-auto
+    p.name_form
+      | Basic Infomation
+= render 'form_edit_basic_info_by_admin', user: @user

@@ -16,7 +16,6 @@
 //= require i18n/translations
 //= require jquery3
 //= require jquery
-//= require jquery_ujs
 //= require dropzone
 //= require jquery.validate
 //= require jquery.validate.additional-methods
@@ -24,6 +23,7 @@
 //= require bootstrap-sprockets
 //= require will_paginate_infinite
 //= require toastr
+//= require sweetalert2
 //= require jquery.mCustomScrollbar.concat.min
 //= require turbolinks
 //= require_tree .

@@ -1,0 +1,9 @@
+#admin_manage_photos.d-flex.flex-wrap.justify-content-start.mt-3.profiles-content-wrapper
+  - @photos.each do |photo|
+    .wrap-a-photos
+      .div-a-photos
+        a[href="javascript:;"]
+          img src="#{photo.image.url}" class="a-photos-img"
+        p = photo.title
+        = link_to admin_edit_photo_path(photo), class: "a-edit", :"data-turbolinks" => false do
+          i.fa.fa-sm.fa-edit

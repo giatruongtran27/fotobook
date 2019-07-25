@@ -1,0 +1,7 @@
+- if photos and photos.size > 0
+  .row
+    = render partial: 'feeds/photos/photo', collection: photos, locals: {photo: :photo}
+  .row.justify-content-center
+    = will_paginate photos, :param_name => 'photo_page', renderer: WillPaginate::ActionView::BootstrapLinkRenderer, params: {active_tab: 'photos'}
+- else
+  h5.text-danger = t('no_photos')

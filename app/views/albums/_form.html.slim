@@ -1,0 +1,21 @@
+= form_with(model: [user, album], local: true, html: { :multipart => true, id: "form-add-album" }) do |f|
+  .row
+    .col-md-6
+      .form-group
+        = f.label :title
+        = f.text_field :title, placeholder: true, :class => 'form-control', autofocus: 'true'
+      .form-group
+        = f.label :sharing_mode
+        = f.select :sharing_mode, options_for_select([[t('public'), :public_mode], [t('private'), :private_mode]], f.object.sharing_mode || :public_mode ),{:prompt => t('select_one')}, {required: 'true', class: 'form-control'}
+    .col-md-6.form-group
+      = f.label :description
+      = f.text_area(:description, size: '50x3', class: 'form-control', placeholder: true)
+  - unless album.id&.present?
+    = f.fields_for :pics, @album.pics.build do |ff|
+      .custom-file.my-custom-file
+        = ff.file_field :image, multiple: true, name: "pics[image][]", :class => "custom-file-input my-custom-file"
+        label.custom-file-label.my-custom-file[for="customFile"]
+          i.fa.fa-plus
+    #album_image_preview.d-flex.flex-wrap.justify-content-start.mt-3
+  .actions.mt-3
+    = f.submit t('save'), :class => "btn btn-sm btn-success", id: "btn-add-album-submit"

@@ -1,6 +1,11 @@
 Rails.application.routes.draw do  
   scope "(:locale)", locale: /en|vi/ do
     root 'feeds#discover'
+
+    get '/404', to: 'errors#not_found', as: :error_404
+    get '/422', to: 'errors#unprocessable_entity', as: :error_422    
+    get '/500', to: 'errors#internal_server_error', as: :error_500
+
     get 'feeds', to: 'feeds#feeds'
     get 'feeds/photos', to: 'feeds#feeds_photos'
     get 'feeds/albums', to: 'feeds#feeds_albums'

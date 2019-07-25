@@ -1,0 +1,19 @@
+table.table.table-stripped
+  thead
+    tr
+      th = t('first_name')
+      th = t('last_name')
+      th = t('email')
+      th = t('last_login')
+      th[colspan="2"]
+  tbody
+    - @users.each do |user|
+      tr
+        td = user.first_name.capitalize
+        td = user.last_name.capitalize
+        td = user.email
+        td
+          - if user.last_sign_in_at
+            = user.last_sign_in_at.strftime("%I:%M %p %-d/%-m/%Y")
+        td = link_to t('edit'), admin_edit_user_path(user), class: "btn btn-sm btn-warning", :"data-turbolinks" => false
+        td = link_to t('destroy'), user, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-danger"

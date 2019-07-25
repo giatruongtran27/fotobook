@@ -1,0 +1,7 @@
+#tab-albums.public-profile-tab-content[data-page="1"]
+  .d-flex.flex-wrap.justify-content-end.mt-0.mb-3.mr-3
+    - if can? :update, user
+      = link_to t('add_album'), new_user_album_path(user), class: "btn btn-sm btn-success", id: "btn-add-album", :"data-turbolinks" => false
+  .d-flex.flex-wrap.justify-content-center.profiles-content-wrapper-albums
+    = render partial: "users/albums/album", collection: list_albums, as: :album, locals: {album: :album}
+  = will_paginate list_albums, :param_name => 'albums_page', renderer: WillPaginateInfinite::InfinitePagination, class: "album-infinite-pagination d-none"

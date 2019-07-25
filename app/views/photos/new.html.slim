@@ -1,0 +1,6 @@
+.d-flex.justify-content-start
+  p.mt-3.title-new-photo = t('new_photo')
+hr
+= render 'form', photo: @photo, user: @user
+hr
+= link_to t('back'), user_photos_path, :class => "btn btn-sm btn-primary"

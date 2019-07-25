@@ -1,0 +1,38 @@
+= form_with(model: user, controller: "users", url: update_by_admin_user_path(user), method: :put, local: true, id: "form-edit-self-basic-info" ,class: "form mb-5") do |f|
+  = render 'errors_form', user: user
+  .row.form-group
+    .col-md-4.my-auto
+      .d-flex.justify-content-end.align-self-center.title-left-form-self-edit
+        label.float-right.my-auto[for="first_name"]
+          = t('first_name')
+    .col-md-4
+      = f.text_field :first_name, class: "form-control", placeholder: true
+  .row.form-group
+    .col-md-4.my-auto
+      .d-flex.justify-content-end.title-left-form-self-edit
+        label.float-right.my-auto[for="last_name"]
+          = t('last_name')
+    .col-md-4
+      = f.text_field :last_name, class: "form-control", placeholder: true
+  .row.form-group
+    .col-md-4.my-auto
+      .d-flex.justify-content-end.title-left-form-self-edit
+        label.float-right.my-auto[for="email"]
+          = t('email')
+    .col-md-4
+      = f.email_field :email, class: "form-control", placeholder: true
+  .row.form-group
+    .col-md-4.my-auto
+      .d-flex.justify-content-end.title-left-form-self-edit
+        = f.label "Password", class: "float-right my-auto"
+    .col-md-4
+      = f.password_field :password, class: "form-control", placeholder: "******"
+  .row.form-group
+    .col-md-4.my-auto
+      .d-flex.justify-content-end.title-left-form-self-edit
+        = f.label "Active?", class: "float-right my-auto"
+    .col-md-4
+      = f.check_box :admin
+  .row
+    .col-md-4.m-auto
+      = f.submit t("save"), class: "btn btn-sm btn-success"

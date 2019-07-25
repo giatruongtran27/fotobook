@@ -1,0 +1,35 @@
+= form_with model: [user, photo],  local: true, :html => { :id => "form_new_photo" } do |f|
+  - if photo.errors.any?
+    #error_explanation
+      h2
+        = pluralize(photo.errors.count, "error")
+        |  prohibited this photo from being saved:
+      ul
+        - photo.errors.full_messages.each do |message|
+          li
+            = message
+  .row
+    .col-md-6
+      .form-group
+        = f.label :title
+        = f.text_field :title, :class => "form-control", placeholder: true, autofocus: 'true'
+      .form-group
+        = f.label :sharing_mode
+        = f.select :sharing_mode, options_for_select([[t('public'), :public_mode], [t('private'), :private_mode]], f.object.sharing_mode || :public_mode),{:prompt => t('select_one')}, {required: 'true', class: 'form-control'}
+    .col-md-6
+      .form-group
+        = f.label :description
+        = f.text_area :description, :class => "form-control", placeholder: true
+  .d-flex.justify-content-start.form-group
+    div class=(photo.id&.present? ? "col-up-load hidden" : "col-up-load") id="col-input-file"
+      .custom-file.my-custom-file
+        = f.file_field :image , :class => "custom-file-input my-custom-file"
+        label.custom-file-label.my-custom-file[for="customFile"]
+          i.fa.fa-plus
+    #img_preview.d-flex.col-up-load
+      - if photo.image.present?
+        = image_tag(photo.image.url, width: 250, class: "img-fluid img-thumbnail") if @photo.image.exists?
+        a#remove_img_edit_photo[href="javascript:;"]
+          i.fa.fa-sm.fa-close
+  .actions
+    = f.submit t('save') , :class => "btn btn-sm btn-success"

@@ -1,0 +1,7 @@
+#tab-photos.public-profile-tab-content.current[data-page="1"]
+  .d-flex.flex-wrap.justify-content-end.mt-0.mb-3.mr-3
+    - if can? :update, user
+      = link_to t('add_photo'), new_user_photo_path(user), class: "btn btn-sm btn-success", id: "btn-add-photo", :"data-turbolinks" => false
+  .d-flex.flex-wrap.justify-content-center.profiles-content-wrapper
+    = render partial: "users/photos/photo", collection: list_photos, as: :photo, locals: {photo: :photo}
+  = will_paginate list_photos, :param_name => 'photos_page', renderer: WillPaginateInfinite::InfinitePagination, class: "photo-infinite-pagination d-none"

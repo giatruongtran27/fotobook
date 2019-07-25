@@ -1,0 +1,36 @@
+.card.border-0.mt-3
+  .row.no-gutters
+    .col-auto
+      = image_tag user.image.url, class: "img-fluid rounded-circle profile-card-image", alt: "#{user.full_name}"
+    .col.p-3
+      .card-block.px-2
+        - if current_user.nil?
+          = link_to t('follow.follow'), "javascript:;", title: "Please login to follow this user", class: "profile-card-follow please-login"
+        - else
+          - if current_user == user
+            = link_to t('edit_profile'), edit_user_registration_path, class: "profile-card-follow edit-profile"
+          - else
+            - if current_user.followers.include? user
+              = link_to t('follow.following'), {:controller => "users", :action => "edit_add_follow", :user_follow_id => user.id}, method: :post, remote: true , class: "a-person-card-follow profile-card-follow following"
+            - else
+              = link_to t('follow.follow'), {:controller => "users", :action => "edit_add_follow", :user_follow_id => user.id}, method: :post, remote: true , class: "a-person-card-follow profile-card-follow"
+        h2.card-title
+          = user.full_name
+        ul.public-profile-tabs
+          li.tab-link.current[data-tab="tab-photos"]
+            span.counts.counts-photos-tab
+              = list_photos.total_entries
+            |  photos
+          li.tab-link[data-tab="tab-albums"]
+            span.counts.counts-albums-tab
+              = list_albums.total_entries
+            |  albums 
+          li#_tab_followings.tab-link[data-tab="tab-followings"]
+            span#counts-followings-tab.counts
+              = user.followers.size
+            |  followings
+          li#_tab_followers.tab-link[data-tab="tab-followers"]
+            span#counts-followers-tab.counts
+              = user.followees.size
+            |  followers
+  hr

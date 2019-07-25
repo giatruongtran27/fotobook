@@ -1,0 +1,71 @@
+h5.mt-3.title
+  | Edit User Profile
+hr
+.row.mb-3
+  .col-md-4.m-auto
+    img src="#{current_user.image.url}" width="100" height="100" id="img_avatar"
+    = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, id: "form-edit-self-image", class: "form mb-5" }) do |f|
+      = f.file_field :image , :class => "custom-file-input"
+    a#a_change_avatar[href="javascript:;"]
+      | CHANGE
+.row
+  .col-md-4.m-auto
+    p.name_form
+      | Basic Infomation
+= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, id: "form-edit-self-basic-info", class: "form mb-5" }) do |f|
+  - if @user.errors.any?
+    - if !@user.errors[:current_password] && !@user.errors[:password] && !@user.errors[:password_confirmation]
+      #error_explanation
+        h2
+          = pluralize(@user.errors.count, "error")
+          |  prohibited this user from being saved:
+        ul
+          - @user.errors.full_messages.each do |message|
+            li
+              = message
+  .row.form-group
+    .col-md-4.my-auto.title-left-form-self-edit
+      label.my-auto.float-right[for="first_name"]
+        | First Name
+    .col-md-4
+      = f.text_field :first_name, class: "form-control", placeholder: true
+  .row.form-group
+    .col-md-4.my-auto.title-left-form-self-edit
+      label.my-auto.float-right[for="last_name"]
+        | Last Name
+    .col-md-4
+      = f.text_field :last_name, class: "form-control", placeholder: true
+  .row.form-group
+    .col-md-4.my-auto.title-left-form-self-edit
+      label.my-auto.float-right[for="email"]
+        | Email
+    .col-md-4
+      = f.email_field :email, class: "form-control", placeholder: true
+  .row
+    .col-md-4.m-auto
+      = f.submit "Save", class: "btn btn-sm btn-success"
+.row
+  .col-md-4.m-auto
+    p.name_form
+      | Password
+= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, id: "form-edit-self-password", class: "form mb-5" }) do |f|
+  .row
+    = render "devise/shared/error_messages", resource: resource
+  .row.form-group
+    .col-md-4.my-auto.title-left-form-self-edit
+      = f.label :current_password, class: "float-right my-auto"
+    .col-md-4
+      = f.password_field :current_password, autocomplete: "current-password", class: "form-control", placeholder: true
+  .row.form-group
+    .col-md-4.my-auto.title-left-form-self-edit
+      = f.label "New Password", class: "float-right my-auto"
+    .col-md-4
+      = f.password_field :password, autocomplete: "new-password", class: "form-control", placeholder: true
+  .row.form-group
+    .col-md-4.my-auto.title-left-form-self-edit
+      = f.label :password_confirmation, class: "float-right my-auto"
+    .col-md-4
+      = f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control", placeholder: true
+  .row
+    .col-md-4.m-auto
+      = f.submit "Save", class: "btn btn-sm btn-success"

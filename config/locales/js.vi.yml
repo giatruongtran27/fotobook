@@ -1,5 +1,62 @@
 vi:
-  site:
-    js:
-      login_to_do_action: "Vui lòng đăng nhập để  thực hiện"
-      no_images_in_album: "Album này chưa có hình ảnh."
+  js:
+    you_have_followed: 'Bạn vừa theo dõi %{user}'
+    you_have_unfollowed: 'Bạn vừa bỏ theo dõi %{user}'
+    you_have_liked: 'Bạn vừa thích %{obj}'
+    you_have_unliked: 'Bạn vừa bỏ thích %{obj}'
+    follow:
+      follow: 'theo dõi'
+      followed: 'đã theo dõi'
+      following: 'đang theo dõi'
+      unfollow: 'bỏ theo dõi'
+      unfollowed: 'đã bỏ theo dõi'
+    login_to_do_action: "Vui lòng đăng nhập để  thực hiện"
+    no_images_in_album: "Album này chưa có hình ảnh."
+    album:
+      new:
+      edit:
+        add_image_to_album_success: 'Thêm hình ảnh vào bộ sưu tập thành công.'
+        remove_image_from_album_success: 'Xóa hình ảnh khỏi bộ sưu tập thành công.'
+    validate:
+      try_again: 'Đã xảy ra lỗi. Bạn vui lòng thử lại.'
+      please_upload_valid_image: 'Vui lòng tải lên hình ảnh hợp lệ.'
+      uploadFilesAlbum: 'Bộ sưu tập bạn chọn chứa hình ảnh không hợp lệ.'
+      max_25_images: 'Vui lòng tải lên tối đa 25 hình ảnh.'
+      you_will_create_album: 'Bạn sắp tạo bộ sưu tập mới.'
+      only_accept_valid_images: 'Bộ sưu tập được tạo sẽ chỉ chấp nhận những hình ảnh hợp lệ.'
+      accept: 'Chấp nhận'
+      cancel: 'Hủy bỏ'
+      cancelled: 'Hủy bỏ thao tác thành công'
+      you_can_redo_somethings: 'Bạn có thể kiểm tra và thực hiện lại'
+      email:
+        required: 'Vui lòng nhập email.'
+        email: 'Vui lòng nhập email hợp lệ.'
+        maxlength: 'Địa chỉ email phải ít hơn 255 kí tự.'
+      first_name:
+        required: 'Vui lòng nhập tên.'
+        maxlength: 'Tên phải ít hơn 25 kí tự.'
+      last_name:
+        required: 'Vui lòng nhập họ.'
+        maxlength: 'Họ phải ít hơn 25 kí tự.'
+      current_password:
+        required: 'Vui lòng nhập mật khẩu hiện tại.'
+      password:
+        required: 'Vui lòng nhập mật khẩu.'
+        minlength: 'Mật khẩu dài ít nhất 6 kí tự.'
+        maxlength: 'Mật khẩu phải ít hơn 64 kí tự.'
+      password_confirmation:
+        required: 'Vui lòng xác nhận lại mật khẩu.'
+        equalTo: 'Mật khẩu không trùng khớp.'
+      title:
+        required: 'Vui lòng nhập tiêu đề.'
+        maxlength: 'Tiêu đề phải ít hơn 140 kí tự.'
+      description:
+        required: 'Vui lòng nhập mô tả.'
+        maxlength: 'Mô tả phải ít hơn 300 kí tự.'
+      sharing_mode:
+        required: 'Vui lòng chọn chế độ chia sẻ.'
+      image:
+        max_size: 'Kích thước file ảnh tối đa 5MB'
+        extension: 'Hình ảnh không hợp lệ.'
+        required: 'Vui lòng chọn hình ảnh.'
+        invalid: 'Hình ảnh không hợp lệ.'

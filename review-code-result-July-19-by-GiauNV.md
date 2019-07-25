@@ -19,7 +19,7 @@ chưa fix
 - UI cần đầu tư hơn nữa để giống với design
 - Thay vì viết js thì nên viết coffee
 - Thay vì viết erb thì nên viết SLIM
-- /home/giaunv/work/temp./trainer/2M/Truong/app/assets/javascripts/edit_self_profile.js
+- /app/assets/javascripts/edit_self_profile.js
 ```
     messages: {
       "user[email]": {
@@ -39,7 +39,7 @@ chưa fix
 ```
 --> sử dụng https://github.com/fnando/i18n-js để support I18n cho client
 
-- /home/giaunv/work/temp./trainer/2M/Truong/app/controllers/photos_controller.rb
+- /app/controllers/photos_controller.rb
 ```
     def check_authorize
       if current_user.id != params[:user_id].to_i and !current_user.admin

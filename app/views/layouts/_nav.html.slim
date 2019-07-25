@@ -1,0 +1,9 @@
+nav.navbar.navbar-expand-lg.navbar-dark.bg-blue.custom
+  div class=(isAdminPage ? "container-fluid" : "container")
+      = link_to_if(isAdminPage,"Fotobook Admin", admin_dashboard_path, class: "navbar-brand") do  
+        = link_to "Fotobook", root_path, class: "navbar-brand", "data-turbolinks": false
+      button.navbar-toggler type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded=false aria-label="Toggle navigation"
+        span.navbar-toggler-icon
+      #navbarResponsive.collapse.navbar-collapse
+        = render 'layouts/nav_search', active_page: active_page   
+        = render 'layouts/nav_right', isAdminPage: isAdminPage

@@ -1,0 +1,13 @@
+- case @active_page
+- when "feeds"
+  = render "tabs", photos_path: feeds_photos_path, albums_path: feeds_albums_path
+- when "discover"
+  = render "tabs", photos_path: discover_photos_path, albums_path: discover_albums_path
+- else 
+  = render "tabs", photos_path: "javascript:;", albums_path: "javascript:;"
+div id="tab-photo" class=(-if params[:active_tab].eql? "photos" or params[:active_tab].nil? then "tab-content current" else "tab-content" end)
+  = render "feeds/photos/tab_photos", photos: @photos
+div id="tab-album" class=(-if params[:active_tab].eql? "albums" then "tab-content current" else "tab-content" end)
+  = render "feeds/albums/tab_albums", albums: @albums
+= render "modal_photo"
+= render "modal_album"

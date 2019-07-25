@@ -1,11 +1,3 @@
-# # This file should contain all the record creation needed to seed the database with its default values.
-# # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-# #
-# # Examples:
-# #
-# #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-# #   Character.create(name: 'Luke', movie: movies.first)
-
 users = User.create([
   {
     email:'admin@admin.com',
@@ -52,92 +44,44 @@ users = User.create([
   }
 ])
 
-# albums = Album.create([
-#   {
-#     title:'album1',
-#     description:'description of album 1',
-#     sharing_mode: true,
-#     user_id: 1
-#   },
-#   {
-#     title:'album2',
-#     description:'description of album 2',
-#     sharing_mode: false,
-#     user_id: 2
-#   },
-#   {
-#     title:'album3',
-#     description:'description of album 3',
-#     sharing_mode: true,
-#     user_id: 3
-#   },
-#   {
-#     title:'album3_2',
-#     description:'description of album 3_2',
-#     sharing_mode: false,
-#     user_id: 3
-#   },
-#   {
-#     title:'album4',
-#     description:'description of album 4',
-#     sharing_mode: false,
-#     user_id: 4
-#   }
-# ])
+temp_desc = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo'
 
-# photos = Photo.create([
-#   {
-#     title: 'image1',
-#     description: 'description of image 1',
-#     img_url: 'img1.jpeg',
-#     sharing_mode: true,
-#     user_id: '1'
-#   },
-#   {
-#     title: 'image2',
-#     description: 'description of image 2',
-#     img_url: 'img2.jpeg',
-#     sharing_mode: true,
-#     user_id: '1'
-#   },
-#   {
-#     title: 'image3',
-#     description: 'description of image 3',
-#     img_url: 'img3.jpeg',
-#     sharing_mode: false,
-#     user_id: '2'
-#   },
-#   {
-#     title: 'image4',
-#     description: 'description of image 4',
-#     img_url: 'img4.jpeg',
-#     sharing_mode: false,
-#     user_id: '3'
-#   }
-# ])
-# album = Album.create({
-#   title:'album1',
-#   description:'description of album 1',
-#   sharing_mode: true,
-#   user_id: 1
-# })
-# p1 = Photo.find(1)
-# p2 = Photo.find(2)
-# p3 = Photo.find(3)
-# p4 = Photo.find(4)
-# a1 = Album.find(1)
-# a2 = Album.find(2)
-# p1.albums << a1
-# p2.albums << a1
-# p3.albums << a1
-# p4.albums << a2
+users.each do |user|
+  photo_params = []
+  for i in 1..9
+    params = {
+      title: 'Lorem ipsum dolor sit amet.',
+      description: temp_desc,
+      image:  File.open(File.join(Rails.root, 'app/assets/images/img' << rand(1..9).to_s << '.jpeg')),
+      sharing_mode: :public_mode
+    }
+    photo_params.push params
+  end
+  user.photos.create(photo_params)
+end
 
-# p = Photo.create({
-#   title: 'image1',
-#   description: 'description of image 1',
-#   img_url: 'img1.jpeg',
-#   sharing_mode: true,
-#   user_id: '1'
-# })
-# p.albums << album
+users.each do |user|
+  album_params = []
+  for i in 1..5
+    params = {
+      title:'Lorem ipsum dolor sit amet.',
+      description:temp_desc,
+      sharing_mode: :public_mode
+    }
+    album_params.push params
+  end
+  user.albums.create(album_params)
+end
 
+Album.find_each do |album|
+  pics_params = []
+  for i in 1..5
+    params = {
+      image:  File.open(File.join(Rails.root, 'app/assets/images/img' << rand(1..9).to_s << '.jpeg'))
+    }
+    pics_params.push params
+  end
+  album.pics.create(pics_params)
+end

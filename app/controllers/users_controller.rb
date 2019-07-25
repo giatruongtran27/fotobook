@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
+  load_and_authorize_resource except: [:edit_add_follow] 
   layout "admin_layout", only: [:edit]
-  before_action :authenticate_user!, only: [:index, :edit_add_follow, :create, :edit, :admin_only, :check_authorize]
-  before_action :check_authorize, only: [:create, :edit, :update, :destroy]  
+  before_action :authenticate_user!, only: [:index, :edit_add_follow, :create, :admin_only]
   before_action :set_user, only: [:show, :edit, :update, :destroy, :get_followers, :edit_add_follow, :update_by_admin, :get_update_by_admin]
   before_action :admin_only, only: [:edit, :update_by_admin, :get_update_by_admin, :destroy]
 
@@ -10,15 +10,13 @@ class UsersController < ApplicationController
   end
 
   def show
-    @full_authorities_for_this_user = UsersService.full_authorities_for_this_user? current_user, @user
-    if @full_authorities_for_this_user
+    if can? :manage, @user
       @list_photos = @user.photos.paginate(:page => params[:photos_page], :per_page => 4)
       @list_albums = @user.albums.paginate(:page => params[:albums_page], :per_page => 4)
     else
       @list_photos = @user.photos.public_mode.paginate(:page => params[:photos_page], :per_page => 4)    
       @list_albums = @user.albums.public_mode.paginate(:page => params[:albums_page], :per_page => 4)      
     end
-
     respond_to do |format|
       format.html
       format.js
@@ -68,7 +66,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.update(my_params)
-        format.html { redirect_to admin_edit_user_path(@user), notice: 'User was successfully updated.' }
+        format.html { redirect_to admin_edit_user_path(@user), notice: t('notice.user.update') }
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit }
@@ -80,29 +78,23 @@ class UsersController < ApplicationController
   def destroy
     @user.destroy
     respond_to do |format|
-      format.html { redirect_to admin_dashboard_path, notice: 'User was successfully destroyed.' }
+      format.html { redirect_to admin_dashboard_path, notice: t('notice.user.destroy') }
       format.json { head :no_content }
     end
   end
   
   private
   def admin_only
-    unless current_user and  current_user.admin
-      render :file => "#{Rails.root}/public/422.html",  :status => 422, layout: 'errors_layout'
+    unless current_user.admin
+      redirect_to error_422_path
     end
   end
-
-  def check_authorize
-    unless current_user.id == params[:id].to_i or current_user.admin
-      render :file => "#{Rails.root}/public/422.html",  :status => 422, layout: 'errors_layout'
-    end 
-  end 
   
   def set_user
     begin
       @user = User.includes(:photos => [:user], :albums => [:pics]).find(params[:id])
-    rescue
-      render :file => "#{Rails.root}/public/404.html",  :status => 404, layout: 'errors_layout'
+    rescue StandardError => e
+      redirect_to error_404_path
     end
   end
   

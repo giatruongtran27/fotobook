@@ -1,0 +1,43 @@
+- represent_img_album = album.pics.size > 0 ? album.pics.first.image.url(:medium) : '/assets/default-no-image.jpg'      
+- user_album = album.user
+.col-md-6.mb-3
+  .container-fluid.p-0
+    .d-flex.element-wrapper
+      .d-flex.flex-fill.align-items-center.element-col-left
+        .element-album.ml-4
+          img src="#{represent_img_album}" alt="#{album.title}" class="img-fluid img-thumbnail-custom img-element" 
+          img src="#{represent_img_album}" alt="#{album.title}" class="img-fluid img-thumbnail-custom img-element"           
+          = link_to images_user_album_path(user_id: user_album, id: album), class: "element-album-main-image" ,remote: true, data: {toggle: "modal", target: "#myModal2"} do
+            img src="#{represent_img_album}" alt="#{album.title}" class="img-fluid img-thumbnail-custom"
+      .d-flex.flex-fill.element-col-right
+        .element-content
+          .element-content-head
+            .nav-link
+              span class=(user_album.image.present? ? "element-user-wrapper" :"element-user-wrapper no-avatar") data-name="#{user_album.words_no_avatar}"  
+                img src="#{user_album.image.url}" alt="#{user_album.full_name}" class="rounded-circle"
+                = link_to user_path(user_album), :"data-turbolinks" => false do
+                  span.element-user-name = user_album.full_name
+              - if current_user
+                - if current_user.followers.include? user_album
+                  = link_to t('follow.following'), {:controller => "users", :action => "edit_add_follow", :id => current_user.id , :user_follow_id => user_album.id}, method: :post, remote: true , class: "element-a-follow following"
+                - else
+                  = link_to t('follow.follow'), {:controller => "users", :action => "edit_add_follow", :id => current_user.id , :user_follow_id => user_album.id}, method: :post, remote: true , class: "element-a-follow"
+              - else
+                = link_to t('follow.follow'), "javascript:;", title: t('please_login'), class: "element-a-follow please-login"
+          h5.element-content-title
+            = album.title
+          p.element-content-mid
+            = album.description
+          .element-right-heart
+            - if current_user
+              - check_like_album = album.likes.find_by(user_id: current_user)
+              = link_to like_user_album_path(:user_id => user_album, :id => album.id), method: :post, remote: true, class: if check_like_album then "a-like liked" else "a-like" end do
+                i.fa.fa-heart
+            - else
+              = link_to 'javascript:;', title: t('please_login'), class: "a-like please-login" do
+                i.fa.fa-heart
+            small.count-like
+              = album.likes.size
+          span.element-right-time
+            small
+              = album.created_at.strftime("%I:%M %p %-d/%-m/%Y")

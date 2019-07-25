@@ -1,0 +1,20 @@
+doctype html
+html
+  head
+    title Fotobook Error
+    = csrf_meta_tags
+    = csp_meta_tag
+    link rel="shortcut icon" type="image/png" href="/assets/logo.png"
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+  body
+    nav.navbar.navbar-expand-lg.navbar-dark.bg-blue.custom
+      = link_to "Fotobook", root_path, class: "navbar-brand"
+    .container-fluid
+      .row.d-flex.justify-content-center.main-content-error
+        = yield
+    = render "layouts/footer"
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload', "data-turbolinks-eval": "false"
+    javascript: 
+      #{sanitize custom_bootstrap_flash}
+      I18n.defaultLocale = "#{I18n.default_locale}";
+      I18n.locale = "#{I18n.locale}"

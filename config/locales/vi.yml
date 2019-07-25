@@ -1,12 +1,112 @@
 vi:
-  evaluators:
-    alert:
-      should_save: "cccfwbmwfwvwjkmvdmvdmvwccccc"
+  title:
+    feeds: 'Bảng tin'
+    discover: 'Khám phá'
+    photos: 'HÌNH ẢNH'
+    albums: 'BỘ SƯU TẬP'
+  follow:
+    follow: 'theo dõi'
+    followed: 'đã theo dõi'
+    following: 'đang theo dõi'
+    unfollow: 'bỏ theo dõi'
+    unfollowed: 'đã bỏ theo dõi'
+  like:
+    like: 'thích'
+    liked: 'đã thích'
+    unlike: 'bỏ thích'
+    unliked: 'đã bỏ thích'
+    you_have_liked: 'Bạn vừa thích %{obj}'
+    you_have_unliked: 'Bạn vừa bỏ thích %{obj}'
+  notice:
+    photo:
+      create: 'Tạo hình ảnh thành công.'
+      update: 'Cập nhật hình ảnh thành công.'
+      destroy: 'Xóa hình ảnh thành công.'
+    album:
+      create: 'Tạo bộ sưu tập thành công.'
+      update: 'Cập nhật bộ sưu tập thành công.'
+      destroy: 'Xóa bộ sưu tập thành công.'
+      failed: 'Tạo không thành công, vui lòng thử lại sau.'
+    user:
+      create: 'Tạo người dùng thành công.'
+      update: 'Cập nhật người dùng thành công.'
+      destroy: 'Xóa người dùng thành công.'
+  no_photos: 'Không có Hình ảnh'
+  no_albums: 'Không có Bộ sưu tập'
+  change: 'Thay đổi'
+  edit_profile: 'Chỉnh sửa thông tin cá nhân'
+  edit_profile_of_user: 'Chỉnh sửa thông tin người dùng'
+  search: 'Tìm kiếm'
+  in: 'trong'
+  result_for: 'Kết quả cho'
+  albums: 'Danh sách bộ sưu tập'
+  new_album: 'Tạo bộ sưu tập mới'
+  add_album: 'Thêm bộ sưu tập mới'
+  edit_album: 'Chỉnh sửa bộ sưu tập'
+  images_of_album: 'Hình ảnh của bộ sưu tập'
+  photos: 'Danh sách hình ảnh'
+  new_photo: 'Tạo hình ảnh mới'
+  add_photo: 'Thêm hình ảnh mới'
+  edit_photo: 'Chỉnh sửa hình ảnh'
+  dash_board: 'Trang quản lý'
+  login: 'Đăng nhập'
+  logout: 'Đăng xuất'
+  signup: 'Đăng kí'
+  first_name: 'Tên'
+  last_name: 'Họ'
+  last_login: 'Lần đăng nhập cuối'
+  back: 'Quay lại'
+  email: 'Email'
+  show: 'Xem'
+  edit: 'Sửa'
+  destroy: 'Xóa'
+  manage_photos: 'Quản lý ảnh'
+  manage_albums: 'Quản lý bộ sưu tập'
+  manage_users: 'Quản lý người dùng'
+  edit_album: 'Chỉnh sửa bộ sưu tập'
+  edit_photo: 'Chỉnh sửa hình ảnh'
+  edit_user: 'Chỉnh sửa người dùng'
+  submit: 'Xác nhận'
+  save: 'Lưu'
+  add_or_remove_images_here: 'Thêm hoặc xóa hình ảnh ở đây'
+  upload_image: 'Tải ảnh lên'
+  are_you_sure: 'Bạn có chắc?'
+  public: 'Công khai'
+  private: 'Chỉ mình tôi'
+  select_one: 'Chọn một'
+  please_login: 'Vui lòng đăng nhập để thực hiện tác vụ này'
+  activerecord:
+    errors:
+      models:
+        photo:
+          attributes:
+            image:
+              invalid: "Hình ảnh không hợp lệ"
+    models:
+      user: 'Người dùng'
+      album: 'Bộ sưu tập'
+      photo: 'Người dùng'
+    attributes:
+      photo:
+        title: "Tiêu đề"
+        description: 'Mô tả'
+        sharing_mode: 'Chế độ'
+        image: 'Hình ảnh'
+      album:
+        title: "Tiêu đề"
+        description: 'Mô tả'
+        sharing_mode: 'Chế độ'
+      user:
+        first_name: 'Tên'
+        last_name: 'Họ'
+        email: 'Email'
+        password: 'Mật khẩu' 
   layouts:
     nav:
       login: 'Đăng nhập'
       logout: 'Đăng xuất'
       signup: 'Đăng kí'
+    nav_search:
       search: 'Tìm kiếm hình ảnh hoặc bộ sưu tập'
     application:
   devise:

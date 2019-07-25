@@ -1,0 +1,13 @@
+.container.mt-3.mb-3
+  h2.title
+    => @photo.title
+  .mt-3.mb-3
+    = image_tag(@photo.image.url, width: 250, class: "img-fluid img-thumbnail") if @photo.image.exists?
+  code
+    => @photo.description
+  hr
+  div
+    - if can? :manage, @photo
+      = link_to t('edit'), edit_user_photo_path(@photo.user, @photo), :"data-turbolinks" => false, class: "btn btn-sm btn-warning"
+      |  | 
+    = link_to t('back'), user_photos_path, class: "btn btn-sm btn-primary"

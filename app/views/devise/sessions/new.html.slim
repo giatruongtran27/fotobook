@@ -1,0 +1,14 @@
+.row
+  .col-sm-6.col-md-4.m-auto
+    h2.text-center.login-title
+      = t('.title_login')
+    .account-wall
+      img.profile-img[src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=120" alt="login"]
+      = form_for(resource, as: resource_name, url: session_path(resource_name), :html => {:class => 'form-signin', :id=> 'form_login'}) do |f|
+        = f.email_field :email, class: "form-control", autofocus: true, autocomplete: "email", placeholder: t('.email')
+        = f.password_field :password, class: "form-control", autocomplete: "current-password", placeholder: t('.password')
+        = f.submit t('.login'), class: "btn btn-primary btn-login"
+        .text-center
+          = link_to t('.forgot_password'), new_user_password_path, class: "forgot-password", "data-turbolinks"=> false
+    .text-center.m-4
+      = link_to t('.create_an_account'), new_user_registration_path, class:"new-account", "data-turbolinks" => false

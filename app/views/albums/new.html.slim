@@ -1,0 +1,8 @@
+.d-flex.justify-content-start
+  p.mt-3.title-new-photo
+    = t('new_album')
+hr
+#content
+  = render 'form', album: @album, user: @user
+hr
+= link_to t('back'), user_albums_path, class: "btn btn-sm btn-primary"

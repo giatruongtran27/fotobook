@@ -1,0 +1,15 @@
+.wrap-a-albums
+  .div-a-albums
+    - img_link = album.pics.size > 0 ? album.pics.first.image.url : '/assets/default-no-image.jpg'
+    img src="#{img_link}" class="img-thumbnail a-albums-img"
+    img src="#{img_link}" class="img-thumbnail a-albums-img"
+    a.a-albums-main-photo[href="javascript:;"]
+      span = album.pics.size
+      img src="#{img_link}" class="img-thumbnail a-albums-img"
+    - if can? :update, album
+      = link_to t("edit"), edit_user_album_path(album.user, album), class: "a-edit", :"data-turbolinks" => false
+      - if album.private_mode?
+        a.a-lock[href="javascript:;"]
+          i.fa.fa-lock
+  p.text-center.albums-title
+    = album.title

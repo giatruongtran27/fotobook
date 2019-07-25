@@ -1,0 +1,25 @@
+doctype html
+html 
+  head
+    title Fotobook
+    = csrf_meta_tags
+    = csp_meta_tag
+    link rel="shortcut icon" type="image/png" href="/assets/logo.png"
+    = stylesheet_link_tag "application", media: "all", "data-turbolinks-track": "reload"
+  body
+    = render "layouts/nav", isAdminPage: false, active_page: @active_page
+    .container-fluid.mt-3
+      .row
+        .col-lg-2.d-flex.flex-column
+          .d-flex.flex-row.justify-content-center
+            div
+              = link_to t("title.feeds"), feeds_path, "data-turbolinks": false, class: if @active_page == "feeds" then "d-block left-item active" else "d-block left-item" end 
+              = link_to t("title.discover"), root_path, "data-turbolinks": false, class: if @active_page == "discover" then "d-block left-item active" else "d-block left-item" end
+        .col-lg-8.pb-3.main-content
+          = yield
+    = render "layouts/footer"
+    = javascript_include_tag "application", "data-turbolinks-track": "reload", "data-turbolinks-eval": "false"
+    javascript: 
+      #{sanitize custom_bootstrap_flash}
+      I18n.defaultLocale = "#{I18n.default_locale}";
+      I18n.locale = "#{I18n.locale}"

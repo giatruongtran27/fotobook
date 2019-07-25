@@ -1,7 +1,7 @@
 class AdminController < ApplicationController
   layout "admin_layout"
-  before_action :authenticate_user!, only: [:is_admin]
-  before_action :is_admin
+  before_action :authenticate_user!
+  before_action :authenticate_admin!
   before_action :set_photo, only: [:edit_photo, :update_photo, :destroy_photo]
   before_action :set_album, only: [:edit_album, :update_album, :destroy_album]
 
@@ -31,7 +31,7 @@ class AdminController < ApplicationController
   def update_photo
     respond_to do |format|
       if @photo.update(photo_params)
-        format.html { redirect_to admin_photos_path, notice: 'Photo was successfully updated.' }
+        format.html { redirect_to admin_photos_path, notice: t('notice.photo.update') }
         format.json { render :show, status: :ok, location: @photo }
       else
         format.html { render :edit_photo }
@@ -43,7 +43,7 @@ class AdminController < ApplicationController
   def destroy_photo
     @photo.destroy
     respond_to do |format|
-      format.html { redirect_to admin_photos_path, notice: 'Photo was successfully destroyed.' }
+      format.html { redirect_to admin_photos_path, notice: t('notice.photo.destroy') }
       format.json { head :no_content }
     end
   end
@@ -55,7 +55,7 @@ class AdminController < ApplicationController
   def update_album
     respond_to do |format|
       if @album.update(album_params)
-        format.html { redirect_to admin_albums_path, notice: 'Album was successfully updated.' }
+        format.html { redirect_to admin_albums_path, notice: t('notice.album.update') }
         format.json { render :show, status: :ok, location: @album }
       else
         format.html { render :edit_album }
@@ -66,7 +66,7 @@ class AdminController < ApplicationController
   def destroy_album
     @album.destroy
     respond_to do |format|
-      format.html { redirect_to admin_albums_path, notice: 'Photo was successfully destroyed.' }
+      format.html { redirect_to admin_albums_path, notice: t('notice.album.destroy') }
       format.json { head :no_content }
     end
   end
@@ -81,9 +81,9 @@ class AdminController < ApplicationController
   end
 
   private
-    def is_admin
-      unless current_user and  current_user.admin
-        render :file => "#{Rails.root}/public/422.html",  :status => 422, layout: 'errors_layout'
+    def authenticate_admin!
+      unless current_user.admin
+        redirect_to error_422_path
       end 
     end
 
@@ -91,7 +91,7 @@ class AdminController < ApplicationController
       begin
         @photo = Photo.find(params[:id])
       rescue
-        render :file => "#{Rails.root}/public/404.html",  :status => 404, layout: 'errors_layout'
+        redirect_to error_404_path
       end      
     end
     
@@ -99,7 +99,7 @@ class AdminController < ApplicationController
       begin
         @album = Album.find(params[:id])
       rescue
-        render :file => "#{Rails.root}/public/404.html",  :status => 404, layout: 'errors_layout'
+        redirect_to error_404_path
       end      
     end
 
